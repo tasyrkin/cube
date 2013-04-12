@@ -22,7 +22,9 @@
         "data2xml": "0.8.0",
         "async": "0.2.6",
         "request": "2.16.6",
-        "newrelic": "0.9.20"
+        "mime-magic": "5.14.0",
+        "newrelic": "0.9.20",
+        "cron": "1.0.1"
     },
     "devDependencies":{},
     "optionalDependencies":{},
