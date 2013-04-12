@@ -5,3 +5,4 @@ public/images
 solr/target
 builtAssets
 util
+newrelic.js
