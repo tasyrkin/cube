@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Cube">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheet.css">
+
+    <title>Cube</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <span id="logo"></span>
+          <h1 id="project_title">Cube</h1>
+          <h2 id="project_tagline">Zalando's IT management tool</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <div id="example">
+        <a name="example"></a>
+        <iframe src="http://cube.eu01.aws.af.cm/team/?admin=yes#qs/?page=0&rows=50&sort=name:asc" width="100%" height="100%"></iframe>
+      </div>
+      <section id="main_content" class="inner">
+        <div class="menu">
+            <a href="index.html">index</a><em>|</em>
+            <span>tutorial</span><em>|</em>
+            <a href="schema.html">reference</a>
+        </div>
+        <a id="demo_banner">Live Demo<span id="arrow"></span></a>
+        <h3>Adding a new extension</h3>
+        <p>Once you got the included example up and running, it will be no hassle to set up your own extension. All you need to do is set up a new solr core and place your extension files inside the extensions directory. Follow these steps to get it done:</p>
+        <ol class="tutorial">
+            <li>
+                <h6>Add a solr core</h6>
+                <div>
+                    <p>Edit your solr/solr/solr.xml file. At the end it should look something like this</p>
+                    <pre>
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;solr sharedLib="lib" persistent="true"&gt;
+  &lt;cores adminPath="/admin/cores"&gt;
+    &lt;core name="team" instanceDir="conf/cube/" /&gt;
+    <span>&lt;core name="myExtension" instanceDir="conf/cube/" /&gt;</span>
+  &lt;/cores&gt;
+&lt;/solr&gt;</pre>
+                </div>
+            </li>
+            <li>
+                <h6>Start Solr</h6>
+                <p>* stop it if its running already, duh!</p>
+                <pre>$ cd solr/<br>$ mvn clean install tomcat:run-war -Pdevelopment</pre>
+                <p>You should have a new core now. Check it on <a href="http://localhost:38730/cube-solr">http://localhost:38730/cube-solr</a></p>
+            </li>
+            <li>
+                <h6>Add a new entity on entities.json</h6>
+                <div>
+                    <p>entities.json is a json file! beware of the syntax. It should look like this:</p>
+                    <pre>[ "team"<span>, "myExtension"</span> ]</pre>
+                </div>
+            </li>
+            <li>
+                <h6>Copy example directory with your desired extension name</h6>
+                <div>
+                    <pre>$ cp extensions/team extensions/myExtension</pre>
+                </div>
+            </li>
+            <li>
+                <h6>Configure your extension</h6>
+                <div>
+                    <ol>
+                        <li>
+                            <p>Write your own Schema</p>
+                            <p>The Schema is one of the most important aspects of your extension. We recommend you to spend some time checking out the one provided in the example along with its documentation.<p>
+                            <p>Please check the Schema reference <a href="schema.html">here</a>.</p>
+                        </li>
+                        <li>
+                            <p>Configrue extensions/myExtension/db.json to point to your new Solr core</p>
+                            <p>It should look something like this:</p>
+                            <pre>
+{
+    "host": "<span>localhost</span>",
+    "port": "38730",
+    "core": "<span>myExtension</span>",
+    "path": "/cube-solr"
+}</pre>
+                        </li>
+                        <li><p>Edit the CSS to fit your style on extensions/myExtension/style.styl<p></li>
+                    <ol>
+                </div>
+            </li>
+            <li>
+                <h6>Start NodeJs</h6>
+                <div>
+                    <pre>$ coffee cube.coffee</pre>
+                </div>
+            </li>
+        </ol>
+
+     </section>
+
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Cube is maintained by <a href="https://github.com/zalando">zalando</a></p>
+      </footer>
+    </div>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script src="index.js"></script>
+</body></html>

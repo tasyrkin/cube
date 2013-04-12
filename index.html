@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Cube">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheet.css">
+
+    <title>Cube</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <span id="logo"></span>
+          <h1 id="project_title">Cube</h1>
+          <h2 id="project_tagline">Zalando's IT management tool</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <div id="example">
+        <a name="example"></a>
+        <iframe src="http://cube.eu01.aws.af.cm/team/?admin=yes#qs/?page=0&rows=50&sort=name:asc" width="100%" height="100%"></iframe>
+      </div>
+      <section id="main_content" class="inner">
+        <div class="menu">
+            <span>index</span><em>|</em>
+            <a href="tutorial.html">tutorial</a><em>|</em>
+            <a href="schema.html">reference</a>
+        </div>
+        <a id="demo_banner">Live Demo<span id="arrow"></span></a>
+        <h3>What is it?</h3>
+        <p>The Cube is a versatile crud-like management tool that allows you to organize and manage your data with ease. As long as you can write as Schema for it, you'll be able to get important information from your data by using faceted queries, string filtered and sorted results, and multiple other features. It started as a tool to integrate a fast-growing department from Zalando, but it now has become a data hungry indexer monster.</p>
+        <a name="installation"></a>
+        <h3>Installation</h3>
+        <p>Just follow the next simple steps and you'll get the example up and running<p>
+        <ol>
+            <li>
+            <p>Get it from our <a href="http://github.com/zalando/cube">GitHub repo</a></P>
+                <pre>$ git clone git@github.com:zalando/cube.git</pre>
+            </li>
+            <li>
+                <p>Install dependencies</p>
+                <pre>$ cd cube<br>$ npm install .</pre>
+            </li>
+            <li>
+                <p>Configure</p>
+                <pre>$ vi server.settings.coffee</pre>
+            </li>
+            <li>
+                <p>Run Solr instance on a new terminal</p>
+                <pre>$ cd cube/solr<br>$ mvn clean install tomcat:run-war -Pdevelopment</pre></li>
+            <li>
+                <p>Start your app</p>
+                <pre>$ coffee cube.coffe</pre>
+            </li>
+        </ol>
+        <a name="documentation"></a>
+        <h3>Documentation</h3>
+        <p>One of the first things you'll want to do is to add your own extension. Follow <a href="tutorial.html">this tutorial</a> to get you started.</p>
+        <p>For other documentation, what better than the source code? Well, maybe annotated source code. Check it out <a href="docs/index.html">here</a>.</p>
+     </section>
+
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Cube is maintained by <a href="https://github.com/zalando">zalando</a></p>
+      </footer>
+    </div>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script src="index.js"></script>
+</body></html>
