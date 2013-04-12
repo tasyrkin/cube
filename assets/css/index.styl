@@ -1,0 +1,146 @@
+
+html
+body
+  margin        0
+  padding       0
+  font          15px 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif
+  line-height   1.5
+  -webkit-font-smoothing    antialiased
+  box-sizing    border-box
+  border        0
+  vertical-align            baseline
+
+body
+  background    #FFF
+
+h1
+  font-size     56px
+  margin        0
+  padding       0
+  &#title
+    margin-left 85px
+
+h2
+  font-size     36px
+
+#subtitle
+  color         #666
+  margin-left   85px
+  position      relative
+  top           -20px
+
+.indented
+  margin-left   50px
+
+#header
+  background-color    #DDD
+  border-bottom       1px solid dodgerblue
+  width               100%
+
+#mainTitle
+  background          url('/assets/hypercube_logo_75.png') no-repeat 0 center
+  padding             20px 0px
+
+.outer
+  margin        0
+  padding       0
+  border        0
+
+header.inner
+  position      relative
+  margin        0 auto
+  margin-left   80px
+
+#logo
+  float         left
+  padding-right 50px
+
+section#content
+  padding-top   40px
+  position      relative
+  margin        0 auto
+  .wrapper
+      max-width 640px
+      margin    0 auto
+  h2
+      margin-left 190px
+      margin-top  0
+  ul
+    list-style  none
+    margin-left 160px
+    padding     0
+    text-align  left
+    li
+      cursor        pointer
+      min-width     300px
+      overflow      hidden
+      &:hover
+        label
+            color      dodgerblue
+      img
+        float       left
+      label
+        font-size   32px
+        font-weight bold
+        float       left
+        margin-left 10px
+      p#amount
+        font-weight normal
+        color       dodgerblue
+        position    relative
+        left        10px
+        line-height 20px
+      p#desc
+        float       left
+        clear       both
+        margin      0
+        position    relative
+        left        60px
+        top         -10px
+        color       #666
+        max-width   300px
+
+a
+    color             black
+    text-decoration   none
+    &.btn
+      border              0
+      position            relative
+      display             block
+      cursor              pointer
+      color               #fff
+      background-color    btnColor
+      font-weight         bold
+      padding             7px 10px
+      text-decoration     none
+    &#add
+      margin          10px
+      background      dodgerblue url('/assets/icons/Add.png') no-repeat 5px center
+      padding-left    25px
+      display         none
+      cursor          pointer
+
+#addWrapper
+      position        absolute
+      top             0
+      right           0
+      margin          10px
+      width           85px
+      height          45px
+      overflow        hidden
+      cursor          pointer
+
+input#import
+    position        absolute
+    overflow        hidden
+    width           65px
+    height          40px
+    padding         0
+    opacity         0
+    z-index         1
+    top             0
+    right           0
+    margin          10px
+    -moz-transform  translate(-300px, 0pt) scale(15)
+    display         none
+    cursor          pointer

@@ -1,0 +1,38 @@
+script(type="text/template")#facet-template
+  | <%
+  | var addAllFacetFields = function() {
+  |     _.each(fields.normal, addFacetField);
+  |     for (p in fields.special) { %>
+  |         <li class="separator unselectable"></li><%
+  |         break;
+  |     };
+  |     _.each(fields.special, addFacetField);
+  | };
+  | var addFacetField = function(properties, pname) {
+  |     var _pname = pname;
+  |     var sep = window.Settings.separator;
+  |     if (properties.amount === 0) { return; };
+  |     if (pname === 'null') { _pname = 'not set'; }
+  |     if (pname.split(sep)[1]) { _pname = pname.split(sep)[1]; };
+  |     fieldElement(properties, _pname, name);
+  | };
+  | var fieldElement = function(p, _pname, name) { %>
+  |     <li data-name="<%= name %>" data-title="<%= p.path %>"><%
+  |         if (!$.isEmptyObject(p.subs)) { %>
+  |             <span class="fold unselectable">+</span><%
+  |         }; %>
+  |         <div class="field" data-name="<%= name %>"
+  |             data-title="<%= p.path %>">
+  |             <label for="id-<%= name %>-<%= p.path %>" class="unselectable">
+  |                 <%= _pname %>
+  |             </label>
+  |             <span class="amount unselectable"><%= p.amount %><span>
+  |         </div>
+  |         <ul data-name="<%= name %>" data-title="<%= p.path %>"><%
+  |             _.each(p.subs, addFacetField);%>
+  |         </ul>
+  |     </li><%
+  | }; %>
+  | <span class="fold unselectable">+</span>
+  | <h4 class="unselectable"><%= label %></h4>
+  | <ul id="<%= name %>"><% addAllFacetFields(); %></ul>

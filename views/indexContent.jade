@@ -1,0 +1,32 @@
+#header.outer
+  header.inner
+    #mainTitle
+      h1#title 
+        a(href="http://zalando.github.com/cube", target="_blank") Cube
+      span#subtitle Zalando's management tool
+#list
+  section#content
+    #addWrapper
+      a(title="Add Extension").btn#add Add
+      input(type="file", name="import", data-url="/extension/test")#import
+    .wrapper
+      h2 Available entities
+      ul
+
+script(src="/js/jquery-1.9.1.min.js")
+script(src="/js/jquery-ui-1.9.2.custom.min.js")
+script(src="/js/jquery.fileupload.js")
+script(src="/js/underscore-1.4.4.js")
+
+!= js('index')
+
+script(type="text/javascript)
+  var entities= !{JSON.stringify(entities)};
+
+script(type="text/html")#list-item
+  | <li id="<%= entity %>">
+  |   <img src="<%= icon %>"/>
+  |   <label><%= title %></label>
+  |   <p id="amount"></p>
+  |   <p id="desc"><%= desc %></p>
+  | </li>

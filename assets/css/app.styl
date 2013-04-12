@@ -1,0 +1,1266 @@
+/*
+ * Zalando's Team App
+ *
+ * Autor: Emanuel Lauria Izudnegui (emanuel.lauria@zalando.de)
+ * circa 2012
+ *
+ */
+
+
+/*
+ * Settings
+ * ---------------------------------------------------------------------------
+ *
+ * Notes:
+ * Please personalize the style of the app by setting the next variables with
+ * your desired values.
+ *
+ */
+
+lineColor         = dodgerblue
+btnColor          = dodgerblue
+headerBg          = #EE
+footerBg          = #CCC
+groupItemBg       = #EEE
+groupItemHeight   = 30px
+groupBorder       = #CCC
+tableHeaderBg     = #EEE
+tableBorder       = #EEE
+profileImgBorder  = #EEE
+profileImgBg      = #EEE
+profileImgFontC   = #DDD
+profileLabelColor = #666
+controlBtnBorder  = #CCC
+thumbnailCatBorder= #CCC
+thumbnailBorder   = #DDD
+thumbnailBg       = #FFF
+thumbnailFontSize = 13px
+thumbnailActiveBd = #000
+tableRowActiveBg  = #CCC
+tableRowActiveBgH = #CCC
+tableRowHeight    = 40px
+tableHeaderActive = #DDD
+facetActiveBg     = #CCC
+facetSeparator    = #CCC
+facetFontColor    = #333
+facetFontSize     = 13px
+amountNumberColor = #999
+tableItemHoverBg  = #cfe8ff
+font              = 14px "Helvetica Neue", Helvetica, Arial, sans-serif
+
+headerHeight      = 50px
+
+facetWidth        = 180px
+facetPadding      = 20px
+
+paneWidth         = 304px
+paneBg            = #FFF
+paneFontSize      = 13px
+
+footerHeight      = 49px
+
+/*
+ * Styl CSS
+ * ---------------------------------------------------------------------------
+ */
+
+itemPicWidth(a = 0)
+  300px + a
+
+html
+body
+  margin      0
+  padding     0
+  font        font
+
+#header
+  position            fixed
+  background          headerBg
+  border-bottom       1px solid lineColor
+  width               100%
+  height              headerHeight
+  z-index             2
+
+  #entityTitle
+    width               190px
+    height              40px
+    position            relative
+    left                0
+    top                 0
+    margin              5px
+    background          headerBg
+    z-index             2
+    border              1px solid #EEE
+    &.selectable:hover
+        border          1px solid #CCC
+        cursor          pointer
+    &.selectable.active
+        background      tableHeaderActive
+        background      #FFF
+        border          1px solid dodgerblue
+        border-bottom   none
+    h1
+      padding           0
+      margin            0
+      margin-left       10px
+      font-size         20px
+      line-height       40px
+
+  span#arrow
+      position        absolute
+      left            165px
+      top             20px
+      background-image    url('/assets/asc.gif')
+      height          4px
+      width           21px
+
+  #entities
+    position          fixed
+    z-index           1
+    top               45px
+    width             facetWidth + 20
+    margin            0
+    margin-left       5px
+    display           none
+    span
+        margin-left   20px
+        line-height   40px
+        font-weight   bold
+
+.menu
+    background        #FFF
+    border            1px solid dodgerblue
+    ul
+        padding       0
+        margin        0
+        list-style    none
+        li
+            background      #FFF
+            margin          2px
+            &:hover
+                background    tableItemHoverBg
+                cursor        pointer
+            &.active
+                background    facetActiveBg
+
+#search
+  position          absolute
+  left              200px
+  top               0
+  line-height       headerHeight
+  padding-left      35px
+  background        headerBg
+  height            headerHeight
+  #searchInfo
+    position        absolute
+    left            347px
+    top             0
+    white-space     nowrap
+    height          headerHeight
+    background      headerBg
+
+  span#total
+    padding-left    10px
+    padding-right   5px
+    font-weight     bold
+    color           lineColor
+  label
+    color           dodgerBlue
+  span#reset
+    margin-left     10px
+    display         none
+    a
+      cursor            pointer
+      text-decoration   underline
+      &:hover
+        color           lineColor
+
+#controls
+  position          absolute
+  right             0
+  top               0
+  padding           10px
+  background        headerBg
+  height            30px
+  a.btn
+    float           right
+  #extensions
+    overflow        hidden
+    float           left
+  span
+    width           30px
+    height          30px
+    cursor          pointer
+    float           left
+    margin-right    5px
+    border          1px solid controlBtnBorder
+    &#view
+      background    url('/assets/thumbnail-list-view.png') no-repeat 1px -27px
+      &.list
+        background-position     1px 1px
+      &.active
+        background-position     0 0
+    &#print
+      background    url('/assets/print.png') no-repeat 0 0
+    &#json
+      margin-right  10px
+      background    url('/assets/json.png') no-repeat 1px 1px
+
+#index
+  position        absolute
+  width           facetWidth
+  padding         facetPadding
+  padding-right   0
+  border-right    1px solid lineColor
+  top             headerHeight
+  bottom          0
+  overflow-y      hidden
+  overflow-x      hidden
+  #innerIndex
+    position      absolute
+    width         facetWidth - 10px
+    overflow      hidden
+    left          10px
+  &:hover
+      overflow-y  auto
+  span.fold
+      position    absolute
+      margin-top  0
+      cursor      pointer
+  ul
+    padding     0
+    margin      0
+    list-style  none
+    position    relative
+    li
+      overflow  hidden
+      h4
+        margin          10px 0 5px 15px
+        cursor          pointer
+      &:first-child h4
+        margin-top      0
+
+    ul
+      margin-left       15px
+      display           none
+      li
+        font-size           facetFontSize
+        color               facetFontColor
+        padding             0
+        margin              1px 0
+        cursor              pointer
+        &.separator
+          border-top        1px solid facetSeparator
+          margin            5px
+        .field
+          padding           5px
+          margin            0
+          margin-left       15px
+          height            15px
+          &:hover
+              background    tableItemHoverBg
+              span.amount
+                background  tableItemHoverBg
+          &.active
+              background    facetActiveBg
+              &:hover
+                span.amount
+                    background  facetActiveBg
+        label
+          position          absolute
+          overflow          hidden
+          cursor            pointer
+          white-space       nowrap
+          left              10px
+          padding-left      10px
+        span
+          position          absolute
+          text-align        right
+          right             0
+          padding-right     5px
+          color             amountNumberColor
+          &.amount
+            background      white
+            padding         0 5px
+            &.active
+                background  facetActiveBg
+          &.fold
+            float           left
+            position        relative
+            top             4px
+            &:hover
+                color       black
+        ul
+          display           none
+
+#innerIndex>ul>li>span.fold
+    margin-top      10px
+
+#innerIndex>ul>li:first-child>span.fold
+    margin-top      0
+
+#content
+  position    absolute
+  overflow    hidden
+  top         50px
+  left        facetWidth + 21px
+  right       0
+  bottom      footerHeight
+  &.noPages
+    bottom    0
+  &.noFacets
+    left      0
+
+#columnsSelectWrapper
+    position    absolute
+    top         0
+    right       0
+    height      100%
+
+span#columnsMenu
+    top             0
+    position        absolute
+    right           20px
+    width           30px
+    height          30px
+    z-index         3
+    margin-top      5px
+    line-height     30px
+    text-align      center
+    cursor          pointer
+    border          1px solid #CCC
+    background      url('/assets/columns.png') no-repeat #EEE 2px -26px
+    display         none
+    &.active
+        background-position     2px 0
+        background-color        #FFF
+        border                  1px solid dodgerblue
+        border-bottom           none
+#columnOptions
+    display         none
+    width           150px
+    position        absolute
+    top             35px
+    right           5px
+    z-index         2
+    overflow-y      auto
+    max-height      80%
+    li
+        height          30px
+        line-height     30px
+        &:last-child
+            border      none
+        span.check
+            font-weight     bold
+            color           #333
+            margin-left     10px
+            margin-right    5px
+            width           20px
+            position        absolute
+        span.label
+            position        absolute
+            margin-left     10px
+
+#items
+  margin                0
+  padding               0
+  list-style            none
+  li
+    width               100%
+    &.list
+      border-top        none
+      position          absolute
+      height            100%
+    &.category
+      border-top          1px solid thumbnailCatBorder
+      float             left
+      width             100%
+    label.category
+      background        #FFF
+      position          relative
+      top               -10px
+      padding-right     10px
+      span
+      color             amountNumberColor
+    ul.container
+      padding-left      20px
+      min-height        220px
+      li
+        display         inline-block
+        position        relative
+        float           left
+        margin          10px
+        padding         10px
+        padding-bottom  0
+        font-size       thumbnailFontSize
+        border          1px solid thumbnailBorder
+        background      thumbnailBg
+        width           150px
+        cursor          pointer
+        &:hover
+          background    tableItemHoverBg
+        &.active
+          border        1px solid thumbnailActiveBd
+        .view .label
+          word-break    break-word
+          display       block
+          color         facetFontColor
+          white-space   nowrap
+          margin        10px 0
+          overflow      hidden
+        .thumbnail
+          width               150px
+          height              150px
+        .etiquettes
+          position      absolute
+          height        100%
+          top           0
+          left          -10px
+          padding-top   5px
+          overflow      hidden
+          span.etiquette
+              height        26px
+              width         40px
+              line-height   18px
+              padding-left  2px
+              float         left
+              clear         both
+              top           -2px
+              background    url('/assets/etiquettes/etq-gray.png') no-repeat
+              font-weight   bold
+              color         #49535a
+              label
+                    width       24px
+                    position    absolute
+                    overflow    hidden
+                    white-space nowrap
+
+#footer
+  position      fixed
+  bottom        0
+  left          facetWidth + facetPadding + 1
+  right         0
+  height        footerHeight
+  border-top    1px solid lineColor
+  background    headerBg
+  text-align    right
+  #wrapper
+      position      absolute
+      right         20px
+  #pageStatus
+      line-height   footerHeight
+      color         dodgerblue
+      float         left
+      margin-right  10px
+      font-weight   bold
+      #normal
+            font-weight normal
+  span.btn
+      width         20px
+      height        20px
+      float         left
+      background    url('/assets/sprite_pageIcons.png') no-repeat 0 0 dodgerblue
+      margin        5px
+      cursor        pointer
+      border        1px solid dodgerblue
+      padding       2px
+      margin-top    12px
+      &#pageL
+        background-position         -16px 0
+        &.disabled
+            background-position     -16px -24px
+      &#pageR
+        background-position         -38px 0
+        &.disabled
+            background-position     -38px -24px
+      &#jumpToFirst
+        background-position         2px 0
+        &.disabled
+            background-position     2px -24px
+      &#jumpToLast
+        background-position        -58px 0
+        &.disabled
+            background-position     -58px -24px
+
+      &.disabled
+        border                1px solid #CCC
+        background-color      #EEE
+        cursor                initial
+
+.thumbnailContainer
+  padding         20px
+  position        absolute
+  top             0
+  bottom          0
+  left            0
+  right           0
+  overflow-y      auto
+  list-style      none
+  margin          0
+  li
+    margin-top    20px
+
+#tableContainer
+  position              absolute
+  top                   0
+  bottom                0
+  left                  0
+  right                 0
+  padding-top           tableRowHeight + 1
+  overflow-x            hidden
+  overflow-y            auto
+
+  .fixed-table-container-inner
+    overflow-x          hidden
+    overflow-y          auto
+    height              100%
+  .th-inner
+    width               100%
+    cursor              pointer
+
+  &.print
+    overflow-x          hidden
+    overflow-y          auto
+    right               inherit
+    bottom              inherit
+
+.print
+  width                 100%
+  overflow-x            hidden
+  overflow-y            auto
+  bottom                initial
+  right                 initial
+
+span.miniEtq
+  position              absolute
+  width                 15px
+  height                10px
+  top                   -3px
+  left                  -3px
+  background            url('/assets/etiquettes/etq-red-mini.png') no-repeat
+  z-index               1
+
+.bigEtiquette
+  height                30px
+  top                   0
+  padding-right         10px
+  background-repeat     no-repeat
+  line-height           20px
+  display               none
+  color                 #49535a
+  overflow              hidden
+  font-size             13px
+  &.hc
+    width               80px
+  label
+    float               left
+    position            relative
+    left                -7px
+    min-width           25px
+    padding-right       3px
+    padding-left        2px
+    background          url('/assets/etiquettes/etq-gray-bar.png') repeat-x
+    height              22px
+    line-height         18px
+    text-align          left
+    &.hc
+        min-width       25px
+        max-width       45px
+        overflow        hidden
+        font-weight     bold
+
+  span.etiquetteFold
+    background-image    url('/assets/etiquettes/etq-gray.png')
+    float               left
+    width               10px
+    height              30px
+    background-repeat   no-repeat
+
+  span.etiquetteTip
+    background          url('/assets/etiquettes/etq-gray.png') no-repeat -26px 0
+    float               left
+    width               20px
+    height              22px
+    position            relative
+    left                -7px
+
+#tableContainer
+    .etiquettes
+        position      absolute
+        padding-top   5px
+        width         40px
+        height        220px
+        right         213px
+        top           50px
+        display       none
+
+#print table,
+#items table
+  width                 100%
+  border-collapse       collapse
+  border-top            1px solid tableBorder
+  overflow              hidden
+  tbody
+    position            relative
+    tr
+      height            38px
+  tr
+    &.selectable:hover
+      background        tableItemHoverBg
+      cursor            pointer
+    &.active
+      background        tableRowActiveBg
+      &:hover
+        background      tableRowActiveBgH
+    th
+      font-weight       bold
+      text-align        left
+      min-width         50px
+      padding           0
+      margin            0
+      border            none
+      display           none
+      &.visible
+            display     table-cell
+      &.pic
+        width           50px
+      &.header .th-inner
+        background      tableHeaderBg
+        height          tableRowHeight+1
+        position        absolute
+        top             0
+      &.header .th-inner.asc
+        background      tableHeaderActive
+        #sortArrow
+            background-image    url('/assets/asc.gif')
+      &.header .th-inner.desc
+        background      tableHeaderActive
+        #sortArrow
+            background-image    url('/assets/desc.gif')
+
+      &.header .th-inner span
+        padding         5px 0 5px 10px
+        line-height     40px
+        &#sortArrow
+          width         10px
+          position      absolute
+          top           19px
+          background-repeat no-repeat
+      &.headerSortUp .th-inner,
+      &.headerSortDown .th-inner,
+        background          tableHeaderActive
+      &.headerSortUp .th-inner #sortArrow
+        background-image    url('/assets/desc.gif')
+      &.headerSortDown .th-inner #sortArrow
+        background-image    url('/assets/asc.gif')
+
+    td
+      padding               5px 0
+      padding-left          10px
+      border-bottom         1px solid tableBorder
+      -webkit-touch-callout none
+      -webkit-user-select   none
+      -khtml-user-select    none
+      -moz-user-select      none
+      -ms-user-select       none
+      user-select           none
+      overflow              hidden
+      max-width             120px
+      max-height            30px
+      display               none
+      white-space           nowrap
+      &.visible
+            display         table-cell
+      .cont
+        white-space         nowrap
+        overflow            hidden
+      .miniPicContainer
+        position      relative
+        overflow      visible
+      &.print
+        max-width           initial
+      &.pic-s,
+      &.pic
+        width               25px
+        padding-right       10px
+        .miniPic
+          position        relative
+          width           25px
+          height          25px
+
+      &:hover
+          .hoverpic, .bigEtiquette, .etiquettes
+              display   block
+      .hoverpic
+        display         none
+        position        absolute
+        width           200px
+        height          200px
+        top             tableRowHeight + 10px
+        right           22px
+        padding         10px
+        background      #FFF
+        border          1px solid dodgerblue
+      span.rowEtiquette
+          padding         2px
+          margin          1px
+          float           left
+          background      #8c99a2
+          color           #49535a
+          font-weight     bold
+          font-size       13px
+          label
+              cursor          pointer
+
+#itemsContainer .miniPic
+    float         left
+    width         35px
+    height        35px
+
+#print table tr td, #print table tr th
+        display         table-cell
+
+#print table tr td .cont
+    white-space         initial
+
+#pane
+  display             none
+  position            fixed
+  height              100%
+  border-left         1px solid lineColor
+  width               paneWidth
+  right               0
+  top                 0
+  padding-left        20px
+  padding-right       35px
+  background          paneBg
+  z-index             1
+  img#warn
+    position          absolute
+    top               441px
+    right             14px
+    display           none
+  #pictureContainer,
+  .pictureContainer
+    height            300px
+    width             300px
+    text-align        center
+    border            2px solid profileImgBorder
+    background        profileImgBg
+    color             profileImgFontC
+    font-weight       bold
+    font-size         20px
+    overflow          visible
+    position          absolute
+    top               headerHeight
+    left              20px
+    margin-top        15px
+    p
+      margin          0
+      line-height     300px
+      width           300px
+      position        absolute
+      top             30px
+      text-align      center
+      display         none
+    img
+      width           300px
+      position        absolute
+      top             0
+      left            0
+    input#pic
+      position        absolute
+      width           300px
+      height          300px
+      padding         0
+      opacity         0
+      z-index         1
+      top             0
+      left            0
+      -moz-transform  translate(-300px, 0pt) scale(15)
+    .inputPicContainer
+      position        absolute
+      width           300px
+      height          300px
+      overflow        hidden
+      top             0
+      left            0
+    .etiquettes
+      position        absolute
+      height          290px
+      z-index         2
+      top             10px
+      left            -10px
+      overflow        hidden
+    .bigEtiquette
+      display         block
+      z-index         2
+  #teamData,
+  #data
+    padding-top       0
+    overflow          auto
+    position          absolute
+    top               390px
+    bottom            70px
+    width             itemPicWidth(4)
+    &.noPicture
+      top             70px
+    &.noButtons
+      bottom          30px
+  #teamData
+    top               250px
+    bottom            20px
+    ul
+        width         100%
+    li
+      margin          0
+      padding         0
+      padding-bottom  5px
+      font-size       paneFontSize
+      overflow        hidden
+      .description
+        float         left
+        clear         both
+        p
+          float       left
+          margin      0
+          padding     0
+          font-size   paneFontSize
+      label.title
+        float         left
+        clear         both
+        font-size     paneFontSize
+        color         black
+        font-weight   bold
+        padding       10px 0 5px 0
+      .subteams
+        float         left
+        clear         both
+      ul.statistics
+        float         left
+        clear         both
+      ul.statistics li
+        border        none
+        padding       0
+        margin        0
+        height        18px
+        span
+          position    absolute
+          &.aRight
+            position      absolute
+            margin-left   150px
+            a
+              line-height 14px
+  .adaptive
+    min-height      20px
+    margin-bottom   0
+  #itemsContainer
+    width           paneWidth - 10
+    border          1px solid groupBorder
+    overflow        auto
+    position        absolute
+    top             headerHeight
+    bottom          70px
+    left            20px
+    margin-top      15px
+    padding-right   10px
+    overflow-x      hidden
+    &.onEdit
+        bottom      300px
+    ul
+      margin        0
+      li
+        width       100%
+        height      groupItemHeight
+        background  groupItemBg
+        margin      2px
+        margin-bottom   0
+        &:last-child
+            margin-bottom   2px
+        overflow    hidden
+        padding     2px
+        img
+          float     left
+          height    35px
+          width     35px
+        .name
+          margin          0
+          margin-right    45px
+          padding-left    10px
+          line-height     groupItemHeight
+          white-space     nowrap
+          overflow        hidden
+  #multipleEditFields
+    position        absolute
+    left            15px
+    right           42px
+    bottom          60px
+    height          230px
+    display         none
+    overflow-y      auto
+  #multipleEditActions
+    display         none
+    a#save
+      display       inline-block
+  ul
+    padding           0
+    margin-top        0
+    margin-bottom     0
+    list-style        none
+    li
+      clear           both
+      float           left
+      position        relative
+      margin          5px
+      &.additional
+        margin-top    10px
+        ul
+          display     none
+          margin-left 5px
+          &.open
+            margin-top  5px
+            display     block
+            float       left
+            clear       both
+          li
+            margin-right    0
+        .mask
+            left            -10px
+        input
+            left            90px
+      .multiline.edit
+          height        40px
+      textarea
+          left          100px
+          padding       0
+          margin        0
+          border        1px solid red
+          font          font
+          font-size     paneFontSize
+          color         black
+          resize        none
+          background-color    #FFF
+          color         black
+          height        100%
+          width         100%
+          display       none
+          &.edit
+              display   block
+              width     165px
+              padding   5px
+              border    1px solid #999
+      .multilineWrapp
+          float         right
+          margin-left   100px
+          max-height    400px
+          min-height    16px
+          max-width     190px
+          margin-bottom 5px
+          p
+                padding     0
+                margin      0
+                font-size   13px
+                word-wrap   break-word
+      label.mult
+          float         left
+          position      absolute
+          white-space   nowrap
+      select
+          margin        0
+          padding       0
+          background    transparent
+          border        0
+          border-radius 0
+          -webkit-appearance    none
+          font          font
+          font-size     paneFontSize
+          color         #000
+          height        21px
+          &.edit
+              border        1px solid #999
+              padding       2px
+              padding-left  4px
+              width         177px
+      .dropdownMask,
+      .mask
+          position    absolute
+          float       left
+          margin-left 100px
+          width       184px
+          height      1.2em
+          overflow    hidden
+          font-size   paneFontSize
+          &.tuple
+            position    initial
+            float       right
+            height      initial
+      .dropdownMask
+          width       184px
+          left        -10px
+          height      22px
+      .scroll
+          position    absolute
+          width       13px
+          height      16px
+          z-index     1
+          cursor      pointer
+          opacity     0
+          top         3px
+          &:hover
+            opacity       0.3
+          &#right
+            background    url('/assets/arrowRight.png') no-repeat
+            right         0
+          &#left
+            background    url('/assets/arrowLeft.png') no-repeat
+            right         180px
+      .text-container
+        white-space       nowrap
+        line-height       1em
+        &.tuple
+            margin-top      10px
+            &:last-child
+                padding-bottom  3px
+            &:first-child
+                margin      0
+                padding     0
+                padding-top 2px
+        span.tupleColon
+            font-weight         bold
+      a
+          line-height         1em
+          &.filter:hover,
+          &.link:hover
+            cursor            pointer
+            text-decoration   underline
+
+    span#arrow
+      background      url('/assets/arrow.gif') no-repeat
+      width           9px
+      height          9px
+      position        absolute
+      margin-top      4px
+      left            0
+      &.active
+        background-position   -9px 0
+    label
+      float           left
+      font-size       paneFontSize
+      color           profileLabelColor
+      &.mandatory
+        font-weight   bold
+      &.additional
+        position      relative
+        padding-left  15px
+    input
+      position        absolute
+      top             0
+      left            100px
+      width           165px
+      font-size       paneFontSize
+      padding         5px
+      padding-top     4px
+      height          10px
+      &.hidden
+        display       none
+    .tupleWrapper
+        width         182px
+        margin-left   100px
+    .tupleField
+        padding       0
+        left          0
+        overflow      hidden
+        margin-bottom 5px
+        input
+            width         70px
+            float         left
+            left          0
+            position      relative
+            margin-right  5px
+            &.p2
+                float     right
+        &:last-child
+            margin        0
+
+  #buttons,
+  #multipleEditActions,
+  #groupActions
+    background        footerBg
+    bottom            0
+    left              0
+    padding           10px
+    width             100%
+    position          absolute
+    overflow          hidden
+    height            30px
+
+&#profileContainer
+  width               itemPicWidth(4)
+  ul#profile
+    padding-left      0
+    text-align        center
+    li
+      text-align      left
+  label
+    position          absolute
+  span
+    margin-left       150px
+    width             300px
+  #imgContainer
+    width             itemPicWidth()
+    text-align        center
+    overflow          hidden
+    border            1px solid profileImgBorder
+    margin            20px auto
+  img
+    width             itemPicWidth()
+  a.destroy
+    top              -25px
+    right             -7px
+
+span.editing
+    display     none
+
+
+.onProfile
+    margin-right  paneWidth + 56
+
+a
+  color                 black
+  text-decoration       none
+  &.destroy
+    cursor              pointer
+    width               20px
+    height              20px
+    background          url(/assets/destroy.png) no-repeat
+    position            relative
+    float               right
+    top                 65px
+    right               -27px
+    &:hover
+      background-position   0 -20px
+  &.minidestroy
+    cursor              pointer
+    width               20px
+    height              20px
+    background          url(/assets/destroy.png) no-repeat
+    position            relative
+    float               right
+    top                 -27px
+    right               5px
+    &:hover
+      background-position   0 -20px
+  &.btn
+    border              0
+    position            relative
+    display             inline-block
+    cursor              pointer
+    color               #fff
+    background-color    btnColor
+    font-weight         bold
+    padding             7px 10px
+    text-decoration     none
+    text-align          center
+    &:hover
+      border-color      #000
+
+  &#add
+    background      btnColor url('/assets/icons/Add.png') no-repeat 5px 8px
+    display         none
+    padding-left    25px
+  &#edit
+    background      btnColor url('/assets/icons/Edit.png') no-repeat 5px 8px
+    padding-left    25px
+  &#delete
+    background      btnColor url('/assets/icons/Delete.png') no-repeat 5px 8px
+    padding-left    25px
+  &#save
+    background      btnColor url('/assets/icons/Save.png') no-repeat 5px 8px
+    padding-left    25px
+  &#csv
+    background      btnColor url('/assets/icons/Export.png') no-repeat 5px 8px
+    padding-left    25px
+  &#mailto
+    background      btnColor url('/assets/icons/Mail.png') no-repeat 5px 8px
+    padding-left    25px
+  &#calendar
+    background      btnColor url('/assets/icons/Date.png') no-repeat 5px 8px
+    padding-left    25px
+  &#skype
+    background      btnColor url('/assets/icons/Skype.png') no-repeat 5px 8px
+    padding-left    25px
+  &#cancel
+    background      btnColor url('/assets/icons/Cancel.png') no-repeat 5px 8px
+    padding-left    25px
+  &#save
+    display         none
+
+span#loading
+  position          absolute
+  top               46%
+  left              45%
+  display           none
+  opacity           0.3
+  width             32px
+  height            32px
+  background        url('/assets/loader.gif') no-repeat center center
+
+span#error
+  display           none
+  background        url('/assets/error.png') no-repeat center center
+
+em
+  font-style  normal
+
+.hidden
+    display     none
+
+textarea.edit,
+input
+  width         300px
+  font-family   inherit
+  outline       none
+  padding       5px
+  background    #FFF
+  color         #000
+  -webkit-box-shadow  rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset
+  -moz-box-shadow     rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset
+  -ms-box-shadow      rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset
+  -o-box-shadow       rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset
+  box-shadow          rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset
+  border              1px solid #999
+
+.validationFailed
+  border-color      #F00 !important
+
+#print
+    padding           0
+    margin            0
+    list-style        none
+    #pictureContainer
+        float         left
+        margin-top    40px
+        margin-left   20px
+        img
+            width     220px
+    #data
+        float         left
+        ul
+            list-style    none
+        li
+            float     left
+            clear     both
+            width     360px
+            padding   10px 0
+        label
+            float     left
+            font-weight bold
+        .text-container
+            margin-left   100px
+
+.unselectable
+   -moz-user-select     -moz-none
+   -khtml-user-select   none
+   -webkit-user-select  none
+   -ms-user-select      none
+   user-select          none
