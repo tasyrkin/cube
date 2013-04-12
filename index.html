@@ -28,16 +28,13 @@
         <iframe src="http://cube.eu01.aws.af.cm/team/?admin=yes#qs/?page=0&rows=50&sort=name:asc" width="100%" height="100%"></iframe>
       </div>
       <section id="main_content" class="inner">
-        <div class="menu">
-            <span>index</span><em>|</em>
-            <a href="tutorial.html">tutorial</a><em>|</em>
-            <a href="schema.html">reference</a>
-        </div>
         <a id="demo_banner">Live Demo<span id="arrow"></span></a>
         <h3>Why?</h3>
         <p>In a fast growing company like Zalando, where the size of the technology team tripled in 2012, it is becoming increasingly difficult to remember people’s names, right? Weeks will pass before a newcomer knows who is doing what and where. Initially, we developed the Cube to solve this problem, but we  later realized that the actual problem was more abstract. Having a bunch of CSV, JSON, and XML files and searching important information in them motivated us to fill the Cube not only with our technology team but also with all of our projects, hosts, and many other things.</p>
+      </section>
+      <section id="installation" class="inner">
         <a name="installation"></a>
-        <h3>Installation</h3>
+        <h3>Quick Start</h3>
         <p>Just follow the next simple steps and you'll get the example up and running<p>
         <ol>
             <li>
@@ -61,9 +58,159 @@
             </li>
         </ol>
         <a name="documentation"></a>
-        <h3>Documentation</h3>
-        <p>One of the first things you'll want to do is to add your own data. Follow <a href="tutorial.html">this tutorial</a> to get you started.</p>
-        <p>For other documentation, what better than the source code? Well, maybe annotated source code. Check it out <a href="docs/app.html">here</a>.</p>
+        </section>
+
+     <section id="tutorial" class="inner">
+        <a name="tutorial"></a>
+        <h3>Adding your own Data</h3>
+        <p>Once you got the included example up and running, it will be no hassle to set up your own extension. All you need to do is set up a new solr core and place your extension files inside the extensions directory. Follow these steps to get it done:</p>
+        <ol class="tutorial">
+            <li>
+                <h6>Add a solr core</h6>
+                <div>
+                    <p>Edit your solr/solr/solr.xml file. At the end it should look something like this</p>
+                    <pre>
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;solr sharedLib="lib" persistent="true"&gt;
+  &lt;cores adminPath="/admin/cores"&gt;
+    &lt;core name="team" instanceDir="conf/cube/" /&gt;
+    <span>&lt;core name="myExtension" instanceDir="conf/cube/" /&gt;</span>
+  &lt;/cores&gt;
+&lt;/solr&gt;</pre>
+                </div>
+            </li>
+            <li>
+                <h6>Start Solr</h6>
+                <p>* stop it if its running already, duh!</p>
+                <pre>$ cd solr/<br>$ mvn clean install tomcat:run-war -Pdevelopment</pre>
+                <p>You should have a new core now. Check it on <a href="http://localhost:38730/cube-solr">http://localhost:38730/cube-solr</a></p>
+            </li>
+            <li>
+                <h6>Add a new entity on entities.json</h6>
+                <div>
+                    <p>entities.json is a json file! beware of the syntax. It should look like this:</p>
+                    <pre>[ "team"<span>, "myExtension"</span> ]</pre>
+                </div>
+            </li>
+            <li>
+                <h6>Copy example directory with your desired extension name</h6>
+                <div>
+                    <pre>$ cp extensions/team extensions/myExtension</pre>
+                </div>
+            </li>
+            <li>
+                <h6>Configure your extension</h6>
+                <div>
+                    <ol>
+                        <li>
+                            <p>Write your own Schema</p>
+                            <p>The Schema is one of the most important aspects of your extension. We recommend you to spend some time checking out the one provided in the example along with its documentation.<p>
+                            <p>Please check the Schema reference <a href="schema.html">here</a>.</p>
+                        </li>
+                        <li>
+                            <p>Configrue extensions/myExtension/db.json to point to your new Solr core</p>
+                            <p>It should look something like this:</p>
+                            <pre>
+{
+    "host": "<span>localhost</span>",
+    "port": "38730",
+    "core": "<span>myExtension</span>",
+    "path": "/cube-solr"
+}</pre>
+                        </li>
+                        <li><p>Edit the CSS to fit your style on extensions/myExtension/style.styl<p></li>
+                    <ol>
+                </div>
+            </li>
+            <li>
+                <h6>Start NodeJs</h6>
+                <div>
+                    <pre>$ coffee cube.coffee</pre>
+                </div>
+            </li>
+        </ol>
+     </section>
+
+
+     <section id="schema" class="inner">
+        <h3>Schema reference</h3>
+        <p>A Cube Schema is a json array of objects which describe the data structure of an extension. You can take a look at an <a href="docs/schema.html">example schema</a> which makes uses of almost all possible properties. Setting up yours is a matter of listing the fields with their IDs and Labels (minimum required properties) and adding/removing/negating some properties on each of them.</p>
+        <h6>id:</h6>
+        <p>Each field must have a unique ID composed of alphanumeric characters. This field is required.</a>
+        <p>Value: <span class="value">String</span></p>
+        <h6>label:</h6>
+        <p>IDs are not necessarily pretty or even human readable. A label is a must. Alphanumeric characters and spaces.</p>
+        <p>Value: <span class="value">String</span></p>
+        <h6>type:</h6>
+        <p>The type field specifies which data type this field contains. It tells the cube how to store this value and also how to display it. Default (no type property specified) is String. Other data types are facet, img, email, multiline, etc. Choose one from the list below, but don't forget to quote it.</p>
+        <ul>
+            <li>
+                <h6>facet</h6>
+                <p>This field will act as a facet field. It will appear on the facet index, listing all values that your items have in this field, along with a count of items with each value.</p>
+            </li>
+            <li>
+                <h6>tuple</h6>
+                <p>A tuple field allows you to relate 2 facet fields to each other. Lets say you have items that have a group property and a role property, and that one item can have a role related to one group, but another role in a different group. Then you would use a tuple field to keep this information.</p>
+            </li>
+            <li>
+                <h6>img</h6>
+                <p>Image field. Items can have only one image field. This will be displayed as the profile picture on the profile view, it will activate the thumbnail view and it will be displayed as a small 25x25 pic on the list view.</p>
+            </li>
+            <li>
+                <h6>email</h6>
+                <p>Stores emails and renders them as clickable emailto: links.</p>
+            </li>
+            <li>
+                <h6>skype</h6>
+                <p>Stores skype usernames and renders them as clickable skypeto: links to open a chat window.</p>
+            </li>
+            <li>
+                <h6>multiline</h6>
+                <p>Multiple line field, renders a textarea instead of an input field.</p>
+            </li>
+            <li>
+                <h6>dropdown</h6>
+                <p>Shows you a &lt;select&gt; element, showing you a list of selectable options. This field will require you to define the options in an array under the property "options".</p>
+            </li>
+            <li>
+                <h6>date</h6>
+                <p>Shows a date and attaches a date picker for input.</p>
+            </li>
+        </ul>
+        <p>Value: <span class="value">String (facet | tuple | img | email | skype | multiline | dropdown | date)<span></p>
+        <h6>mandatory:</h6>
+        <p>This field will be required for form validation when adding/editing new items</p>
+        <p>Value: <span class="value">Boolean (true | false)</span></p>
+        <h6>search: <span></span></h6>
+        <p>This field is a searchable field. This means that when you type something in the search input field, it will look in this and any other searchable field.</p>
+        <p>Value: <span class="value">Boolean (true | false)</span></p>
+        <h6>index: <span></span></h6>
+        <p>Show this field in the list view as a column.</p>
+        <p>Value: <span class="value">Boolean (true | false)</span></p>
+        <h6>thumbnail: <span></span></h6>
+        <p>Display this field as a footer for the item views in Thumbnail mode.</p>
+        <p>Value: <span class="value">Boolean (true | false)</span></p>
+        <h6>multiedit: <span></span></h6>
+        <p>This field is editable on many items at once. It will appear on the multiedit form</a>
+        <p>Value: <span class="value">Boolean (true | false)</span></p>
+        <h6>hidden: <span></span></h6>
+        <p>When defined true, hides this field from the profile view</p>
+        <p>Value: <span class="value">Boolean (true | false)</span></p>
+        <h6>additional: <span></span></h6>
+        <p>This field will be part of the additional fields and will be showed at the bottom of the profile view, hidden inside the 'Additional info' section</p>
+        <p>Value: <span class="value">Boolean (true | false)</span></p>
+        <h4>Type specific properties</h4>
+        <h5>Facet</h5>
+        <h6>specials: <span></span></h6>
+        <p>Each facet is splitted in two areas, separated by a gray line. Define this property with an array of strings and each facet field that matches will be displayed below the line.</p>
+        <p>Value: <span class="value">Array [ "name1", "name2" ]<span></p>
+        <h6>classifier: <span></span></h6>
+        <p>Defines this field as the category to sort items on thumbnail view. The order of this array will determine the order of the sections on that view.</p>
+        <p>Value: <span class="value">Array [ "name1", "name2" ]<span></p>
+        <h5>Dropdown</h5>
+        <h6>options: <span></span></h6>
+        <p>Required property for any dropdown tipe field, defined as an array of strings for the availablo options in the dropdown menu.</p>
+        <p>Value: <span class="value">Array [ "name1", "name2" ]<span></p>
      </section>
 
     </div>
