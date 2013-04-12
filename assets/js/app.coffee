@@ -994,10 +994,12 @@ $ =>
 
         # Create the entities menu
         generateEntitiesMenu: () ->
-            _.each window.Settings.entities, (e) ->
+            entities = window.Settings.entities
+            _.each entities, (e) ->
                 return if e is window.Settings.entity
                 o = "<li id='#{e}'><span>#{e}</span></li>"
                 $("#entities ul", "#header").append o
+            $('#entityTitle span').hide() if entities.length is 1
 
         # Redirect to an entity (i.e. from entities menu)
         redirectToEntity: (e) ->
