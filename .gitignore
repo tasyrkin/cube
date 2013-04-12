@@ -1,8 +1,0 @@
-*.un~
-node_modules
-!node_modules/solr-client
-public/images
-solr/target
-builtAssets
-util
-newrelic.js
