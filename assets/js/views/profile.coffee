@@ -631,6 +631,8 @@ $ ->
         # Initialize form elements to create/update an item
         form: (element) =>
 
+            $('#pane').css 'display', 'block'
+
             # Enable editing for additional fields, picture or all fields if
             # admin key is present
             if @app.isAdmin()

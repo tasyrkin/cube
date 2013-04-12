@@ -71,20 +71,27 @@ $ =>
             # Set the schema ffor the entity
             @createSchema()
 
-            #TODO Avoid async getExtensions by passing it as param on render
+            # Get extension code from server and start app on success.
             @getExtensions () =>
+
                 @start()
 
             #### Collections bindings
-            # * Add an item view if a new item is added to the col.
-            # * Redraw all facet views if a new item is added to the col.
-            # * Redraw all item views if the collection is fetched.
-            # * Redraw all facet views if the facets col is fetched.
+
+            # Display any new items in the container.
             window.collection.bind  'add',      @addOne,        @
+
+            # Updte facets whenever an item is added to the collection
             window.collection.bind  'add',      @updateFacets,  @
+
+            # Redraw items whenever the collection is resetted.
             window.collection.bind  'reset',    @reset,         @
+
+            # Draw all facets whenever the collection is resetted.
             window.facets.bind      'reset',    @addAllFacets,  @
 
+
+        # Start application
         start: =>
 
             # Set the application's title (extension name on top left)
@@ -125,6 +132,7 @@ $ =>
 
             # Listen for arrow keys to move between items
             @setMoveKeybindings()
+
 
         # Initialize facets collection by fetching them. Start history right
         # after and save the initial open state (expand/fold).
@@ -191,6 +199,13 @@ $ =>
                 window.extensions?.init?()
                 cb()
 
+        # Add extension code for a profile view
+        addProfileExtensions: (item) =>
+            return unless $('#app > #extensions #details-template').length
+            template = _.template $('#app > #extensions #details-template')
+                .html()
+            $('#pane #extensions').append template t:item
+
         # Get schema and attach it to our Settings object
         createSchema: ->
             window.Settings?.Schema = new window.Schema window.schema
@@ -217,6 +232,15 @@ $ =>
             @filterByPage () =>
                 @scrollToSelection $('#items .active'), yes
                 @navigate()
+
+        # Redraw collection after a reset event
+        reset: (attr) =>
+            letters = $("#inputSearch").val().toLowerCase()
+            $('#search span#reset').show()
+            $('#search span#reset').hide() unless letters or @filterSelection
+                .get().length
+            return @addAll window.collection
+
 
         # Add one item to the items container. Either in thumnail mode
         # (picture and name) or in list mode (pic, full name, teams, etc.)
@@ -331,6 +355,7 @@ $ =>
                 error: () =>
                     @showError()
 
+        # Fetch a collection by page number
         filterByPage: (cb) =>
             @fetchFacet () =>
                 @fetchItems
@@ -345,6 +370,7 @@ $ =>
                     error: () =>
                         @showError()
 
+        # Fetch a collection by facet filter. Sets page back to 0.
         filterByFacet: (cb) =>
             window.collection.page = 0
             @filterByPage cb
@@ -400,11 +426,13 @@ $ =>
                     error: () =>
                         @showError()
 
+        # Jump to previous page
         previousPage: () =>
             return if window.collection.page <= 0
             window.collection.page--
             @filterByPage () =>
 
+        # Jump to next page
         nextPage: () =>
             total = window.collection.total
             rows = window.collection.rows
@@ -413,15 +441,18 @@ $ =>
             window.collection.page++
             @filterByPage () =>
 
+        # Jump to a specific page
         jumpToPage: (e) =>
             $e = $(e.currentTarget)
             window.collection.page = $e.attr 'id'
             @filterByPage () =>
 
+        # Jump to first page
         jumpToFirst: () =>
             window.collection.page = 0
             @filterByPage () =>
 
+        # Jump to last page
         jumpToLast: () =>
             total = window.collection.total
             rows = window.collection.rows
@@ -429,6 +460,7 @@ $ =>
             window.collection.page = lastPage
             @filterByPage () =>
 
+        # Generate the page index on the bottom
         genPageIndex: () =>
             template = _.template $('#pagination-index-template').html()
             total = parseFloat window.collection.total
@@ -466,6 +498,7 @@ $ =>
                 @showPaneView()
 
             $('#inputSearch').focus() unless @isTablet()
+
 
         # Reset filters and navigate(). Useful when a user clicked on
         # the 'reset filters' link next to the search input field.
@@ -560,6 +593,7 @@ $ =>
             window.collection.page = 0
             @filterByFacet () =>
 
+        # Sort table when clicking on header. Toggle asc/desc modes.
         sortTable: (e) =>
             $e = $(e.currentTarget)
             $h = $e.parent()
@@ -581,6 +615,7 @@ $ =>
             @saveSort()
             @filterByFacet () =>
 
+        # Save sort criteria on localStorage
         saveSort: () ->
             entity = window.Settings.entity
             ls = window.localStorage[entity]
@@ -589,6 +624,7 @@ $ =>
             ls.sort = window.collection.sort
             window.localStorage[entity] = JSON.stringify ls
 
+        # Get sort criteria from localStorage or default configuration.
         getSort: () =>
             entity = window.Settings.entity
             return window.Settings.sort unless window.localStorage[entity]
@@ -596,13 +632,7 @@ $ =>
             return window.Settings.sort unless ls.sort
             return ls.sort
 
-        reset: (attr) =>
-            letters = $("#inputSearch").val().toLowerCase()
-            $('#search span#reset').show()
-            $('#search span#reset').hide() unless letters or @filterSelection
-                .get().length
-            return @addAll window.collection
-
+        # Open/Close a facet section
         toggleFacetNode: (e) =>
             $e = $(e.currentTarget)
             $e = $e.siblings('span') unless $e.hasClass 'fold'
@@ -678,6 +708,8 @@ $ =>
                 @resetFacets () =>
                     window.paneView?.close()
 
+        # Trigger a profileClosed event whenever a profile view is closed.
+        # Useful to be listened by extension code.
         profileClosed: () =>
             @trigger 'profileClosed'
 
@@ -687,6 +719,7 @@ $ =>
             window.collection.each (item) ->
                 item.view?.destroy()
 
+        # Unbind all item views
         unbindItemViews: () ->
             window.collection.each (item) ->
                 item.view?.release()
@@ -797,6 +830,7 @@ $ =>
             qs = window.location.search.split('?')[1]
             new RegExp('admin=').test qs
 
+        # Check if the entity is editable
         isEditable: () =>
             return yes if window.Settings.editable isnt false
             no
@@ -851,12 +885,6 @@ $ =>
 
             nav
 
-        addProfileExtensions: (item) =>
-            return unless $('#app > #extensions #details-template').length
-            template = _.template $('#app > #extensions #details-template')
-                .html()
-            $('#pane #extensions').append template t:item
-
         # Item selection by using arrow keys.
         setMoveKeybindings: () =>
             @unsetMoveKeybindings()
@@ -896,10 +924,12 @@ $ =>
               ,
                 1000
 
+        # Display error icon on controls section (top right corner)
         showError: () =>
             @hideLoadingAnimation()
             $('span#error').show()
 
+        # Hide error icon
         hideError: () =>
             $('span#error').hide()
 
@@ -935,6 +965,7 @@ $ =>
             url = url.join '&'
             window.open 'print?' + url, '_blank'
 
+        # Export items to json on a new tab
         toJson: () =>
             url = "#{@commonURL(0, window.collection.total)}"
 
@@ -956,10 +987,12 @@ $ =>
 
             window.open url, '_blank'
 
+        # Hide facets container on the left
         disableFacets: () ->
             $('#index').hide()
             $('#content').addClass 'noFacets'
 
+        # Create the entities menu
         generateEntitiesMenu: () ->
             entities = window.Settings.entities
             _.each entities, (e) ->
@@ -968,37 +1001,51 @@ $ =>
                 $("#entities ul", "#header").append o
             $('#entityTitle span').hide() if entities.length is 1
 
+        # Redirect to an entity (i.e. from entities menu)
+        redirectToEntity: (e) ->
+            entity = $(e.currentTarget).attr 'id'
+            adminKey = if @isAdmin() then "?admin=yes" else ''
+            window.location = "/#{entity}/#{adminKey}"
+
+        # Create the columns menu
         generateColumnsMenu: () ->
             template = _.template $('#columns-menu-template').html()
             _.each window.Settings.Schema.get(), (field) =>
                 $('#columnOptions ul').append template field: field
 
+        # Open/Close entities menu
         toggleEntitiesMenu: (e) ->
             e.stopPropagation()
             return unless window.Settings.entities.length > 1
             $('#entityTitle', '#header').toggleClass 'active'
             $("#entities", "#header").toggle()
 
+        # Hide entities menu
         hideEntitiesMenu: (e) ->
             $('#entityTitle', '#header').removeClass 'active'
             $('#entities', '#header').hide()
 
+        # Show columns button on top right corner of table view
         showColumnsBtn: (e) ->
             $('#columnsMenu').show()
 
+        # Hide columns button
         hideColumnsBtn: (e) ->
             return if $('#columnOptions').css('display') is 'block'
             $('#columnsMenu').hide()
 
+        # hover on columns menu
         overColumnsMenu: (e) ->
             $('#columnsMenu').show()
             e.stopPropagation()
 
+        # Open/Close columns menu
         toggleColumnsMenu: (e) ->
             e.stopPropagation()
             $('#columnOptions').toggle()
             $('#columnsMenu').toggleClass 'active'
 
+        # Show/hide a column from the table
         toggleColumnVisibility: (e) ->
             e.stopPropagation()
             $e = $(e.currentTarget)
@@ -1015,28 +1062,27 @@ $ =>
             @saveColumnSelection()
             @addAll window.collection
 
+        # Set the title for the window
         setWindowTitle: (t) ->
             title = window.Settings?.title
             title += " - #{t}" if t
             $('head title').html title
 
-        redirectToEntity: (e) ->
-            entity = $(e.currentTarget).attr 'id'
-            adminKey = if @isAdmin() then "?admin=yes" else ''
-            window.location = "/#{entity}/#{adminKey}"
-
+        # Set resizable handler for facet index
         setIndexResizable: () =>
             $('#index').resizable
                 handles: 'e'
                 resize: @resizeIndex
                 stop: @saveFacetWidth
 
+        # Resize facet index
         resizeIndex: (event, ui) =>
             width = $('#index').width()
             $('#content').css 'left', width + 21
             $('#footer').css 'left', width + 21
             $('#innerIndex').width $('#index').width() - 10
 
+        # Save column selection on local storage
         saveColumnSelection: () =>
             entity = window.Settings.entity
             ls = window.localStorage[entity]
@@ -1048,6 +1094,7 @@ $ =>
             ls.columns = indexes
             window.localStorage[entity] = JSON.stringify ls
 
+        # Set column selection from localStorage
         setColumnSelection: () =>
             entity = window.Settings.entity
             ls = window.localStorage[entity]
@@ -1061,6 +1108,7 @@ $ =>
                 window.Settings.Schema.getField c, (f) ->
                     f.index = yes
 
+        # Save width of facet index
         saveFacetWidth: (event, ui) =>
             entity = window.Settings.entity
             ls = window.localStorage[entity]
@@ -1070,6 +1118,7 @@ $ =>
             ls.css['facet_width'] = w
             window.localStorage[entity] = JSON.stringify ls
 
+        # Set Facet index width from localStorage
         setFacetWidth: () =>
             entity = window.Settings.entity
             return unless window.localStorage[entity]
@@ -1078,12 +1127,14 @@ $ =>
             $('#index').width(w) if w
             @resizeIndex()
 
+        # Get an etiquette object with its ID
         getEtiquetteById: (id) =>
             etq = null
             _.each window.Settings.etiquettes, (e) ->
                 return etq = e if e.id is id
             etq
 
+        # Get a mini etiquette for the pic in the table view
         getMiniEtiquette: (etiquettes) =>
             etq = null
             _.each etiquettes, (e) =>
@@ -1106,6 +1157,7 @@ $ =>
             etiquettes = @sortEtiquettes etiquettes
             etiquettes
 
+        # Sort etiquettes from etiquettes.json order
         sortEtiquettes: (etiquettes) =>
             ordered = []
             _.each window.etiquettes, (e) =>
@@ -1114,6 +1166,7 @@ $ =>
                 ordered.push e if ordered.indexOf(e) is -1
             ordered
 
+        # Save open/closed state of facets on localStorage
         saveFacetOpenState: () =>
             entity = window.Settings.entity
             ls = window.localStorage[entity]
@@ -1121,6 +1174,7 @@ $ =>
             ls.facetOpenState = @facetOpenState.get()
             window.localStorage[entity] = JSON.stringify ls
 
+        # Set facet open/closed state of facets on localStorage
         setFacetOpenState: () =>
             entity = window.Settings.entity
             return @initFacetOpenState() unless window.localStorage[entity]
@@ -1129,15 +1183,18 @@ $ =>
             return @initFacetOpenState() unless fs
             @facetOpenState.arr = fs
 
+        # Initialize facet open/close state array
         initFacetOpenState: () =>
             window.facets.each (f) =>
                 @facetOpenState.push cat: f.get('name'), field: 'facet'
 
+        # Catch a click anywhere in the app
         documentClick: () =>
             @hideEntitiesMenu()
             $('#columnsMenu').hide().removeClass 'active'
             $('#columnOptions').hide()
 
+        # Get the thumbnail label used in thumbnail views
         getThumbnailLabel: (m) =>
             thumbnails = window.Settings.Schema.getThumbnails()
             label = []
@@ -1145,10 +1202,12 @@ $ =>
                 label.push m[f.id]
             label.join ' '
 
+        # Gets the key name for the img fields, useful for templates.
         getPicKey: () =>
             pictures = window.Settings.Schema.getPictures()
             return pictures[0]['id'] if pictures[0]
 
+        # Checks if id is a valid tuple field
         isTuple: (id) =>
             tuples = window.Settings.Schema.getTuples()
             allTuples = []
@@ -1158,6 +1217,7 @@ $ =>
             return no if allTuples.indexOf(id) is -1
             return yes
 
+        # Check if browsing from an iPad/Android device
         isTablet: () =>
             return navigator.userAgent.match(/iPad|Android/i) isnt null
 

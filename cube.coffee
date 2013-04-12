@@ -6,12 +6,14 @@
 
 # Cube's nodejs server init
 
-# Requirements
+# First things first. Coffee...Script.
 require "coffee-script"
-express  = require "express"
 
 # Main server configuration file. Please edit to your needs!
 settings = require "./server.settings.coffee"
+
+# We all know express, don't we?
+express  = require "express"
 
 # Create express app
 app = module.exports.app = express()
@@ -19,9 +21,13 @@ app = module.exports.app = express()
 # The nodejs process will be called:
 process.title = "cube"
 
-# App directories
+# Jade templates usually live in views/
 app.viewsDir  = settings.Paths.viewsDir
+
+# Public static files usually live in public/
 app.publicDir = settings.Paths.publicDir
+
+# We are actually not using this
 app.coffeeDir = settings.Paths.coffeeDir
 
 # Config file has express settings
