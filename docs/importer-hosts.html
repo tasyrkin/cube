@@ -1,0 +1,170 @@
+<!DOCTYPE html>  <html>  <head>      <title>importer-hosts.coffee</title>      <meta http-equiv="content-type" content="text/html; charset=UTF-8">      <link rel="stylesheet" media="all" href="zocco.css" />  </head>  <body>      <div id="container">          <div id="background"></div>                        <div id="jumpWrapper">                  <div id="jumpPage">                      <label>Files...</label>                                                                  <a class="source" href="app.html">                          app.coffee                      </a>                                                                  <a class="source" href="collection.html">                          collection.coffee                      </a>                                                                  <a class="source" href="facets.html">                          facets.coffee                      </a>                                                                  <a class="source" href="index.html">                          index.coffee                      </a>                                                                  <a class="source" href="facetArray.html">                          facetArray.coffee                      </a>                                                                  <a class="source" href="schema.html">                          schema.coffee                      </a>                                                                  <a class="source" href="facet.html">                          facet.coffee                      </a>                                                                  <a class="source" href="item.html">                          item.coffee                      </a>                                                                  <a class="source" href="print.html">                          print.coffee                      </a>                                                                  <a class="source" href="routes.html">                          routes.coffee                      </a>                                                                  <a class="source" href="facet.html">                          facet.coffee                      </a>                                                                  <a class="source" href="item.html">                          item.coffee                      </a>                                                                  <a class="source" href="profile.html">                          profile.coffee                      </a>                                                                  <a class="source" href="cube.html">                          cube.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="server.config.html">                          server.config.coffee                      </a>                                                                  <a class="source" href="server.routes.html">                          server.routes.coffee                      </a>                                                                  <a class="source" href="server.settings.html">                          server.settings.coffee                      </a>                                                                  <a class="source" href="entityController.html">                          entityController.coffee                      </a>                                                                  <a class="source" href="extensionController.html">                          extensionController.coffee                      </a>                                                                  <a class="source" href="facetManager.html">                          facetManager.coffee                      </a>                                                                  <a class="source" href="itemController.html">                          itemController.coffee                      </a>                                                                  <a class="source" href="printController.html">                          printController.coffee                      </a>                                                                  <a class="source" href="schema.html">                          schema.coffee                      </a>                                                                  <a class="source" href="solrManager.html">                          solrManager.coffee                      </a>                                                                  <a class="source" href="genSchema.html">                          genSchema.coffee                      </a>                                                                  <a class="source" href="importer-fortunes.html">                          importer-fortunes.coffee                      </a>                                                                  <a class="source" href="importer-hosts.html">                          importer-hosts.coffee                      </a>                                                                  <a class="source" href="importer-projects.html">                          importer-projects.coffee                      </a>                                        </div>              </div>                    <table cellpadding="0" cellspacing="0">              <thead>                  <tr>                      <th class="docs">                          <h1>                              importer-hosts.coffee                          </h1>                      </th>                      <th class="code">                      </th>                  </tr>              </thead>              <tbody>                                                      <tr id="section-1">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-1">&#182;</a>                          </div>                                                </td>                      <td class="code">                          <div class="highlight"><pre><span class="c1">#!/usr/bin/env coffee</span>
+
+<span class="nx">require</span> <span class="s">&quot;coffee-script&quot;</span>
+
+<span class="nv">http = </span><span class="nx">require</span> <span class="s">&quot;http&quot;</span>
+<span class="nv">solr = </span><span class="nx">require</span> <span class="s">&quot;solr-client&quot;</span>
+<span class="nv">schema = </span><span class="nx">require</span> <span class="s">&#39;../extensions/hosts/schema.json&#39;</span>
+
+<span class="nv">SolrManager = </span><span class="nx">require</span> <span class="s">&#39;../server/solrManager&#39;</span>
+<span class="nv">solrManager = </span><span class="k">new</span> <span class="nx">SolrManager</span>
+
+<span class="nv">lifecycleids = </span> <span class="s">&#39;/lifecyclestatuses/api/list&#39;</span>
+<span class="nv">hostroleids = </span><span class="s">&#39;/roles/api/list&#39;</span>
+<span class="nv">datacenterids = </span><span class="s">&#39;/data_centers/api/list&#39;</span>
+
+<span class="nv">_ = </span><span class="nx">require</span> <span class="s">&quot;underscore&quot;</span>
+
+<span class="nv">verbose = </span><span class="kc">yes</span>
+<span class="nv">log = </span><span class="nf">(arg...) -&gt;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arg</span><span class="p">...)</span> <span class="k">if</span> <span class="nx">verbose</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-2">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-2">&#182;</a>                          </div>                          <p>Config. Please set the next variables to suit your needs.</p>                      </td>                      <td class="code">                          <div class="highlight"><pre><span class="nv">url = </span><span class="s">&#39;/hosts/api/list&#39;</span>
+
+<span class="nv">credentials = </span><span class="nx">require</span> <span class="s">&#39;./credentials.json&#39;</span>
+<span class="nv">uname = </span><span class="nx">credentials</span><span class="p">[</span><span class="s">&#39;hosts&#39;</span><span class="p">].</span><span class="nx">user</span>
+<span class="nv">pword = </span><span class="nx">credentials</span><span class="p">[</span><span class="s">&#39;hosts&#39;</span><span class="p">].</span><span class="nx">pass</span>
+<span class="nv">uauth = </span><span class="s">&#39;Basic &#39;</span> <span class="o">+</span> <span class="k">new</span> <span class="nx">Buffer</span><span class="p">(</span><span class="nx">uname</span><span class="o">+</span><span class="s">&#39;:&#39;</span><span class="o">+</span><span class="nx">pword</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="s">&#39;base64&#39;</span><span class="p">)</span>
+
+<span class="nv">options =</span>
+    <span class="nv">host: </span><span class="s">&#39;cmdb.zalando.net&#39;</span>
+    <span class="nv">port: </span><span class="mi">80</span>
+    <span class="nv">path: </span><span class="nx">url</span>
+    <span class="nv">headers: </span><span class="s">&#39;Authorization&#39;</span><span class="o">:</span> <span class="nx">uauth</span>
+
+<span class="nv">dbs =</span>
+    <span class="nv">local:</span>
+        <span class="nv">host: </span><span class="s">&quot;127.0.0.1&quot;</span>
+        <span class="nv">port: </span><span class="s">&quot;38730&quot;</span>
+        <span class="nv">core: </span><span class="s">&quot;cmdb_hosts&quot;</span>
+        <span class="nv">path: </span><span class="s">&quot;/cube-solr&quot;</span>
+        <span class="nv">autoCommit: </span><span class="kc">false</span>
+    <span class="nv">production:</span>
+        <span class="nv">host: </span><span class="s">&quot;10.58.26.49&quot;</span>
+        <span class="nv">port: </span><span class="s">&quot;34220&quot;</span>
+        <span class="nv">core: </span><span class="s">&quot;cmdb_hosts&quot;</span>
+        <span class="nv">path: </span><span class="s">&quot;/solr&quot;</span>
+        <span class="nv">autoCommit: </span><span class="kc">false</span>
+
+<span class="nv">dbSettings = </span><span class="nx">dbs</span><span class="p">.</span><span class="nx">local</span>
+<span class="k">if</span> <span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s">&#39;db=production&#39;</span><span class="p">)</span> <span class="o">isnt</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="nv">dbSettings = </span><span class="nx">dbs</span><span class="p">.</span><span class="nx">production</span>
+
+<span class="k">if</span> <span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s">&#39;-q&#39;</span><span class="p">)</span> <span class="o">isnt</span> <span class="o">-</span><span class="mi">1</span> <span class="k">then</span> <span class="nv">verbose = </span><span class="kc">no</span>
+
+<span class="nv">solrClient = </span><span class="nx">solr</span><span class="p">.</span><span class="nx">createClient</span> <span class="nx">dbSettings</span><span class="p">.</span><span class="nx">host</span><span class="p">,</span>
+  <span class="nx">dbSettings</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span> <span class="nx">dbSettings</span><span class="p">.</span><span class="nx">core</span><span class="p">,</span> <span class="nx">dbSettings</span><span class="p">.</span><span class="nx">path</span>
+<span class="nv">solrClient.autoCommit = </span><span class="nx">dbSettings</span><span class="p">.</span><span class="nx">autoCommit</span>
+
+<span class="nv">deleteAllData = </span><span class="nf">(cb) -&gt;</span>
+
+    <span class="nv">query = </span><span class="nx">solrClient</span><span class="p">.</span><span class="nx">createQuery</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">q</span><span class="p">(</span><span class="s">&quot;*:*&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">rows</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+
+    <span class="nx">solrClient</span><span class="p">.</span><span class="nx">deleteByQuery</span> <span class="s">&quot;*:*&quot;</span><span class="p">,</span> <span class="nf">(err, result) -&gt;</span>
+        <span class="nx">log</span> <span class="s">&#39;Deleted all entries&#39;</span>
+        <span class="nx">cb</span><span class="p">()</span>
+
+<span class="nv">getData = </span><span class="nf">(options, cb) -&gt;</span>
+    <span class="nx">http</span><span class="p">.</span><span class="nx">get</span> <span class="nx">options</span><span class="p">,</span> <span class="nf">(res) -&gt;</span>
+
+        <span class="nv">output = </span><span class="s">&#39;&#39;</span>
+
+        <span class="nx">res</span><span class="p">.</span><span class="kc">on</span> <span class="s">&#39;data&#39;</span><span class="p">,</span> <span class="nf">(chunk) -&gt;</span>
+            <span class="nx">output</span> <span class="o">+=</span> <span class="nx">chunk</span>
+
+        <span class="nx">res</span><span class="p">.</span><span class="kc">on</span> <span class="s">&#39;end&#39;</span><span class="p">,</span> <span class="nf">() -&gt;</span>
+            <span class="nv">obj = </span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span> <span class="nx">output</span>
+            <span class="nx">log</span> <span class="s">&#39;Fetched &#39;</span><span class="p">,</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="s">&#39; items.&#39;</span>
+            <span class="nx">cb</span> <span class="nx">obj</span>
+
+<span class="nx">log</span> <span class="s">&#39;Fetching data from &#39;</span><span class="p">,</span> <span class="nx">options</span><span class="p">.</span><span class="nx">path</span>
+
+<span class="nx">deleteAllData</span> <span class="nf">() -&gt;</span>
+    <span class="nx">addAllData</span><span class="p">()</span>
+
+<span class="nv">addAllData = </span><span class="nf">() -&gt;</span>
+    <span class="nv">options.path = </span><span class="nx">url</span>
+    <span class="nx">getData</span> <span class="nx">options</span><span class="p">,</span> <span class="nf">(data) -&gt;</span>
+        <span class="nv">options.path = </span><span class="nx">lifecycleids</span>
+        <span class="nx">getData</span> <span class="nx">options</span><span class="p">,</span> <span class="nf">(lifecycles) -&gt;</span>
+            <span class="nv">options.path = </span><span class="nx">hostroleids</span>
+            <span class="nx">getData</span> <span class="nx">options</span><span class="p">,</span> <span class="nf">(hostroles) -&gt;</span>
+                <span class="nv">options.path = </span><span class="nx">datacenterids</span>
+                <span class="nx">getData</span> <span class="nx">options</span><span class="p">,</span> <span class="nf">(datacenters) -&gt;</span>
+
+                    <span class="nx">log</span> <span class="s">&#39;Adding entries...&#39;</span>
+
+                    <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">data</span><span class="p">,</span> <span class="nf">(item, i, o) -&gt;</span>
+                        <span class="nv">item = </span><span class="nx">newItem</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">lifecycles</span><span class="p">,</span>
+                            <span class="nx">hostroles</span><span class="p">,</span> <span class="nx">datacenters</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+
+                        <span class="nx">solrClient</span><span class="p">.</span><span class="nx">add</span> <span class="p">[</span> <span class="nx">item</span> <span class="p">],</span> <span class="nf">(err, result) -&gt;</span>
+                            <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
+                            <span class="k">if</span> <span class="nx">i</span> <span class="o">is</span> <span class="nx">o</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span>
+                                <span class="nx">log</span> <span class="s">&#39;Added &#39;</span><span class="p">,</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39; entries.&#39;</span>
+                                <span class="nx">solrClient</span><span class="p">.</span><span class="nx">commit</span> <span class="nf">() -&gt;</span>
+                                    <span class="k">return</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nv">resolveId = </span><span class="nf">(id, key, data) -&gt;</span>
+    <span class="nv">resolved = </span><span class="kc">null</span>
+    <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">data</span><span class="p">,</span> <span class="nf">(d) -&gt;</span>
+        <span class="nv">resolved = </span><span class="nx">d</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="k">if</span> <span class="nx">d</span><span class="p">.</span><span class="nx">id</span> <span class="o">is</span> <span class="nx">id</span>
+    <span class="nx">resolved</span>
+
+<span class="nv">newItem = </span><span class="nf">(srcItem, lc, hr, dc, src) -&gt;</span>
+    <span class="nv">item = </span><span class="p">{}</span>
+    <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">schema</span><span class="p">,</span> <span class="nf">(property) -&gt;</span>
+        <span class="k">return</span> <span class="k">if</span> <span class="nx">property</span><span class="p">.</span><span class="nx">id</span> <span class="o">is</span> <span class="s">&#39;memory_range&#39;</span>
+        <span class="k">return</span> <span class="nx">unless</span> <span class="nx">srcItem</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">or</span>
+            <span class="nx">srcItem</span><span class="p">.</span><span class="nx">physical_machine</span><span class="o">?</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span>
+        <span class="nx">item</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="nx">srcItem</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nx">property</span><span class="p">.</span><span class="nx">id</span> <span class="o">is</span> <span class="s">&#39;assigned_memory&#39;</span>
+            <span class="nv">item.memory_range = </span><span class="nx">getMemoryRange</span> <span class="nx">srcItem</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span>
+            <span class="nx">item</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="nx">srcItem</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1048576</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nx">property</span><span class="p">.</span><span class="nx">id</span> <span class="o">is</span> <span class="s">&#39;lifecycle_status_id&#39;</span>
+            <span class="nv">val = </span><span class="nx">resolveId</span> <span class="nx">srcItem</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">],</span> <span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="nx">lc</span>
+            <span class="nx">item</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="k">if</span> <span class="nx">val</span> <span class="k">then</span> <span class="nx">val</span> <span class="k">else</span> <span class="nx">srcItem</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nx">property</span><span class="p">.</span><span class="nx">id</span> <span class="o">is</span> <span class="s">&#39;host_role_id&#39;</span>
+            <span class="nv">val = </span><span class="nx">resolveId</span> <span class="nx">srcItem</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">],</span> <span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="nx">hr</span>
+            <span class="nx">item</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="k">if</span> <span class="nx">val</span> <span class="k">then</span> <span class="nx">val</span> <span class="k">else</span> <span class="nx">srcItem</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nx">property</span><span class="p">.</span><span class="nx">id</span> <span class="o">is</span> <span class="s">&#39;parent_host_id&#39;</span>
+            <span class="nv">val = </span><span class="nx">resolveId</span> <span class="nx">srcItem</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">],</span> <span class="s">&#39;hostname&#39;</span><span class="p">,</span> <span class="nx">src</span>
+            <span class="nx">item</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="k">if</span> <span class="nx">val</span> <span class="k">then</span> <span class="nx">val</span> <span class="k">else</span> <span class="nx">srcItem</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nx">property</span><span class="p">.</span><span class="nx">id</span> <span class="o">is</span> <span class="s">&#39;data_center&#39;</span>
+            <span class="nv">dcid = </span><span class="nx">srcItem</span><span class="p">.</span><span class="nx">physical_machine</span><span class="o">?</span><span class="p">[</span><span class="s">&#39;data_center_id&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="o">!</span><span class="nx">dcid</span>
+                <span class="nv">pid = </span><span class="nx">srcItem</span><span class="p">[</span><span class="s">&#39;parent_host_id&#39;</span><span class="p">]</span>
+                <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">src</span><span class="p">,</span> <span class="nf">(s) -&gt;</span>
+                    <span class="nv">dcid = </span><span class="nx">s</span><span class="p">.</span><span class="nx">physical_machine</span><span class="o">?</span><span class="p">.</span><span class="nx">data_center_id</span> <span class="k">if</span> <span class="nx">s</span><span class="p">.</span><span class="nx">id</span> <span class="o">is</span> <span class="nx">pid</span>
+            <span class="nv">val = </span><span class="nx">resolveId</span> <span class="nx">dcid</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="nx">dc</span>
+            <span class="nx">item</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="nx">val</span>
+            <span class="k">delete</span> <span class="nx">item</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="nx">unless</span> <span class="nx">val</span>
+        <span class="k">if</span> <span class="nx">property</span><span class="p">.</span><span class="nx">id</span> <span class="o">is</span> <span class="s">&#39;model&#39;</span>
+            <span class="nx">item</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="nx">srcItem</span><span class="p">.</span><span class="nx">physical_machine</span><span class="o">?</span><span class="p">[</span><span class="s">&#39;model&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nx">property</span><span class="p">.</span><span class="nx">id</span> <span class="o">is</span> <span class="s">&#39;created&#39;</span> <span class="o">or</span> <span class="nx">property</span><span class="p">.</span><span class="nx">id</span> <span class="o">is</span> <span class="s">&#39;last_audited&#39;</span> <span class="o">or</span>
+           <span class="nx">property</span><span class="p">.</span><span class="nx">id</span> <span class="o">is</span> <span class="s">&#39;last_modified&#39;</span>
+            <span class="p">[</span><span class="nx">d</span><span class="p">,</span> <span class="nx">t</span><span class="p">]</span> <span class="o">=</span> <span class="nx">srcItem</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">)</span>
+            <span class="nv">date = </span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">d</span><span class="si">}</span><span class="s"> </span><span class="si">#{</span><span class="nx">t</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span>
+            <span class="nx">item</span><span class="p">[</span><span class="nx">property</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="nx">date</span><span class="p">.</span><span class="nx">toISOString</span><span class="p">()</span>
+    <span class="nv">item = </span><span class="nx">solrManager</span><span class="p">.</span><span class="nx">addObjSuffix</span> <span class="s">&#39;hosts&#39;</span><span class="p">,</span> <span class="nx">item</span>
+    <span class="nv">item.id = </span><span class="nx">srcItem</span><span class="p">.</span><span class="nx">id</span>
+    <span class="k">return</span> <span class="nx">item</span>
+
+<span class="nv">getMemoryRange = </span><span class="nf">(mem) -&gt;</span>
+    <span class="k">return</span> <span class="kc">null</span> <span class="nx">unless</span> <span class="nx">mem</span>
+    <span class="k">if</span> <span class="nx">mem</span> <span class="o">&lt;=</span> <span class="mi">15000000</span> <span class="k">then</span> <span class="k">return</span> <span class="s">&quot;0 to 15G&quot;</span>
+    <span class="k">if</span> <span class="nx">mem</span> <span class="o">&gt;</span> <span class="mi">15000000</span> <span class="o">and</span> <span class="nx">mem</span> <span class="o">&lt;=</span> <span class="mi">30000000</span> <span class="k">then</span> <span class="k">return</span> <span class="s">&quot;&gt; 15G to 30G&quot;</span>
+    <span class="k">if</span> <span class="nx">mem</span> <span class="o">&gt;</span> <span class="mi">30000000</span> <span class="o">and</span> <span class="nx">mem</span> <span class="o">&lt;=</span> <span class="mi">60000000</span> <span class="k">then</span> <span class="k">return</span> <span class="s">&quot;&gt; 30G to 60G&quot;</span>
+    <span class="k">if</span> <span class="nx">mem</span> <span class="o">&gt;</span> <span class="mi">60000000</span> <span class="o">and</span> <span class="nx">mem</span> <span class="o">&lt;=</span> <span class="mi">90000000</span> <span class="k">then</span> <span class="k">return</span> <span class="s">&quot;&gt; 60G to 90G&quot;</span>
+    <span class="k">return</span> <span class="s">&quot;&gt; 90G&quot;</span>
+
+<span class="nv">generateId = </span><span class="nf">() -&gt;</span>
+    <span class="nv">chars = </span><span class="s">&quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;</span>
+    <span class="nv">today = </span><span class="k">new</span> <span class="nb">Date</span><span class="p">()</span>
+    <span class="nv">result = </span><span class="nx">today</span><span class="p">.</span><span class="nx">valueOf</span><span class="p">().</span><span class="nx">toString</span> <span class="mi">16</span>
+    <span class="nx">result</span> <span class="o">+=</span> <span class="nx">chars</span><span class="p">.</span><span class="nx">substr</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">chars</span><span class="p">.</span><span class="nx">length</span><span class="p">),</span> <span class="mi">1</span>
+    <span class="nx">result</span> <span class="o">+=</span> <span class="nx">chars</span><span class="p">.</span><span class="nx">substr</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">chars</span><span class="p">.</span><span class="nx">length</span><span class="p">),</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="nx">result</span>
+
+</pre></div>                      </td>                  </tr>                                </tbody>          </table>      </div>  </body>  </html>

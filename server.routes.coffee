@@ -1,5 +1,9 @@
-#### Cube's HTTP routes
+####
+# Cube Nodejs routes
+# server.routes.coffee
+#
 # @author: Emanuel Lauria <emanuel.lauria@zalando.de>
+####
 
 module.exports = (app, express) ->
 
@@ -9,14 +13,12 @@ module.exports = (app, express) ->
     fs      = require "fs"
     _       = require "underscore"
 
-    # Server settings. Please edit to your needs!
+    # Server and default extension settings
     settings = require "#{__dirname}/server.settings.coffee"
 
     # List of available entities
     entities = require "./#{settings.EntitiesFile}"
 
-    # Default entity is the first entity defined in the entities array
-    defaultEntity = entities[0]
 
     # Controllers
 
@@ -39,20 +41,28 @@ module.exports = (app, express) ->
     new ExtensionController app
     new PrintController     app
 
+
+    # Default entity is the first entity defined in the entities array
+    defaultEntity = entities[0]
+
     #### Routes
 
-    # Root route. Serves index page with list of available entities.
+    # Root route
     app.get '/',        (a...) => root a...
 
-    # Entity route. Serves app and collection for a specific entity.
+    # Entity route
     app.get '/:entity', (a...) => entity a...
 
+    #### Functionality
 
     # Serves request to '/'. Redirection to default host if the request
     # is coming from an old/deprectaed URL.
     root =  (req, res) ->
 
-        # Req is valid, get available entities and render index page.
+        # Redirect to default host if coming from old host
+        return redirectToDefaultHost(req, res) if isOldHost(req)
+
+        # Req is fine, get available entities and render index page.
         getEntities (es) =>
 
             res.render 'index', entities: es
@@ -61,6 +71,9 @@ module.exports = (app, express) ->
     # Serves an entity rendering the app with the appropriate collection. It
     # also redirects to a default entity in case of misunderstandings.
     entity = (req, res) ->
+
+        #TODO This is not generic
+        return redirectToDefaultHost(req, res) if isOldHost(req)
 
         # Entity request from the client
         e = req.params.entity
@@ -76,21 +89,29 @@ module.exports = (app, express) ->
         # Render the index page if e is a valid entity
         return renderApp(req, res) if isEntity e
 
-        # Response 'ok' for status (NAGIOS checks)
+        # Response 'ok' for status (NAGIOS)
         return res.send('ok') if e is 'status'
 
         # Return list of entities
         if e is 'entities' then return getEntities (e) ->
+
             res.send e
 
         # Redirect to default app in any other case
         return redirectToDefault req, res
 
 
+
     # Default redirection to the default entity app
     redirectToDefault = (req, res) ->
 
         res.redirect "/#{defaultEntity}/"
+
+
+    # Redirect the client to the correct domain and entity for the team app.
+    redirectToDefaultHost = (req, res) ->
+
+        res.redirect "http://#{settings.Web.defaultHost}/#{defaultEntity}/"
 
 
     # Render main cube backbone app
@@ -184,6 +205,12 @@ module.exports = (app, express) ->
             if orderedNames.indexOf(e.entity) is -1 then ordered.push e
 
         return ordered
+
+
+    # Check if client accesses the old team.zalando.net
+    isOldHost = (req) ->
+
+        req.header('host') is 'team.zalando.net'
 
 
     # Return bool if e is in the entities array from the settings

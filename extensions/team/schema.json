@@ -35,7 +35,7 @@
       "index": true,
       "type": "facet",
       "multiedit": true,
-      "specials": ["Management", "System", "Software Procurement", "Platform", "Database", "24x7", "BI", "MIS", "PMO", "RQM", "ZEOS Support"]
+      "specials": ["Management", "IT Security", "System", "Software Procurement", "QA", "Platform", "Database", "24x7", "BI", "MIS", "PMO", "RQM", "ZEOS Support"]
     }, {
       "id": "role",
       "label": "Role",

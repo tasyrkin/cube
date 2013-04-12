@@ -8,12 +8,10 @@ module.exports = (app, express) ->
         # Stylus and CoffeeScript files are in assets/{css,js}
         ConnectAssets = (require "connect-assets") build: yes, minifyBuilds: no
 
-        # Jade settings
         app.set "views", app.viewsDir
         app.set "view engine", "jade"
         app.set "view options", { layout: false }
 
-        # Express settings
         app.use express.static "./public", maxAge: 0
         app.use(express.bodyParser({uploadDir:"./"}))
         app.use ConnectAssets

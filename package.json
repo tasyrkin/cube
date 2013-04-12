@@ -8,7 +8,7 @@
         "url":"git://github.com/zalando/cube.git"
     },
     "scripts":{
-        "start": "coffee cube.coffee"
+        "start": "./app.js"
     },
     "dependencies":{
         "connect": "2.7.3",

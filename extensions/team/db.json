@@ -1,6 +1,6 @@
 {
-    "host": "localhost",
-    "port": "38730",
-    "core": "team",
-    "path": "/cube-solr"
+    "host": "solr-zalandoapp.rhcloud.com",
+    "port": "80",
+    "core": "",
+    "path": "/solr"
 }

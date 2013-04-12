@@ -6,32 +6,10 @@ ServerSettings = ->
     Web:
 
         # Default hostname of your project, please edit.
-        defaultHost: 'localhost'
+        defaultHost: 'cube.zalando.net'
 
         # Port to run your nodejs service, i.e. 3000.
         defaultPort: 3000
-
-
-    #### Default settings.
-    # Used when creating an extension from the CSV importer.
-    Default:
-
-        # Default database settings.
-        Database:
-
-            production:
-                host: 'localhost'
-                port: '38730'
-                path: '/cube-solr'
-                method: 'GET'
-                dataRoot: "default"
-
-            development:
-                host: 'localhost'
-                port: '38730'
-                path: '/cube-solr'
-                method: 'GET'
-                dataRoot: "default"
 
 
     #### Nodejs Paths
@@ -50,34 +28,56 @@ ServerSettings = ->
     #### Entities json file
     EntitiesFile: 'entities.json'
 
-    # Default application settings
-    Application:
 
-        description: "Dynamically generated entity"
-        itemType: [ "item", "items"]
-        separator: "/"
-        view: "list"
-        sort: "name:asc"
-        rows: 50
+    #### Default settings. Mainly used when creating an extension.
+    Default:
+
+        # Default database settings.
+        Database:
+
+            production:
+                host: '10.58.26.49'
+                port: '34220'
+                path: '/solr'
+                method: 'GET'
+                dataRoot: "p4220"
+
+            development:
+                host: '127.0.0.1'
+                port: '38730'
+                path: '/cube-solr'
+                method: 'GET'
+                dataRoot: "default"
 
 
-    # Default parameters of a field for solr's schema
-    SchemaField:
+        # Default application settings
+        Application:
 
-        index       : yes
-        search      : yes
-        thumbnail   : yes
-        multivalue  : yes
+            description: "Dynamically generated entity"
+            itemType: [ "item", "items"]
+            separator: "/"
+            view: "list"
+            sort: "name:asc"
+            rows: 50
 
 
-    # Type of fields on a suffix. i.e. team-f from a csv or json file
-    Suffix:
+        # Default parameters of a field for solr's schema
+        SchemaField:
 
-        f: 'facet'
-        i: 'img'
-        e: 'email'
-        s: 'skype'
-        d: 'date'
+            index       : yes
+            search      : yes
+            thumbnail   : yes
+            multivalue  : yes
+
+
+        # Type of fields on a suffix. i.e. team-f from a csv or json file
+        Suffix:
+
+            f: 'facet'
+            i: 'img'
+            e: 'email'
+            s: 'skype'
+            d: 'date'
 
 
 #### Singleton implementation
