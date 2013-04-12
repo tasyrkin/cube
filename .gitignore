@@ -4,3 +4,4 @@ node_modules
 public/images
 solr/target
 builtAssets
+util
