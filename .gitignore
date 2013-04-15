@@ -6,3 +6,4 @@ solr/target
 builtAssets
 util
 newrelic.js
+solr/src/main/webapp/WEB-INF/solr/conf/cube/data/index/
