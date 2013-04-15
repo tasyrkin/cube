@@ -14,6 +14,8 @@ ServerSettings = ->
 
     #### Default settings.
     # Used when creating an extension from the CSV importer.
+    # To configure your extension's database, check:
+    # extensions/yourExtension/db.json
     Default:
 
         # Default database settings.
