@@ -34,6 +34,7 @@ class EntityController
 
     module.exports = EntityController
 
+    # Entity routes
     constructor: (app) ->
         app.get   '/:entity/schema',          (a...) => @schema     a...
         app.get   '/:entity/settings',        (a...) => @settings   a...

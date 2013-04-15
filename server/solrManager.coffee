@@ -10,7 +10,9 @@ solr  = require 'solr-client'
 _     = require 'underscore'
 Schema = require './schema'
 
+
 class SolrManager
+
     module.exports = SolrManager
 
     constructor: (@name) ->
