@@ -1,6 +1,8 @@
 ###
 # PrintController.coffee
 #
+# Renders the print view
+#
 # @author: Emanuel Lauria <emanuel.lauria@zalando.de>
 ###
 

@@ -1,3 +1,11 @@
+###
+# Schema class
+#
+# Provides useful tools to handle schemas
+#
+# @author: Emanuel Lauria <emanuel.lauria@zalando.de>
+###
+
 
 _ = require 'underscore'
 

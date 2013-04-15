@@ -2,7 +2,7 @@
     "author":"Emanuel Lauria <emanuel.lauria@zalando.de>",
     "name":"Cube",
     "description":"Zalando's versatile crud management tool",
-    "version":"0.0.0",
+    "version":"0.6.0",
     "repository":{
         "type":"git",
         "url":"git://github.com/zalando/cube.git"
