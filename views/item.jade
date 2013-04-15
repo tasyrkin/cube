@@ -34,15 +34,16 @@ script(type="text/html")#item-table-template
   |   var schema = window.Settings.Schema.get();
   |   var etiquettes = window.App.getItemEtiquettes(m);
   |   var model = m.parseSubfields();
+  |   var dimg = '/images/default-avatar.png';
   |   function fieldImg(field, model) { %>
-  |       <img src="<%= model[field.id]  %>" class="hoverpic"/>
+  |       <img src="<%= model[field.id] || dimg %>" class="hoverpic"/>
   |       <div id="hoverpicEtiquettes" class="etiquettes"><%
   |           addEtiquettes(); %>
   |       </div>
   |       <div class="cont miniPicContainer"><%
   |           addMiniEtiquette(etiquettes, 'marked', false, model); %>
   |           <object class="miniPic" data="<%= model[field.id] %>">
-  |               <img class="miniPic" src="/images/default-avatar.png"/>
+  |               <img class="miniPic" src="<%= dimg %>"/>
   |           </object>
   |       </div><%
   |   };
