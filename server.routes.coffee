@@ -58,9 +58,6 @@ module.exports = (app, express) ->
     # is coming from an old/deprectaed URL.
     root =  (req, res) ->
 
-        # Redirect to default host if coming from old host
-        return redirectToDefaultHost(req, res) if isOldHost(req)
-
         # Req is fine, get available entities and render index page.
         getEntities (es) =>
 
@@ -70,9 +67,6 @@ module.exports = (app, express) ->
     # Serves an entity rendering the app with the appropriate collection. It
     # also redirects to a default entity in case of misunderstandings.
     resource = (req, res) ->
-
-        #TODO This is not generic
-        return redirectToDefaultHost req, res if isOldHost req
 
         # Entity request from the client
         r = req.params.resource
@@ -205,12 +199,6 @@ module.exports = (app, express) ->
             if orderedNames.indexOf(e.entity) is -1 then ordered.push e
 
         return ordered
-
-
-    # Check if client accesses the old team.zalando.net
-    isOldHost = (req) ->
-
-        req.header('host') is 'team.zalando.net'
 
 
     # Return bool if e is in the entities array from the settings

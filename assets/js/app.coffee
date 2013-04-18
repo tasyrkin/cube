@@ -1,26 +1,25 @@
 #### The Cube
 #
-# Zalando's management tool (devcode: Team App)
+# The cube is composed of a nodejs backend and a backbonejs frontend. This is
+# the start of the backbonejs application. Please checkout cube.coffee to
+# find more about the backend.
 #
-# Please visit our github page to know more about this app!
+# You can also visit our github page to know more about the mighty cube.
 #
-# http://zalando.github.com/cube/
-#
-# or better, give it a look to the annotated source code at docs/
-#
-# @date:  Nov/2012
+# http://zalando.github.io/cube/
 #
 # @autor: Emanuel Lauria <emanuel.lauria@zalando.de>
+# @date:  Apr/2013
 
 $ =>
 
-    # Backbone collection to hold all items from our team.
+    # Backbone collection to hold all items from our entity.
     @collection = new @Collection
 
     # Facets collection, holding all facet fields.
     @facets = new @Facets
 
-    # Extensions
+    # Extensions code
     @extensions = if @Extensions then new @Extensions else null
 
     #### Main View
@@ -56,7 +55,7 @@ $ =>
             "mouseleave .th-inner"          : "hideColumnsBtn"
             "click"                         : "documentClick"
 
-        #### Initialize App
+        #### Initialize
         initialize: () =>
 
             # Create router object
@@ -70,11 +69,6 @@ $ =>
 
             # Set the schema ffor the entity
             @createSchema()
-
-            # Get extension code from server and start app on success.
-            @getExtensions () =>
-
-                @start()
 
             #### Collections bindings
 
@@ -90,12 +84,20 @@ $ =>
             # Draw all facets whenever the collection is resetted.
             window.facets.bind      'reset',    @addAllFacets,  @
 
+            # Get extension templates and start app on success.
+            @getExtensions () =>
 
-        # Start application
+                @start()
+
+
+        #### Start
         start: =>
 
             # Set the application's title (extension name on top left)
             @setAppTitle()
+
+            # Start loading animation timer (1second timeout)
+            @showLoadingAnimation()
 
             # Set view icon's state to show current view mode (top right).
             # If no pictures on the schema, thumbnail view mode is disabled
@@ -112,9 +114,6 @@ $ =>
 
             # Create the entities menu
             @generateEntitiesMenu()
-
-            # Start loading animation timer (1second timeout)
-            @showLoadingAnimation()
 
             # Fetch facets and start backbone history right after. This will
             # route to window.Settings.Separator which in turn will fetch
@@ -134,166 +133,270 @@ $ =>
             @setMoveKeybindings()
 
 
-        # Initialize facets collection by fetching them. Start history right
-        # after and save the initial open state (expand/fold).
+        # Facet collection init
         initFacets: () =>
+
+            #Fetch facets from database
             window.facets.fetch success: () =>
+
+                # Hide any ajax error on success
                 @hideError()
-                Backbone.history.start()
+
+                # Set expanded/folded state on facet HTML index
                 @setFacetOpenState()
+
+                # App is ready to start navigation history
+                Backbone.history.start()
+
             , error: () =>
+
+                # Show error icon on controls section (top right)
                 @showError()
 
-        # Set the extension settings and other properties like etiquettes and
-        # a list of entities to the window object.
+
+        # Settings object holds all configuration parameters
         setAppSettings: () ->
+
+            # Entity settings
             settings = window.settings
+
+            # Etiquettes definition (etiquettes.json)
             settings.etiquettes = window.etiquettes
+
+            # Available entities
             settings.entities = window.entities
+
+            # Global Settings object
             window.Settings = settings
+
 
         # Set collection settings like sort and rows.
         setColSettings: () ->
+
+            # Sort criteria (i.e. name:asc)
             window.collection.sort = @getSort()
+
+            # Rows to show (default: 50)
             window.collection.rows = window.Settings.rows
+
 
         # Set the application's title on top left corner (top entities menu)
         setAppTitle: () =>
-            # Apply application name to title label and window title
+
+            # Show name on top left corner and window title
             $('#header #entityTitle h1').html window.Settings?.title
+
+            # Show arrow on title if is possible to chose other entity
             if window.Settings.entities.length > 1
                 $('#header #entityTitle').addClass 'selectable'
 
-        # Set the view mode to either list or thumbnail
+
+        # Set the view mode to either thumbnail or list
         setViewMode: () =>
-            if window.Settings?.Schema.getPictures().length is 0
-                $('span#view').hide()
+
+            # No picture? no thumbnail view.
+            pictureFields = window.Settings.Schema.getPictures()
+            $('span#view').hide() if pictureFields.length is 0
+
+            # Set list view as default if in settings
             $('span#view').addClass 'list' if window.Settings?.view is 'list'
 
-        # Set the facet state: hide if no facets or resize to appropriate value
-        # if facets are present. Facet size is stored in localStorage.
+
+        # Set the facet pane state
         setAppFacetsState: () =>
+
+            # Get facet fields from Schema
             facets = window.Settings.Schema.getFacets()
+
+            # If there are no facet fields, hide the facet pane
             return @disableFacets() unless facets.length
+
+            # Resize the facet pane to user preferences
             @setIndexResizable()
 
-        # Set the application administrator state if the admin key is present.
+
+        # Set the application edit capabilities
         setAdminState: () =>
+
+            # Check if entity is editable and user has provided admin key
             if @isEditable() and @isAdmin()
+
                 $('a#add.btn').css 'display', 'block'
 
-        # Set the profile state, basically just keeps track of the state of
-        # the additional info section (open/closed).
+
+        # Save profile state
         setProfileState: () =>
+
             window.additionalOpen = no
 
-        # Append html on #controls (icons top right corner) and initialize
-        # the extended javascript code.
-        # TODO Avoid this async call
+
+        # Get extesion HTML/JS code and append it to current dom.
         getExtensions: (cb) =>
+
             $.get 'extensions', (exthtml) ->
+
+                # Append HTML on extension container
                 $('#app > #extensions').html exthtml
+
                 return cb() unless $("#app > #extensions #controls").length
+
+                # Get extension controls and append them
                 t = _.template $("#app > #extensions #controls").html()
                 $('#controls #extensions').append t({})
+
+                # Initialize extended javascript
                 window.extensions?.init?()
+
                 cb()
 
-        # Add extension code for a profile view
+
+        # Add Profile extension code
         addProfileExtensions: (item) =>
+
             return unless $('#app > #extensions #details-template').length
+
             template = _.template $('#app > #extensions #details-template')
                 .html()
+
             $('#pane #extensions').append template t:item
+
 
         # Get schema and attach it to our Settings object
         createSchema: ->
+
             window.Settings?.Schema = new window.Schema window.schema
 
-        # Keep an array of the selected facet fields
-        # TODO Implement backbone collection
-        filterSelection: new window.FacetArray
-
-        # Keep an array of the facets expanded/folded state
-        # TODO Implement backbone collection
-        facetOpenState: new window.FacetArray
-
-        # Array to store the selected item ids
-        itemSelection: new window.Collection
 
         # Switches between list view mode and thumbnail view mode
         toggleViewMode: () =>
+
+            # Choose view mode to toggle to
             v = if window.Settings.view is 'list' then 'thumbnail' else 'list'
+
+            # Set new view mode
             window.Settings.view = v
 
+            # Set control icon appearance
             $('span#view').removeClass 'list'
             $('span#view').addClass 'list' if v is 'list'
 
+            # Redraw collection of items
             @filterByPage () =>
+
                 @scrollToSelection $('#items .active'), yes
+
                 @navigate()
+
 
         # Redraw collection after a reset event
         reset: (attr) =>
+
             letters = $("#inputSearch").val().toLowerCase()
+
             $('#search span#reset').show()
+
             $('#search span#reset').hide() unless letters or @filterSelection
                 .get().length
+
             return @addAll window.collection
 
 
         # Add one item to the items container. Either in thumnail mode
         # (picture and name) or in list mode (pic, full name, teams, etc.)
         addOne: (m) =>
-            if window.Settings.view is 'thumbnail'
-                return window.App.addOneThumbnail(m)
+
+            view = window.Settings.view
+
+            return window.App.addOneThumbnail(m) if view is 'thumbnail'
+
             window.App.addOneList m
+
 
         # Add one item to the table of items (list view mode)
         addOneList: (item) =>
+
+            # Create a new list view
             view = new ItemListView model: item
+
+            # Append it to the tabel
             @$("table tbody", "#items").append view.render().el
+
 
         # Add one item with a thumbnail view
         addOneThumbnail: (item) =>
+
+            # Create a new Thumbnail view
             view = new ItemThumbnailView model: item
+
+            # Choose category to append it to appropriate container
             cat = item.get window.Settings.Schema.getClassifier().id
             cat = cat[0] if typeof cat is typeof []
             cat = 'null' if cat is undefined
             cat = window.categories.indexOf cat
-            return @$("li\#category-#{cat} ul", '#items')
-                .append view.render().el
+
+            # Append to category container
+            @$("li\#category-#{cat} ul", '#items').append view.render().el
+
 
         # Render all items in the given collection
         addAll: (col, cb) =>
-            columnsMenuIsOpen = $('#columnsMenu').hasClass 'active'
+
             view = window.Settings.view
+
+            columnsMenuIsOpen = $('#columnsMenu').hasClass 'active'
+
+            # Render view mode
             render = @renderTableView
             render = @renderCategoryView if view is 'thumbnail'
+
             render () =>
+
+                # Add each item in the collection
                 col.each @addOne
+
+                # Hide categories that ended up with no items
                 @hideEmptyCategories() if view is 'thumbnail'
+
+                # Set total amount of items
                 @setTotals()
+
+                # Update facet selection and items selection
                 @updateSelection()
+
+                # Scroll page to closes selected item
                 @scrollToSelection $($('#items .active')[0]), yes
+
+                # Show columns menu if it was active before
                 $('#columnOptions').show() if columnsMenuIsOpen
                 $('#columnsMenu').addClass 'active' if columnsMenuIsOpen
+
                 cb() if cb
+
 
         # Create an empty profileView to add an item
         addNewItem: () =>
+
             @clearSelection()
+
             @showProfile new window.Item
+
             window.profileView.form()
+
             @navigate()
+
 
         # Select one item with a normal click. Delete previous selection if
         # present and save selected item as the firstActiveItem
         selectOne: ($e, attr) =>
+
             @clearSelection()
+
             @addToSelection $e
+
             @scrollToSelection $e
+
             @showProfile window.collection.get($e.attr('id')), attr
+
 
         # Add a item to the selection array
         addToSelection: ($e) =>
@@ -1220,6 +1323,18 @@ $ =>
         # Check if browsing from an iPad/Android device
         isTablet: () =>
             return navigator.userAgent.match(/iPad|Android/i) isnt null
+
+        # Keep an array of the selected facet fields
+        # TODO Use a backbone collection
+        filterSelection: new window.FacetArray
+
+        # Keep an array of the facets expanded/folded state
+        # TODO Use a backbone collection
+        facetOpenState: new window.FacetArray
+
+        # Array to store the selected item ids
+        itemSelection: new window.Collection
+
 
     #Lets create our app!
     @App = new AppView
