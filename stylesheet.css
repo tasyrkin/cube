@@ -443,7 +443,6 @@ header h3 {
 #example {
   display: none;
   height: 800px;
-  background: #d4d4d4;
   padding: 40px 10%;
   padding-bottom: 0;
 }
@@ -500,7 +499,7 @@ span.value {
 }
 
 #columns {
-    margin-top: 50px;
+    margin-top: 90px;
     overflow: hidden;
 }
 
