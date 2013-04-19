@@ -319,7 +319,7 @@ span#logo {
   color: #fff;
   background: #0090ff;
   font-weight: 700;
-  box-shadow: 0 3px 10px rgba(0,0,0,.5);
+  box-shadow: 0 3px 10px rgba(0,0,0,.8);
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   position: absolute;
@@ -348,10 +348,36 @@ span#logo {
 #header_wrap {
   background: url('cube_header.png') #d4d4d4 no-repeat center 0;
   height: 285px;
+  position: relative;
 }
 
 #header_wrap .inner {
   padding: 20px 10px 30px 10px;
+}
+
+header {
+    text-align: right;
+    position: absolute;
+    left: 0;
+    right: 50%;
+    top: 0;
+    bottom: 0;
+    margin-right: 320px;
+    background: rgba(30, 144, 255, 0.8);
+}
+
+header h6, header h3 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 10px;
+    margin: 0;
+    color: white;
+}
+
+header h3 {
+    font-size: 72px;
+    font-family: Helvetica;
 }
 
 #project_title {
@@ -423,7 +449,7 @@ span#logo {
 }
 
 #example iframe {
-    border: 1px solid dodgerblue;
+    border: 2px solid #999;
     background: white;
     margin-top: -2px;
 }
