@@ -1489,14 +1489,30 @@ $ =>
                 stop: @saveFacetWidth
 
 
+        # Get Facet index Width
+        getIndexWidth: () =>
+
+            w = $('#index').width()
+
+            return w if w
+
+            entity = window.Settings.entity
+
+            return unless window.localStorage[entity]
+
+            ls = JSON.parse window.localStorage[entity]
+            w = parseFloat ls.css?.facet_width
+
+            w
+
         # Resize facet index
         resizeIndex: (event, ui) =>
 
-            width = $('#index').width()
+            w = window.App.getIndexWidth()
 
-            $('#content').css 'left', width + 21
-            $('#footer').css 'left', width + 21
-            $('#innerIndex').width $('#index').width() - 10
+            $('#content').css 'left', w + 21
+            $('#footer').css 'left', w + 21
+            $('#innerIndex').width w - 10
 
 
         # Save column selection on local storage
@@ -1562,7 +1578,7 @@ $ =>
             ls = JSON.parse window.localStorage[entity]
             w = parseFloat ls.css?.facet_width
 
-            $('#index').width(w) if w
+            $('#index').width w if w
 
             @resizeIndex()
 
