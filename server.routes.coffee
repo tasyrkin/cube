@@ -19,6 +19,8 @@ module.exports = (app, express) ->
     # List of available entities
     entities = require "./#{settings.EntitiesFile}"
 
+    # Default entity is the first entity defined in the entities array
+    defaultEntity = entities[0]
 
 
     # Controllers
@@ -41,10 +43,6 @@ module.exports = (app, express) ->
     new ItemController      app
     new ExtensionController app
     new PrintController     app
-
-
-    # Default entity is the first entity defined in the entities array
-    defaultEntity = entities[0]
 
     #### Routes
 
@@ -75,7 +73,7 @@ module.exports = (app, express) ->
     resource = (req, res) ->
 
         #TODO This is not generic
-        return redirectToDefaultHost(req, res) if isOldHost(req)
+        return redirectToDefaultHost req, res if isOldHost req
 
         # Entity request from the client
         r = req.params.resource

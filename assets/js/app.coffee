@@ -1365,6 +1365,7 @@ $ =>
 
                 o = "<li id='#{e}'><span>#{e}</span></li>"
                 $("#entities ul", "#header").append o
+            $('#entityTitle span').hide() if entities.length is 1
 
             # Hide entities menu if only one entity available
             $('#entityTitle span').hide() if entities.length is 1

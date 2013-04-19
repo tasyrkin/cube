@@ -6,7 +6,7 @@ ServerSettings = ->
     Web:
 
         # Default hostname of your project, please edit.
-        defaultHost: 'cube.zalando.net'
+        defaultHost: 'cube.eu01.aws.af.cm'
 
         # Port to run your nodejs service, i.e. 3000.
         defaultPort: 3000
@@ -22,16 +22,16 @@ ServerSettings = ->
         Database:
 
             production:
-                host: 'localhost'
-                port: '38730'
-                path: '/cube-solr'
+                host: 'solr-zalando.rhcloud.com'
+                port: '80'
+                path: '/solr'
                 method: 'GET'
                 dataRoot: "default"
 
             development:
-                host: 'localhost'
-                port: '38730'
-                path: '/cube-solr'
+                host: 'solr-zalando.rhcloud.com'
+                port: '80'
+                path: '/solr'
                 method: 'GET'
                 dataRoot: "default"
 
@@ -51,7 +51,6 @@ ServerSettings = ->
 
     #### Entities json file
     EntitiesFile: 'entities.json'
-
 
     # Default application settings
     Application:
