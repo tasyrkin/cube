@@ -61,7 +61,8 @@
       <section id="installation" class="inner">
         <a name="installation"></a>
         <h3>Quick Start</h3>
-        <p>Just follow the next simple steps and you'll get the example up and running<p>
+        <p>Follow the next steps and you'll get the example up and running<p>
+        <p>Requirements: JDK >= 1.6, Maven >= 2.2, Imagemagick.</p>
         <ol>
             <li>
             <p>Get it from our <a href="http://github.com/zalando/cube">GitHub repo</a></P>
@@ -72,12 +73,16 @@
                 <pre>$ cd cube<br>$ npm install .</pre>
             </li>
             <li>
-                <p>Run Solr instance on a new terminal</p>
-                <pre>$ cd cube/solr<br>$ mvn clean install tomcat:run-war -Pdevelopment</pre></li>
+                <p>Run Solr instance</p>
+                <pre>$ mvn clean install tomcat:run-war -Pdevelopment</pre></li>
             <li>
-                <p>Start your app</p>
-                <pre>$ coffee cube.coffee</pre>
+                <p>Start your app on a new terminal</p>
+                <pre>$ cd cube/solr<br>$ coffee cube.coffee</pre>
             </li>
+            <li>
+            <p>Visit <a href="http://localhost:3000">http://localhost:3000</a></p>
+            </li>
+
         </ol>
         <a name="documentation"></a>
         </section>
