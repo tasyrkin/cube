@@ -127,6 +127,11 @@ a {
   -ms-transition: text-shadow 0.5s ease;
 }
 
+#main_content {
+    padding-top: 0;
+    margin-top: 0;
+}
+
 #main_content a:hover {
   text-shadow: #0090ff 0px 0px 2px;
 }
@@ -290,7 +295,9 @@ Full-Width Styles
   position: relative;
   max-width: 640px;
   padding: 10px;
+  padding-top: 0;
   margin: 0 auto;
+  clear: both;
 }
 
 span#logo {
@@ -300,6 +307,10 @@ span#logo {
   width: 75px;
   height: 75px;
   margin-top: 15px;
+}
+
+#banner_wrapper {
+  padding: 0;
 }
 
 #demo_banner {
@@ -335,11 +346,12 @@ span#logo {
 }
 
 #header_wrap {
-  background: #EEE;
+  background: url('cube_header.png') #d4d4d4 no-repeat center 0;
+  height: 285px;
 }
 
 #header_wrap .inner {
-  padding: 50px 10px 30px 10px;
+  padding: 20px 10px 30px 10px;
 }
 
 #project_title {
@@ -393,13 +405,9 @@ span#logo {
 }
 
 #main_content_wrap {
-  background: #FFF;
+  background: url('cube_header.png') #FFF no-repeat center -286px;
   border-top: 1px solid dodgerblue;
   border-bottom: 1px solid dodgerblue;
-}
-
-#main_content {
-  padding-top: 50px;
 }
 
 #footer_wrap {
@@ -409,7 +417,7 @@ span#logo {
 #example {
   display: none;
   height: 800px;
-  background: #FFF;
+  background: #d4d4d4;
   padding: 40px 10%;
   padding-bottom: 0;
 }
@@ -449,6 +457,30 @@ span.value {
     margin-left:  0;
 }
 
+.column {
+    float: left;
+    width: 172px;
+    margin: 0 10px;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.column:last-child {
+    border: 0;
+}
+
+.column p {
+    text-align: left;
+}
+
+#columns {
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+#columns h5 {
+    margin: 0 auto;
+}
 /*******************************************************************************
 Small Device Styles
 *******************************************************************************/
