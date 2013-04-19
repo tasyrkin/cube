@@ -1,8 +1,14 @@
 ###
-# EntityManager.coffee
+# FacetManager.coffee
+#
+# Provides extra methods to get useful facet information like distinct, all
+# fields or listed fields in schema.
 #
 # @author: Emanuel Lauria <emanuel.lauria@zalando.de>
 ###
+
+# Requirements
+
 async = require 'async'
 _     = require 'underscore'
 
@@ -13,6 +19,8 @@ class FacetManager
 
     constructor: () ->
 
+    # Returns an array of unique facet values for each facet type field in
+    # your schema.
     distincts: (name, cb) =>
         d = {}
         async.forEach @getFacetsFromSchema(name), (f, cb) =>
@@ -23,7 +31,7 @@ class FacetManager
             throw err if err
             cb d
 
-    # Return all fields for each facet (i.e. teams: interactive, catalog..)
+    # Return all values for each facet
     fields: (name, field, cb) =>
         solrManager = new SolrManager name
         client = solrManager.createClient()
@@ -42,7 +50,7 @@ class FacetManager
                 fields.push(f) if typeof f is "string"
             cb fields
 
-    # Parse schema and return all facet fields
+    # Returns all facet type fields on your schema
     getFacetsFromSchema: (name) =>
         schema = require "../extensions/#{name}/schema.json"
         a = []

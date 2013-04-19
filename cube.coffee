@@ -6,6 +6,9 @@
 
 # Cube's nodejs server init
 
+# First things first. Coffee...Script.
+require "coffee-script"
+
 # Main server configuration file. Please edit to your needs!
 settings = require "./server.settings.coffee"
 

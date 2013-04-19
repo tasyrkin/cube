@@ -4,29 +4,37 @@
 # @author: Emanuel Lauria <emanuel.lauria@zalando.de>
 ###
 
+# Requirements
+
 fs      = require 'fs'
 async   = require 'async'
 js2xml  = require "data2xml"
 _       = require 'underscore'
 im      = require "imagemagick"
 
+# Facet Manager. distincts() gets a list of unique facet values.
 FacetManager = require './facetManager.coffee'
 facetManager = new FacetManager
 
+# Solr Manager handles property suffixes (i.e. adding -s for string fields).
 SolrManager = require './solrManager.coffee'
 solrManager = new SolrManager
 
+# Schema class provides methos to handle schemas easily.
 Schema = require './schema'
 
 # Server and default extension settings
 settings = require "#{__dirname}/../server.settings.coffee"
-# List of entities
+
+# List of available entities
 entities = require "#{__dirname}/../entities.json"
+
 
 class EntityController
 
     module.exports = EntityController
 
+    # Entity routes
     constructor: (app) ->
         app.get   '/:entity/schema',          (a...) => @schema     a...
         app.get   '/:entity/settings',        (a...) => @settings   a...
@@ -62,8 +70,7 @@ class EntityController
             @getCollection db, query, (result) =>
                 res.send @setCollectionResponse req, res, result
 
-    # Returns extension code. i.e. newbies feature on team app.
-    # WARN This route is being used by third party apps!
+    # Returns pane.json, containing extra data for custom panes.
     pane: (req, res) ->
         file = "#{__dirname}/../extensions/#{req.params.entity}/pane.json"
         res.setHeader 'Content-Type', 'application/json'
@@ -71,6 +78,9 @@ class EntityController
             return res.send {} if err
             res.send data
 
+
+    # Returns an array of etiquettes available. Each etiquette defines an ID,
+    # a Label, Bacgrkound color, Text color and a background image.
     etiquettes: (req, res) ->
         file = "#{__dirname}/../extensions/#{req.params.entity}/etiquettes.json"
         res.setHeader 'Content-Type', 'application/json'
@@ -147,20 +157,26 @@ class EntityController
     # Get the sort parameter. If its not specified on QS, the default value
     # is specified in the settings file.
     getSort: (req, cb) =>
+
         name = req.params.entity
+
+        schema = new Schema name
+
         @getSettings name, (settings) =>
             sort = if req.query.sort then req.query.sort else settings.sort
             [ id, order ] = sort.split ':'
             if sort.split(':').length is 3
                 [id1, id2, order] = sort.split ':'
                 id = "#{id1}:#{id2}"
-            field = solrManager.getFieldFromSchema name, id
+            field = schema.getFieldById id
             if @isMultivalue field then id = "sort_#{id}-s"
             else id = solrManager.addSuffix name, id
             sort = {}
             sort[id] = order
             cb sort
 
+    # Returns a new a solr query object ready to perfom searches on the
+    # requested entity's collection.
     createQuery: (req, cb) =>
         name = req.params.entity
         @getSettings name, (settings) =>
@@ -181,6 +197,7 @@ class EntityController
                     .facet on: yes, missing: yes, mincount: 1
                 cb query, db
 
+    # Set response of a collection request, depending on the format asked.
     setCollectionResponse: (req, res, result, cb) =>
         if req.query.csv
             res.setHeader 'Content-Type', 'text/plain; charset=utf8'
@@ -195,6 +212,7 @@ class EntityController
             result = result.response.docs
         result
 
+    # Adds filter parameters to query object, like facet filters, strings, etc.
     setFilters: (req, query) =>
         name = req.params.entity
         if req.query["facet.field"]
@@ -233,6 +251,7 @@ class EntityController
                 query.matchFilter true, f[0], [f[1]]
         query
 
+    # Return all fields specified as "searchable" (search: true) on the schema.
     getSearchableFields: (name) =>
         schema = new Schema name
         searchables = schema.getSearchables()
@@ -242,10 +261,13 @@ class EntityController
             fields.push solrManager.addSuffix(name, f.id) if f.search
         return fields
 
+    # Checks if the requested resource is one of the available entities
     isEntity: (name) =>
         return yes unless entities.indexOf(name) is -1
         return no
 
+    # Checks if the requested field is multivalue. Facet and tuple fields are
+    # multivalue by definition.
     isMultivalue: (field) =>
         return yes if field.multivalue
         return yes if field.type is 'facet' or field.type is 'tuple'

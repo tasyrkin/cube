@@ -1,6 +1,8 @@
 ###
 # SolrManager.coffee
 #
+# Solr Manager provides useful functions to handle solr connections
+#
 # @author: Emanuel Lauria <emanuel.lauria@zalando.de>
 ###
 
@@ -8,7 +10,9 @@ solr  = require 'solr-client'
 _     = require 'underscore'
 Schema = require './schema'
 
+
 class SolrManager
+
     module.exports = SolrManager
 
     constructor: (@name) ->
@@ -56,7 +60,3 @@ class SolrManager
             k = k.split('-')[0]
             newObj[k] = v
         newObj
-
-    getFieldFromSchema: (name, id) ->
-        schema = new Schema name
-        schema.getFieldById id

@@ -20,6 +20,7 @@ module.exports = (app, express) ->
     entities = require "./#{settings.EntitiesFile}"
 
 
+
     # Controllers
 
     # Serves any request about entities, like getting its collection
@@ -51,7 +52,8 @@ module.exports = (app, express) ->
     app.get '/',        (a...) => root a...
 
     # Entity route
-    app.get '/:entity', (a...) => entity a...
+    app.get '/:resource', (a...) => resource a...
+
 
     #### Functionality
 
@@ -70,13 +72,13 @@ module.exports = (app, express) ->
 
     # Serves an entity rendering the app with the appropriate collection. It
     # also redirects to a default entity in case of misunderstandings.
-    entity = (req, res) ->
+    resource = (req, res) ->
 
         #TODO This is not generic
         return redirectToDefaultHost(req, res) if isOldHost(req)
 
         # Entity request from the client
-        e = req.params.entity
+        r = req.params.resource
 
         # URL used by the client
         u = req.url.split('?')[0]
@@ -84,16 +86,16 @@ module.exports = (app, express) ->
         # Redirect to /path/. The app requires a URL ending with / to
         # fetch static files correctly. Otherwise the backbone app will
         # append its routes to "path" instead of absolute routing "/".
-        return res.redirect "/#{e}/" unless u[u.length-1] is '/'
+        return res.redirect "/#{r}/" unless u[u.length-1] is '/'
 
         # Render the index page if e is a valid entity
-        return renderApp(req, res) if isEntity e
+        return renderApp(req, res) if isEntity r
 
         # Response 'ok' for status (NAGIOS)
-        return res.send('ok') if e is 'status'
+        return res.send('ok') if r is 'status'
 
         # Return list of entities
-        if e is 'entities' then return getEntities (e) ->
+        if r is 'entities' then return getEntities (e) ->
 
             res.send e
 
@@ -117,7 +119,7 @@ module.exports = (app, express) ->
     # Render main cube backbone app
     renderApp = (req, res) ->
 
-        name = req.params.entity
+        name = req.params.resource
 
         params =  entity: name, entities: entities
 
@@ -161,7 +163,8 @@ module.exports = (app, express) ->
     # Return templates from an extension
     getTemplates = (req, res, cb) ->
 
-        file = "#{__dirname}/extensions/#{req.params.entity}/templates"
+        entity = req.params.resource
+        file = "#{__dirname}/extensions/#{entity}/templates"
 
         res.render file, (err, html) =>
             throw err if err
