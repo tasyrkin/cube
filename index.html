@@ -120,19 +120,20 @@
                 </div>
             </li>
             <li>
-                <h6>Copy example directory with your desired entity name</h6>
+                <h6>Create entity default files</h6>
                 <div>
-                    <pre>$ cp entities/team entities/library</pre>
+                    <pre>$ cd util/<br/>$ ./create_entity library</pre>
                 </div>
             </li>
             <li>
-                <h6>Configure the library's entity</h6>
+                <h6>Edit to suit your needs</h6>
                 <div>
                     <ol>
                         <li>
-                            <p>Write a Schema</p>
+                            <p>Schema</p>
                             <p>The Schema is one of the most important aspects of your entity. We recommend you to spend some time checking out the one provided in the example along with its documentation.<p>
                             <p>Please check the Schema reference <a href="#schema">here</a>.</p>
+                            <p>For this example, I provide you with a schema. Get it from <a href="schema.json">here</a> and place it in entities/library/</p>
                         </li>
                         <li>
                             <p>Configrue entities/library/db.json to point to the new Solr core</p>
@@ -145,7 +146,6 @@
     "path": "/cube-solr"
 }</pre>
                         </li>
-                        <li><p>Edit the CSS to fit your style on entities/library/style.styl<p></li>
                     <ol>
                 </div>
             </li>
