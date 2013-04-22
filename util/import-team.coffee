@@ -4,7 +4,7 @@ require "coffee-script"
 
 request = require "request"
 solr = require "solr-client"
-schema = require '../extensions/team/schema.json'
+schema = require '../entities/team/schema.json'
 
 SolrManager = require '../server/solrManager'
 solrManager = new SolrManager
