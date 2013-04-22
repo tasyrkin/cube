@@ -1,0 +1,46 @@
+[
+
+    {
+      "id": "pic",
+      "label": "Cover",
+      "index": true,
+      "type": "img"
+    }, {
+      "id": "title",
+      "label": "Title",
+      "mandatory": true,
+      "index": true,
+      "search": true,
+      "thumbnail": true
+    }, {
+      "id": "author",
+      "label": "Author",
+      "mandatory": true,
+      "index": true,
+      "search": true
+    }, {
+      "id": "editorial",
+      "label": "Editorial",
+      "index": true,
+      "mandatory": true,
+      "search": true
+    }, {
+      "id": "pdate",
+      "label": "Publish D.",
+      "mandatory": true,
+      "type": "date"
+    }, {
+      "id": "genre",
+      "label": "Genre",
+      "index": true,
+      "type": "facet",
+      "multiedit": true,
+      "specials": ["Novell", "Poetry", "Fiction", "Comics", "Children"]
+    }, {
+      "id": "npages",
+      "label": "No. Pages",
+      "type": "integer"
+    }
+
+
+]
