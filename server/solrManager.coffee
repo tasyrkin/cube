@@ -19,7 +19,7 @@ class SolrManager
 
     # Create a Solr instance with propper database connection
     createClient: () =>
-        db = require "../extensions/#{@name}/db.json"
+        db = require "../entities/#{@name}/db.json"
         @client = solr.createClient db.host, db.port, db.core, db.path
         @client.autoCommit = yes
         @client

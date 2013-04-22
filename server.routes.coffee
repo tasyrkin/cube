@@ -13,7 +13,7 @@ module.exports = (app, express) ->
     fs      = require "fs"
     _       = require "underscore"
 
-    # Server and default extension settings
+    # Server and default entity settings
     settings = require "#{__dirname}/server.settings.coffee"
 
     # List of available entities
@@ -151,18 +151,18 @@ module.exports = (app, express) ->
     # Read a file and parse it as json, return a json object.
     getJsonFile = (file, entity, cb) =>
 
-        f = "#{__dirname}/extensions/#{entity}/#{file}"
+        f = "#{__dirname}/entities/#{entity}/#{file}"
 
         fs.readFile f, "utf8", (err, data) =>
             return cb({}) if err
             cb JSON.parse data
 
 
-    # Return templates from an extension
+    # Return templates from an entity
     getTemplates = (req, res, cb) ->
 
         entity = req.params.resource
-        file = "#{__dirname}/extensions/#{entity}/templates"
+        file = "#{__dirname}/entities/#{entity}/templates"
 
         res.render file, (err, html) =>
             throw err if err

@@ -1,0 +1,61 @@
+[
+    {
+      "id": "pic",
+      "label": "Cover",
+      "index": true,
+      "type": "img"
+    }, {
+      "id": "title",
+      "label": "Title",
+      "mandatory": true,
+      "index": true,
+      "search": true,
+      "thumbnail": true
+    }, {
+      "id": "author",
+      "label": "Author",
+      "mandatory": true,
+      "index": true,
+      "search": true,
+      "thumbnail": true,
+      "multiedit": true,
+      "type": "facet"
+    }, {
+      "id": "editorial",
+      "label": "Editorial",
+      "mandatory": true,
+      "index": true,
+      "search": true,
+      "multiedit": true,
+      "type": "facet"
+    }, {
+      "id": "pdate",
+      "label": "Publish D.",
+      "mandatory": true,
+      "type": "date"
+      "multiedit": true,
+    }, {
+      "id": "edition",
+      "label": "Edition",
+      "index": true,
+      "multiedit": true,
+    }, {
+      "id": "language",
+      "label": "Language",
+      "index": true,
+      "type": "facet",
+      "multiedit": true,
+      "classifier": [ "german", "english", "spanish", "portuguese", "italian" ]
+    },
+    {
+      "id": "npages",
+      "label": "No. Pages",
+      "type": "integer",
+      "multiedit": true
+    },
+    {
+      "id": "isbn",
+      "label": "ISBN",
+      "search": true
+    },
+]

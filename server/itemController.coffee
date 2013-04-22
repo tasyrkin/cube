@@ -205,7 +205,7 @@ class ItemController
 
     # Get Picture fields from schema (type: "img").
     getPictureFields: (name) ->
-        schema = require "#{__dirname}/../extensions/#{name}/schema.json"
+        schema = require "#{__dirname}/../entities/#{name}/schema.json"
         arr = []
         _.each schema, (o) =>
             arr.push o if o.type is "img"
@@ -221,7 +221,7 @@ class ItemController
     # Get all schema fields that cointain a specific property
     # TODO Get from schema class
     getFieldsWithProperty: (name, p) ->
-        schema = require "#{__dirname}/../extensions/#{name}/schema.json"
+        schema = require "#{__dirname}/../entities/#{name}/schema.json"
         arr = []
         _.each schema, (o) =>
             arr.push o if o[p]
@@ -229,7 +229,7 @@ class ItemController
 
     # Get all fields that have a specific type in an entity's schema
     getFieldsByType: (name, t) ->
-        schema = require "#{__dirname}/../extensions/#{name}/schema.json"
+        schema = require "#{__dirname}/../entities/#{name}/schema.json"
         arr = []
         _.each schema, (o) =>
             arr.push o if o.type is t
