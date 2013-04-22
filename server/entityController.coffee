@@ -23,7 +23,7 @@ solrManager = new SolrManager
 # Schema class provides methos to handle schemas easily.
 Schema = require './schema'
 
-# Server and default extension settings
+# Server and default entity settings
 settings = require "#{__dirname}/../server.settings.coffee"
 
 # List of available entities
@@ -43,13 +43,13 @@ class EntityController
         app.get   '/:entity/etiquettes.json', (a...) => @etiquettes a...
         app.get   '/:entity/ufacets',         (a...) => @ufacets    a...
         app.post  '/:entity/picture',         (a...) => @picture    a...
-        app.get   '/:entity/extensions',      (a...) => @extension  a...
+        app.get   '/:entity/template',        (a...) => @template   a...
 
     # Return appropriate schema for each entity
     schema: (req, res) ->
         name = req.params.entity
         return res.send 404 if entities.indexOf(name) is -1
-        schema = require "#{__dirname}/../extensions/#{name}/schema.json"
+        schema = require "#{__dirname}/../entities/#{name}/schema.json"
         res.send schema
 
     # Return appropriate settings for each entity
@@ -72,7 +72,7 @@ class EntityController
 
     # Returns pane.json, containing extra data for custom panes.
     pane: (req, res) ->
-        file = "#{__dirname}/../extensions/#{req.params.entity}/pane.json"
+        file = "#{__dirname}/../entities/#{req.params.entity}/pane.json"
         res.setHeader 'Content-Type', 'application/json'
         fs.readFile file, "utf8", (err, data) =>
             return res.send {} if err
@@ -82,7 +82,7 @@ class EntityController
     # Returns an array of etiquettes available. Each etiquette defines an ID,
     # a Label, Bacgrkound color, Text color and a background image.
     etiquettes: (req, res) ->
-        file = "#{__dirname}/../extensions/#{req.params.entity}/etiquettes.json"
+        file = "#{__dirname}/../entities/#{req.params.entity}/etiquettes.json"
         res.setHeader 'Content-Type', 'application/json'
         fs.readFile file, "utf8", (err, data) =>
             return res.send {} if err
@@ -119,9 +119,10 @@ class EntityController
                     response.push size: stats.size
                     res.send response
 
-    # Return templates from an extension
-    extension: (req, res) ->
-        res.render "extensions/#{req.params.entity}/templates"
+    # Return templates from an entity
+    template: (req, res) ->
+
+        res.render "../entities/#{req.params.entity}/templates"
 
     # Run query and return either CSV, JSON or XML
     getCollection: (db, query, cb) =>
@@ -149,7 +150,7 @@ class EntityController
 
     # Read settings file from extension and return it as JSON object
     getSettings: (entity, cb) =>
-        settingsFile = "#{__dirname}/../extensions/#{entity}/settings.json"
+        settingsFile = "#{__dirname}/../entities/#{entity}/settings.json"
         fs.readFile settingsFile, (err, s) =>
             throw err if err
             cb(JSON.parse(s))
@@ -275,7 +276,7 @@ class EntityController
 
     # Parse an item and form a ';' separated string with its values
     toCSV: (name, res) ->
-        schema = require "../extensions/#{name}/schema.json"
+        schema = require "../entities/#{name}/schema.json"
         output = []
         fields = []
         headers = []

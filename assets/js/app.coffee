@@ -233,7 +233,7 @@ $ =>
         # Get extesion HTML/JS code and append it to current dom.
         getExtensions: (cb) =>
 
-            $.get 'extensions', (exthtml) ->
+            $.get 'template', (exthtml) ->
 
                 # Append HTML on extension container
                 $('#app > #extensions').html exthtml
