@@ -74,7 +74,7 @@
             </li>
             <li>
                 <p>Build and Run Solr Database</p>
-                <pre>$ cd solr/<br>$ mvn clean install tomcat:run-war -Pdevelopment</pre></li>
+                <pre>$ mvn clean install tomcat:run-war -Pdevelopment</pre></li>
             <li>
                 <p>Start the Cube on a new terminal</p>
                 <pre>$ cd cube<br>$ coffee cube.coffee</pre>
@@ -100,8 +100,8 @@
 &lt;?xml version="1.0" encoding="UTF-8" ?&gt;
 &lt;solr sharedLib="lib" persistent="true"&gt;
   &lt;cores adminPath="/admin/cores"&gt;
-    &lt;core name="team" instanceDir="conf/cube/" /&gt;
-    <span>&lt;core name="library" instanceDir="conf/cube/" /&gt;</span>
+    &lt;core name="team" instanceDir="conf/cube/" dataDir="conf/cube/team" /&gt;
+    <span>&lt;core name="library" instanceDir="conf/cube/" dataDir="conf/cube/library" /&gt;</span>
   &lt;/cores&gt;
 &lt;/solr&gt;</pre>
                 </div>
@@ -137,6 +137,7 @@
                             <pre>$ cp schema.json cube/entities/library/</pre>
                         </li>
                         <li>
+                            <p>Database config</p>
                             <p>Configrue entities/library/db.json to point to the new Solr core</p>
                             <p>It should look something like this:</p>
                             <pre>
@@ -146,10 +147,30 @@
     "core": "<span>library</span>",
     "path": "/cube-solr"
 }</pre>
+                       </li>
+
+                       <li>
+                            <p>Entity Information</p>
+                            <p>We need to provide some information about the entity along with some settings. Please take a look at entities/library/settings.json. It should look something like this:</p>
+                            <pre>
+ {
+    "entity": "<span>library</span>",
+    "title": "<span>Library</span>",
+    "description": "<span>My huge book collection</span>",
+    "itemType": [ "<span>book</span>", "<span>books</span>" ],
+    "separator": "/",
+    "view": "list",
+    "rows": 50,
+    "sort": "<span>title</span>:asc"
+}
+                            </pre>
                         </li>
+
+
+
                     <ol>
                 </div>
-            </li>
+                </li>
             <li>
                 <h6>Start NodeJs</h6>
                 <div>
@@ -159,6 +180,10 @@
             <li>
                 <h6>Visit your library</h6>
                 <div><a href="http://localhost:3000/library/?admin=yes">http://localhost:3000/library/?admin=yes</a></div>
+            </li>
+            <li>
+                <h6>Add your books!</h6>
+                <p>Click on the blue "Add" button on the top right corner and start adding your books!</p>
             </li>
         </ol>
      </section>

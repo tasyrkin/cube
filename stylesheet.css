@@ -377,7 +377,7 @@ header h6, header h3 {
 
 header h3 {
     font-size: 72px;
-    font-family: Helvetica;
+    font-family: inherit;
 }
 
 #project_title {
