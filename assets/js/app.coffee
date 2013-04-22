@@ -70,11 +70,6 @@ $ =>
             # Set the schema ffor the entity
             @createSchema()
 
-            # Get extension code from server and start app on success.
-            @getExtensions () =>
-
-                @start()
-
             #### Collections bindings
 
             # Display any new items in the container.
@@ -90,7 +85,6 @@ $ =>
             window.facets.bind      'reset',    @addAllFacets,  @
 
 
-            # Get extension templates and start app on success.
             @getExtensions () =>
 
                 @start()
