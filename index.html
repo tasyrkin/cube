@@ -61,22 +61,22 @@
       <section id="installation" class="inner">
         <a name="installation"></a>
         <h3>Quick Start</h3>
-        <p>Follow the next steps and you'll get the example up and running<p>
-        <p>Requirements: JDK >= 1.6, Maven >= 2.2 and Imagemagick.</p>
+        <p>Follow the next steps and you'll get the Cube up and running<p>
+        <p>Requirements: JDK &gt;= 1.6, Maven &gt;= 2.2 and Imagemagick.</p>
         <ol>
             <li>
             <p>Get it from our <a href="http://github.com/zalando/cube">GitHub repo</a></P>
                 <pre>$ git clone git@github.com:zalando/cube.git</pre>
             </li>
             <li>
-                <p>Install dependencies</p>
+                <p>Install node dependencies</p>
                 <pre>$ cd cube<br>$ npm install .</pre>
             </li>
             <li>
-                <p>Run Solr instance</p>
+                <p>Build and Run Solr Database</p>
                 <pre>$ mvn clean install tomcat:run-war -Pdevelopment</pre></li>
             <li>
-                <p>Start your app on a new terminal</p>
+                <p>Start the Cube on a new terminal</p>
                 <pre>$ cd cube/solr<br>$ coffee cube.coffee</pre>
             </li>
             <li>
@@ -89,8 +89,8 @@
 
      <section id="tutorial" class="inner">
         <a name="tutorial"></a>
-        <h3>Adding your own Data</h3>
-        <p>Once you got the included example up and running, it will be no hassle to set up your own extension. All you need to do is set up a new solr core and place your extension files inside the extensions directory. Follow these steps to get it done:</p>
+        <h3>Create your own Cube: Library example.</h3>
+        <p>Once you got the included example up and running, it will be no hassle to set up the cube to hanlde your own data. In the following small tutorial, I'll guide you through the process of creating a Library inside the cube. Adding your own data would be a matter of writing a different schema and small configuration changes. Let's get started!</p>
         <ol class="tutorial">
             <li>
                 <h6>Add a solr core</h6>
@@ -101,51 +101,51 @@
 &lt;solr sharedLib="lib" persistent="true"&gt;
   &lt;cores adminPath="/admin/cores"&gt;
     &lt;core name="team" instanceDir="conf/cube/" /&gt;
-    <span>&lt;core name="myExtension" instanceDir="conf/cube/" /&gt;</span>
+    <span>&lt;core name="library" instanceDir="conf/cube/" /&gt;</span>
   &lt;/cores&gt;
 &lt;/solr&gt;</pre>
                 </div>
             </li>
             <li>
                 <h6>Start Solr</h6>
-                <p>* stop it if its running already, duh!</p>
+                <p>* stop it with Ctrl+C if its running already</p>
                 <pre>$ cd solr/<br>$ mvn clean install tomcat:run-war -Pdevelopment</pre>
-                <p>You should have a new core now. Check it on <a href="http://localhost:38730/cube-solr">http://localhost:38730/cube-solr</a></p>
+                <p>You should have a new core called "library" by now. Check it on <a href="http://localhost:38730/cube-solr">http://localhost:38730/cube-solr</a>. This is were all our library collection will be stored.</p>
             </li>
             <li>
-                <h6>Add a new entity on entities.json</h6>
+                <h6>Add it to entities.json</h6>
                 <div>
-                    <p>entities.json is a json file! beware of the syntax. It should look like this:</p>
-                    <pre>[ "team"<span>, "myExtension"</span> ]</pre>
+                    <p>The library collection and the team collection are called 'entities' for the cube. An 'Entity' is a collection of items that share the same properties, or schema. By now we have 2 entities in the Cube: team and library, but we need to add it to the entities.json file so Cube knows about it. Please weatch out that it is a json file! be careful with the syntax. At the end it should look like this:</p>
+                    <pre>[ "team"<span>, "library"</span> ]</pre>
                 </div>
             </li>
             <li>
-                <h6>Copy example directory with your desired extension name</h6>
+                <h6>Copy example directory with your desired entity name</h6>
                 <div>
-                    <pre>$ cp extensions/team extensions/myExtension</pre>
+                    <pre>$ cp entities/team entities/library</pre>
                 </div>
             </li>
             <li>
-                <h6>Configure your extension</h6>
+                <h6>Configure the library's entity</h6>
                 <div>
                     <ol>
                         <li>
-                            <p>Write your own Schema</p>
-                            <p>The Schema is one of the most important aspects of your extension. We recommend you to spend some time checking out the one provided in the example along with its documentation.<p>
+                            <p>Write a Schema</p>
+                            <p>The Schema is one of the most important aspects of your entity. We recommend you to spend some time checking out the one provided in the example along with its documentation.<p>
                             <p>Please check the Schema reference <a href="#schema">here</a>.</p>
                         </li>
                         <li>
-                            <p>Configrue extensions/myExtension/db.json to point to your new Solr core</p>
+                            <p>Configrue entities/library/db.json to point to the new Solr core</p>
                             <p>It should look something like this:</p>
                             <pre>
 {
     "host": "<span>localhost</span>",
     "port": "38730",
-    "core": "<span>myExtension</span>",
+    "core": "<span>library</span>",
     "path": "/cube-solr"
 }</pre>
                         </li>
-                        <li><p>Edit the CSS to fit your style on extensions/myExtension/style.styl<p></li>
+                        <li><p>Edit the CSS to fit your style on entities/library/style.styl<p></li>
                     <ol>
                 </div>
             </li>
@@ -168,7 +168,7 @@
      <section id="schema" class="inner">
         <a name="schema"></a>
         <h3>Schema reference</h3>
-        <p>A Cube Schema is a json array of objects which describe the data structure of an extension. You can take a look at an <a href="docs/schema.html">example schema</a> which makes uses of almost all possible properties. Setting up yours is a matter of listing the fields with their IDs and Labels (minimum required properties) and adding/removing/negating some properties on each of them.</p>
+        <p>A Cube Schema is a json array of objects which describe the data structure of an entity. You can take a look at an <a href="docs/schema.html">example schema</a> which makes uses of almost all possible properties. Setting up yours is a matter of listing the fields with their IDs and Labels (minimum required properties) and adding/removing/negating some properties on each of them.</p>
         <h6>id:</h6>
         <p>Each field must have a unique ID composed of alphanumeric characters. This field is required.</a>
         <p>Value: <span class="value">String</span></p>
