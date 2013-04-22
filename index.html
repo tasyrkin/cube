@@ -74,10 +74,10 @@
             </li>
             <li>
                 <p>Build and Run Solr Database</p>
-                <pre>$ mvn clean install tomcat:run-war -Pdevelopment</pre></li>
+                <pre>$ cd solr/<br>$ mvn clean install tomcat:run-war -Pdevelopment</pre></li>
             <li>
                 <p>Start the Cube on a new terminal</p>
-                <pre>$ cd cube/solr<br>$ coffee cube.coffee</pre>
+                <pre>$ cd cube<br>$ coffee cube.coffee</pre>
             </li>
             <li>
             <p>Visit <a href="http://localhost:3000">http://localhost:3000</a></p>
@@ -134,6 +134,7 @@
                             <p>The Schema is one of the most important aspects of your entity. We recommend you to spend some time checking out the one provided in the example along with its documentation.<p>
                             <p>Please check the Schema reference <a href="#schema">here</a>.</p>
                             <p>For this example, I provide you with a schema. Get it from <a href="schema.json">here</a> and place it in entities/library/</p>
+                            <pre>$ cp schema.json cube/entities/library/</pre>
                         </li>
                         <li>
                             <p>Configrue entities/library/db.json to point to the new Solr core</p>
