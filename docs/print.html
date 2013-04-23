@@ -1,90 +1,519 @@
-<!DOCTYPE html>  <html>  <head>      <title>print.coffee</title>      <meta http-equiv="content-type" content="text/html; charset=UTF-8">      <link rel="stylesheet" media="all" href="zocco.css" />  </head>  <body>      <div id="container">          <div id="background"></div>                        <div id="jumpWrapper">                  <div id="jumpPage">                      <label>Files...</label>                                                                  <a class="source" href="app.html">                          app.coffee                      </a>                                                                  <a class="source" href="collection.html">                          collection.coffee                      </a>                                                                  <a class="source" href="facets.html">                          facets.coffee                      </a>                                                                  <a class="source" href="index.html">                          index.coffee                      </a>                                                                  <a class="source" href="facetArray.html">                          facetArray.coffee                      </a>                                                                  <a class="source" href="schema.html">                          schema.coffee                      </a>                                                                  <a class="source" href="facet.html">                          facet.coffee                      </a>                                                                  <a class="source" href="item.html">                          item.coffee                      </a>                                                                  <a class="source" href="print.html">                          print.coffee                      </a>                                                                  <a class="source" href="routes.html">                          routes.coffee                      </a>                                                                  <a class="source" href="facet.html">                          facet.coffee                      </a>                                                                  <a class="source" href="item.html">                          item.coffee                      </a>                                                                  <a class="source" href="profile.html">                          profile.coffee                      </a>                                                                  <a class="source" href="cube.html">                          cube.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="server.config.html">                          server.config.coffee                      </a>                                                                  <a class="source" href="server.routes.html">                          server.routes.coffee                      </a>                                                                  <a class="source" href="server.settings.html">                          server.settings.coffee                      </a>                                                                  <a class="source" href="entityController.html">                          entityController.coffee                      </a>                                                                  <a class="source" href="extensionController.html">                          extensionController.coffee                      </a>                                                                  <a class="source" href="facetManager.html">                          facetManager.coffee                      </a>                                                                  <a class="source" href="itemController.html">                          itemController.coffee                      </a>                                                                  <a class="source" href="printController.html">                          printController.coffee                      </a>                                                                  <a class="source" href="schema.html">                          schema.coffee                      </a>                                                                  <a class="source" href="solrManager.html">                          solrManager.coffee                      </a>                                                                  <a class="source" href="genSchema.html">                          genSchema.coffee                      </a>                                                                  <a class="source" href="importer-fortunes.html">                          importer-fortunes.coffee                      </a>                                                                  <a class="source" href="importer-hosts.html">                          importer-hosts.coffee                      </a>                                                                  <a class="source" href="importer-projects.html">                          importer-projects.coffee                      </a>                                        </div>              </div>                    <table cellpadding="0" cellspacing="0">              <thead>                  <tr>                      <th class="docs">                          <h1>                              print.coffee                          </h1>                      </th>                      <th class="code">                      </th>                  </tr>              </thead>              <tbody>                                                      <tr id="section-1">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-1">&#182;</a>                          </div>                          <h3 id="printview">Print View</h3>                      </td>                      <td class="code">                          <div class="highlight"><pre><span class="nx">$</span> <span class="o">=&gt;</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-2">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-2">&#182;</a>                          </div>                          <p>The Print View is actually a stripped down backbone application which
-uses the collection from the parent window to get items information.
-It as only two views: list view and profile view.</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="k">class</span> <span class="nx">AppView</span> <span class="k">extends</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span>
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>print.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="app.html">
+                app.coffee
+              </a>
+            
+              
+              <a class="source" href="collection.html">
+                collection.coffee
+              </a>
+            
+              
+              <a class="source" href="facets.html">
+                facets.coffee
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.coffee
+              </a>
+            
+              
+              <a class="source" href="facetArray.html">
+                facetArray.coffee
+              </a>
+            
+              
+              <a class="source" href="schema.html">
+                schema.coffee
+              </a>
+            
+              
+              <a class="source" href="facet.html">
+                facet.coffee
+              </a>
+            
+              
+              <a class="source" href="item.html">
+                item.coffee
+              </a>
+            
+              
+              <a class="source" href="print.html">
+                print.coffee
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.coffee
+              </a>
+            
+              
+              <a class="source" href="facet.html">
+                facet.coffee
+              </a>
+            
+              
+              <a class="source" href="item.html">
+                item.coffee
+              </a>
+            
+              
+              <a class="source" href="profile.html">
+                profile.coffee
+              </a>
+            
+              
+              <a class="source" href="cube.html">
+                cube.coffee
+              </a>
+            
+              
+              <a class="source" href="code.html">
+                code.coffee
+              </a>
+            
+              
+              <a class="source" href="server.config.html">
+                server.config.coffee
+              </a>
+            
+              
+              <a class="source" href="server.routes.html">
+                server.routes.coffee
+              </a>
+            
+              
+              <a class="source" href="server.settings.html">
+                server.settings.coffee
+              </a>
+            
+              
+              <a class="source" href="entityController.html">
+                entityController.coffee
+              </a>
+            
+              
+              <a class="source" href="extensionController.html">
+                extensionController.coffee
+              </a>
+            
+              
+              <a class="source" href="facetManager.html">
+                facetManager.coffee
+              </a>
+            
+              
+              <a class="source" href="itemController.html">
+                itemController.coffee
+              </a>
+            
+              
+              <a class="source" href="printController.html">
+                printController.coffee
+              </a>
+            
+              
+              <a class="source" href="schema.html">
+                schema.coffee
+              </a>
+            
+              
+              <a class="source" href="solrManager.html">
+                solrManager.coffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>print.coffee</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h3">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h3>Print View</h3>
+<p>Shows a selected piece of information from the main backbone app for printing</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>$ =&gt;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Actually a stripped down backbone application which uses the collection
+from the parent window to get items information. It as only two views:
+list view and profile view.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="class"><span class="keyword">class</span> <span class="title">AppView</span> <span class="keyword">extends</span> <span class="title">Backbone</span>.<span class="title">View</span></span>
 
 
-        <span class="nv">el: </span><span class="nx">$</span><span class="p">(</span><span class="s">&#39;#print&#39;</span><span class="p">)</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-3">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-3">&#182;</a>                          </div>                          <p>Template for list view</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="nv">templateList: </span><span class="nx">_</span><span class="p">.</span><span class="nx">template</span> <span class="nx">$</span><span class="p">(</span><span class="s">&#39;#item-table-template&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">()</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-4">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-4">&#182;</a>                          </div>                          <p>Template for profile view</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="nv">templateProfile: </span><span class="nx">_</span><span class="p">.</span><span class="nx">template</span> <span class="nx">$</span><span class="p">(</span><span class="s">&#39;#details-print-template&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">()</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-5">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-5">&#182;</a>                          </div>                          <h3 id="initializeapp">Initialize app</h3>
+        el: $(<span class="string">'#print'</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Template for list view</p>
 
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        templateList: _.template $(<span class="string">'#item-table-template'</span>).html()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Template for profile view</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        templateProfile: _.template $(<span class="string">'#details-print-template'</span>).html()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h3">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <h3>Initialize app</h3>
 <ol>
 <li>Get ID from querystring</li>
 <li>Get profile key from querystring to know if it should show a
 list view or a profile view.</li>
 <li>Show profile view or list view accordingly.</li>
-</ol>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="nv">initialize: </span><span class="p">()</span> <span class="o">=&gt;</span>
+</ol>
 
-            <span class="nv">id = </span><span class="nx">@getParameterByName</span><span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s">&#39;|&#39;</span><span class="p">)</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        initialize: () =&gt;
 
-            <span class="nv">profile = </span><span class="nx">@getParameterByName</span><span class="p">(</span><span class="s">&#39;profile&#39;</span><span class="p">)</span>
+            id = <span class="property">@getParameterByName</span>(<span class="string">'id'</span>).split(<span class="string">'|'</span>)
 
-            <span class="nv">col = </span><span class="k">new</span> <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">Collection</span>
-            <span class="nv">col.url = </span><span class="nx">@commonURL</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">collection</span><span class="p">.</span><span class="nx">total</span><span class="p">)</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-6">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-6">&#182;</a>                          </div>                          <p>Show profile view if appropriate</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>            <span class="nx">@showProfile</span> <span class="nx">id</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nx">id</span><span class="p">.</span><span class="nx">length</span> <span class="o">is</span> <span class="mi">1</span> <span class="o">and</span> <span class="nx">id</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-7">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-7">&#182;</a>                          </div>                          <p>Fetch collection</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>            <span class="nx">col</span><span class="p">.</span><span class="nx">fetch</span> <span class="nv">success: </span><span class="p">()</span> <span class="o">=&gt;</span>
+            profile = <span class="property">@getParameterByName</span>(<span class="string">'profile'</span>)
 
-                <span class="nx">@addTable</span><span class="p">()</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-8">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-8">&#182;</a>                          </div>                          <p>Add all items if theres more than 1</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>                <span class="k">if</span> <span class="nx">id</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">then</span> <span class="k">return</span> <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">id</span><span class="p">,</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span>
-                    <span class="k">return</span> <span class="nx">unless</span> <span class="nx">i</span>
-                    <span class="nx">@addOneList</span> <span class="nx">col</span><span class="p">.</span><span class="nx">get</span> <span class="nx">i</span>
+            col = <span class="keyword">new</span> window.opener.Collection
+            col.url = <span class="property">@commonURL</span>(<span class="number">0</span>, window.opener.collection.total)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Show profile view if appropriate</p>
 
-                <span class="nx">col</span><span class="p">.</span><span class="nx">each</span> <span class="p">(</span><span class="nx">m</span><span class="p">)</span> <span class="o">=&gt;</span>
-                    <span class="nx">@addOneList</span> <span class="nx">m</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-9">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-9">&#182;</a>                          </div>                          <p>Append jquery's tablesorter</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>                <span class="nx">@addTablesorter</span><span class="p">()</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-10">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-10">&#182;</a>                          </div>                          <p>Show a profile view instead of a list view</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="nv">showProfile: </span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="o">=&gt;</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="property">@showProfile</span> id[<span class="number">0</span>] <span class="keyword">if</span> id.length <span class="keyword">is</span> <span class="number">1</span> <span class="keyword">and</span> id[<span class="number">0</span>]</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Fetch collection</p>
 
-            <span class="nv">item = </span><span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">collection</span><span class="p">.</span><span class="nx">get</span> <span class="nx">id</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            col.fetch success: () =&gt;
 
-            <span class="nx">@$el</span><span class="p">.</span><span class="nx">html</span> <span class="nx">@templateProfile</span> <span class="nv">m: </span><span class="nx">item</span><span class="p">.</span><span class="nx">parseSubfields</span><span class="p">()</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-11">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-11">&#182;</a>                          </div>                          <p>Add table headers</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="nv">addTable: </span><span class="p">()</span> <span class="o">=&gt;</span>
+                <span class="property">@addTable</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Add all items if theres more than 1</p>
 
-            <span class="nv">template = </span><span class="nx">_</span><span class="p">.</span><span class="nx">template</span> <span class="nx">$</span><span class="p">(</span><span class="s">&#39;#table-template&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">()</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="keyword">if</span> id.length &gt; <span class="number">1</span> <span class="keyword">then</span> <span class="keyword">return</span> _.each id, (i) =&gt;
+                    <span class="keyword">return</span> <span class="keyword">unless</span> i
+                    <span class="property">@addOneList</span> col.get i
 
-            <span class="nx">@$el</span><span class="p">.</span><span class="nx">html</span> <span class="nx">template</span> <span class="p">{}</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-12">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-12">&#182;</a>                          </div>                          <p>Show a detailed view of a item in the rightmost pane</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="nv">addOneList: </span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span>
+                col.each (m) =&gt;
+                    <span class="property">@addOneList</span> m</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Append jquery&#39;s tablesorter</p>
 
-            <span class="nv">output = </span><span class="nx">@templateList</span> <span class="nv">m: </span><span class="nx">item</span><span class="p">.</span><span class="nx">parseSubfields</span><span class="p">()</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="property">@addTablesorter</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Show a profile view instead of a list view</p>
 
-            <span class="nx">$</span><span class="p">(</span><span class="s">&#39;tbody&#39;</span><span class="p">).</span><span class="nx">append</span> <span class="s">&#39;&lt;tr&gt;&#39;</span> <span class="o">+</span> <span class="nx">output</span> <span class="o">+</span> <span class="s">&#39;&lt;/tr&gt;&#39;</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-13">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-13">&#182;</a>                          </div>                          <p>Parse querystring and return values</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="nv">getParameterByName: </span><span class="nf">(name) -&gt;</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        showProfile: (id) =&gt;
 
-            <span class="nv">name = </span><span class="nx">name</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[\[]/</span><span class="p">,</span> <span class="s">&quot;\\[&quot;</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[\]]/</span><span class="p">,</span> <span class="s">&quot;\\]&quot;</span><span class="p">)</span>
-            <span class="nv">regexS = </span><span class="s">&quot;[\\?&amp;]&quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s">&quot;=([^&amp;</span><span class="err">#</span><span class="s">]*)&quot;</span>
-            <span class="nv">regex = </span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">regexS</span><span class="p">)</span>
-            <span class="nv">results = </span><span class="nx">regex</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">)</span>
-            <span class="k">return</span> <span class="s">&quot;&quot;</span> <span class="nx">unless</span> <span class="nx">results</span>
+            item = window.opener.collection.get id
 
-            <span class="nb">decodeURIComponent</span> <span class="nx">results</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\+/g</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">)</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-14">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-14">&#182;</a>                          </div>                          <p>Parses a given Date into a readable formatted string (DD MMMM YYYY)</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="nv">formatDate: </span><span class="p">(</span><span class="nx">date</span><span class="p">)</span> <span class="o">=&gt;</span>
+            <span class="property">@$el</span>.html <span class="property">@templateProfile</span> m: item.parseSubfields()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Add table headers</p>
 
-            <span class="nv">monthNames = </span><span class="p">[</span> <span class="s">&quot;Jan&quot;</span><span class="p">,</span> <span class="s">&quot;Feb&quot;</span><span class="p">,</span> <span class="s">&quot;Mar&quot;</span><span class="p">,</span> <span class="s">&quot;Apr&quot;</span><span class="p">,</span> <span class="s">&quot;May&quot;</span><span class="p">,</span> <span class="s">&quot;Jun&quot;</span><span class="p">,</span> <span class="s">&quot;Jul&quot;</span><span class="p">,</span>
-                <span class="s">&quot;Aug&quot;</span><span class="p">,</span> <span class="s">&quot;Sep&quot;</span><span class="p">,</span> <span class="s">&quot;Oct&quot;</span><span class="p">,</span> <span class="s">&quot;Nov&quot;</span><span class="p">,</span> <span class="s">&quot;Dec&quot;</span> <span class="p">]</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        addTable: () =&gt;
 
-            <span class="nv">d = </span><span class="k">new</span> <span class="nb">Date</span> <span class="nx">date</span>
-            <span class="nv">d = </span><span class="p">[</span>
-                <span class="nx">d</span><span class="p">.</span><span class="nx">getDate</span><span class="p">(),</span> <span class="nx">monthNames</span><span class="p">[</span><span class="nx">d</span><span class="p">.</span><span class="nx">getMonth</span><span class="p">()],</span> <span class="nx">d</span><span class="p">.</span><span class="nx">getFullYear</span><span class="p">()</span>
-            <span class="p">]</span>
-            <span class="nx">d</span><span class="p">.</span><span class="nx">join</span> <span class="s">&#39; &#39;</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-15">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-15">&#182;</a>                          </div>                          <p>Attach the tablesorter plugin to the items table</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="nv">addTablesorter: </span><span class="p">()</span> <span class="o">=&gt;</span>
+            template = _.template $(<span class="string">'#table-template'</span>).html()
 
-            <span class="nx">$</span><span class="p">(</span><span class="s">&#39;table&#39;</span><span class="p">)</span>
+            <span class="property">@$el</span>.html template {}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Show a detailed view of a item in the rightmost pane</p>
 
-                <span class="p">.</span><span class="nx">tablesorter</span> <span class="nv">sortList: </span><span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">ListSort</span><span class="p">,</span>
-                    <span class="nv">textExtraction: </span><span class="nx">@tableTextExtraction</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        addOneList: (item) =&gt;
 
-                <span class="p">.</span><span class="nx">bind</span> <span class="s">&#39;sortEnd&#39;</span><span class="p">,</span>
+            output = <span class="property">@templateList</span> m: item.parseSubfields()
 
-                    <span class="p">(</span><span class="nx">sorter</span><span class="p">)</span> <span class="o">=&gt;</span>
+            $(<span class="string">'tbody'</span>).append <span class="string">'&lt;tr&gt;'</span> + output + <span class="string">'&lt;/tr&gt;'</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Parse querystring and return values</p>
 
-                        <span class="nv">sort = </span><span class="nx">sorter</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">sortList</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        getParameterByName: (name) -&gt;
 
-                        <span class="nb">window</span><span class="p">.</span><span class="nv">opener.Settings.ListSort = </span><span class="nx">sort</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-16">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-16">&#182;</a>                          </div>                          <p>Check of admin in QS</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="nv">isAdmin: </span><span class="p">()</span> <span class="o">=&gt;</span>
+            name = name.replace(<span class="regexp">/[\[]/, "\\[").replace(/[\]]/</span>, <span class="string">"\\]"</span>)
+            regexS = <span class="string">"[\\?&amp;]"</span> + name + <span class="string">"=([^&amp;#]*)"</span>
+            regex = <span class="keyword">new</span> RegExp(regexS)
+            results = regex.exec(window.location.search)
+            <span class="keyword">return</span> <span class="string">""</span> <span class="keyword">unless</span> results
 
-            <span class="nv">qs = </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s">&#39;?&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            decodeURIComponent results[<span class="number">1</span>].replace(<span class="regexp">/\+/g</span>, <span class="string">" "</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Parses a given Date into a readable formatted string (DD MMMM YYYY)</p>
 
-            <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s">&#39;admin=&#39;</span><span class="p">).</span><span class="nx">test</span> <span class="nx">qs</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-17">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-17">&#182;</a>                          </div>                          <p>Form a URL with the basic prefix (i.e. /collection) and appends all
-filter parameters on the querystring.</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="nv">commonURL: </span><span class="p">(</span><span class="nx">page</span><span class="p">,</span> <span class="nx">rows</span><span class="p">)</span> <span class="o">=&gt;</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        formatDate: (date) =&gt;
 
-            <span class="nv">url = </span><span class="s">&quot;collection/&quot;</span>
-            <span class="nv">fs = </span><span class="p">[]</span>
+            monthNames = [ <span class="string">"Jan"</span>, <span class="string">"Feb"</span>, <span class="string">"Mar"</span>, <span class="string">"Apr"</span>, <span class="string">"May"</span>, <span class="string">"Jun"</span>, <span class="string">"Jul"</span>,
+                <span class="string">"Aug"</span>, <span class="string">"Sep"</span>, <span class="string">"Oct"</span>, <span class="string">"Nov"</span>, <span class="string">"Dec"</span> ]
 
-            <span class="nx">fs</span><span class="p">.</span><span class="nx">push</span> <span class="s">&quot;page=</span><span class="si">#{</span><span class="nx">page</span><span class="si">}</span><span class="s">&quot;</span> <span class="k">if</span> <span class="nx">page</span> <span class="o">isnt</span> <span class="kc">undefined</span>
-            <span class="nx">fs</span><span class="p">.</span><span class="nx">push</span> <span class="s">&quot;rows=</span><span class="si">#{</span><span class="nx">rows</span><span class="si">}</span><span class="s">&quot;</span> <span class="k">if</span> <span class="nx">rows</span> <span class="o">isnt</span> <span class="kc">undefined</span>
-            <span class="nx">fs</span><span class="p">.</span><span class="nx">push</span> <span class="s">&quot;sort=</span><span class="si">#{</span><span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">collection</span><span class="p">.</span><span class="nx">sort</span><span class="si">}</span><span class="s">&quot;</span>
+            d = <span class="keyword">new</span> Date date
+            d = [
+                d.getDate(), monthNames[d.getMonth()], d.getFullYear()
+            ]
+            d.join <span class="string">' '</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Attach the tablesorter plugin to the items table</p>
 
-            <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nb">window</span><span class="p">.</span><span class="nx">opener</span><span class="p">.</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">Schema</span><span class="p">.</span><span class="nx">getFacets</span><span class="p">(),</span> <span class="nf">(field) -&gt;</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        addTablesorter: () =&gt;
 
-                <span class="nx">fs</span><span class="p">.</span><span class="nx">push</span> <span class="s">&#39;facet.field=&#39;</span> <span class="o">+</span> <span class="nx">field</span><span class="p">.</span><span class="nx">id</span>
+            $(<span class="string">'table'</span>)
 
-            <span class="nx">url</span> <span class="o">+=</span> <span class="s">&#39;?&#39;</span> <span class="o">+</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">join</span> <span class="s">&#39;&amp;&#39;</span> <span class="k">if</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">length</span>
-            <span class="nx">url</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-18">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-18">&#182;</a>                          </div>                          <p>Lets create our app!</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="vi">@App = </span><span class="k">new</span> <span class="nx">AppView</span>
+                .tablesorter sortList: window.opener.Settings.ListSort,
+                    textExtraction: <span class="property">@tableTextExtraction</span>
 
-</pre></div>                      </td>                  </tr>                                </tbody>          </table>      </div>  </body>  </html>
+                .bind <span class="string">'sortEnd'</span>,
+
+                    (sorter) =&gt;
+
+                        sort = sorter.target.config.sortList
+
+                        window.opener.Settings.ListSort = sort</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Check of admin in QS</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        isAdmin: () =&gt;
+
+            qs = window.location.search.split(<span class="string">'?'</span>)[<span class="number">1</span>]
+
+            <span class="keyword">new</span> RegExp(<span class="string">'admin='</span>).test qs</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>Form a URL with the basic prefix (i.e. /collection) and appends all
+filter parameters on the querystring.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        commonURL: (page, rows) =&gt;
+
+            url = <span class="string">"collection/"</span>
+            fs = []
+
+            fs.push <span class="string">"page=<span class="subst">#{page}</span>"</span> <span class="keyword">if</span> page <span class="keyword">isnt</span> <span class="literal">undefined</span>
+            fs.push <span class="string">"rows=<span class="subst">#{rows}</span>"</span> <span class="keyword">if</span> rows <span class="keyword">isnt</span> <span class="literal">undefined</span>
+            fs.push <span class="string">"sort=<span class="subst">#{window.opener.collection.sort}</span>"</span>
+
+            _.each window.opener.Settings.Schema.getFacets(), (field) -&gt;
+
+                fs.push <span class="string">'facet.field='</span> + field.id
+
+            url += <span class="string">'?'</span> + fs.join <span class="string">'&amp;'</span> <span class="keyword">if</span> fs.length
+            url</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Lets create our app!</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="property">@App</span> = <span class="keyword">new</span> AppView</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

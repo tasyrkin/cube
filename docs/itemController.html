@@ -1,159 +1,874 @@
-<!DOCTYPE html>  <html>  <head>      <title>itemController.coffee</title>      <meta http-equiv="content-type" content="text/html; charset=UTF-8">      <link rel="stylesheet" media="all" href="zocco.css" />  </head>  <body>      <div id="container">          <div id="background"></div>                        <div id="jumpWrapper">                  <div id="jumpPage">                      <label>Files...</label>                                                                  <a class="source" href="app.html">                          app.coffee                      </a>                                                                  <a class="source" href="collection.html">                          collection.coffee                      </a>                                                                  <a class="source" href="facets.html">                          facets.coffee                      </a>                                                                  <a class="source" href="index.html">                          index.coffee                      </a>                                                                  <a class="source" href="facetArray.html">                          facetArray.coffee                      </a>                                                                  <a class="source" href="schema.html">                          schema.coffee                      </a>                                                                  <a class="source" href="facet.html">                          facet.coffee                      </a>                                                                  <a class="source" href="item.html">                          item.coffee                      </a>                                                                  <a class="source" href="print.html">                          print.coffee                      </a>                                                                  <a class="source" href="routes.html">                          routes.coffee                      </a>                                                                  <a class="source" href="facet.html">                          facet.coffee                      </a>                                                                  <a class="source" href="item.html">                          item.coffee                      </a>                                                                  <a class="source" href="profile.html">                          profile.coffee                      </a>                                                                  <a class="source" href="cube.html">                          cube.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="server.config.html">                          server.config.coffee                      </a>                                                                  <a class="source" href="server.routes.html">                          server.routes.coffee                      </a>                                                                  <a class="source" href="server.settings.html">                          server.settings.coffee                      </a>                                                                  <a class="source" href="entityController.html">                          entityController.coffee                      </a>                                                                  <a class="source" href="extensionController.html">                          extensionController.coffee                      </a>                                                                  <a class="source" href="facetManager.html">                          facetManager.coffee                      </a>                                                                  <a class="source" href="itemController.html">                          itemController.coffee                      </a>                                                                  <a class="source" href="printController.html">                          printController.coffee                      </a>                                                                  <a class="source" href="schema.html">                          schema.coffee                      </a>                                                                  <a class="source" href="solrManager.html">                          solrManager.coffee                      </a>                                                                  <a class="source" href="genSchema.html">                          genSchema.coffee                      </a>                                                                  <a class="source" href="importer-fortunes.html">                          importer-fortunes.coffee                      </a>                                                                  <a class="source" href="importer-hosts.html">                          importer-hosts.coffee                      </a>                                                                  <a class="source" href="importer-projects.html">                          importer-projects.coffee                      </a>                                        </div>              </div>                    <table cellpadding="0" cellspacing="0">              <thead>                  <tr>                      <th class="docs">                          <h1>                              itemController.coffee                          </h1>                      </th>                      <th class="code">                      </th>                  </tr>              </thead>              <tbody>                                                      <tr id="section-1">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-1">&#182;</a>                          </div>                          <h1 id="">#</h1>
+<!DOCTYPE html>
 
+<html>
+<head>
+  <title>#</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="app.html">
+                app.coffee
+              </a>
+            
+              
+              <a class="source" href="collection.html">
+                collection.coffee
+              </a>
+            
+              
+              <a class="source" href="facets.html">
+                facets.coffee
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.coffee
+              </a>
+            
+              
+              <a class="source" href="facetArray.html">
+                facetArray.coffee
+              </a>
+            
+              
+              <a class="source" href="schema.html">
+                schema.coffee
+              </a>
+            
+              
+              <a class="source" href="facet.html">
+                facet.coffee
+              </a>
+            
+              
+              <a class="source" href="item.html">
+                item.coffee
+              </a>
+            
+              
+              <a class="source" href="print.html">
+                print.coffee
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.coffee
+              </a>
+            
+              
+              <a class="source" href="facet.html">
+                facet.coffee
+              </a>
+            
+              
+              <a class="source" href="item.html">
+                item.coffee
+              </a>
+            
+              
+              <a class="source" href="profile.html">
+                profile.coffee
+              </a>
+            
+              
+              <a class="source" href="cube.html">
+                cube.coffee
+              </a>
+            
+              
+              <a class="source" href="code.html">
+                code.coffee
+              </a>
+            
+              
+              <a class="source" href="server.config.html">
+                server.config.coffee
+              </a>
+            
+              
+              <a class="source" href="server.routes.html">
+                server.routes.coffee
+              </a>
+            
+              
+              <a class="source" href="server.settings.html">
+                server.settings.coffee
+              </a>
+            
+              
+              <a class="source" href="entityController.html">
+                entityController.coffee
+              </a>
+            
+              
+              <a class="source" href="extensionController.html">
+                extensionController.coffee
+              </a>
+            
+              
+              <a class="source" href="facetManager.html">
+                facetManager.coffee
+              </a>
+            
+              
+              <a class="source" href="itemController.html">
+                itemController.coffee
+              </a>
+            
+              
+              <a class="source" href="printController.html">
+                printController.coffee
+              </a>
+            
+              
+              <a class="source" href="schema.html">
+                schema.coffee
+              </a>
+            
+              
+              <a class="source" href="solrManager.html">
+                solrManager.coffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h1">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h1>#</h1>
 <p>ItemController.coffee</p>
+<p>Serves routes for items. i.e. Any url that contains one or more ids.</p>
+<p>@author: Emanuel Lauria <a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#x65;&#x6d;&#x61;&#110;&#117;&#101;&#108;&#46;&#x6c;&#97;&#117;&#x72;&#x69;&#x61;&#64;&#x7a;&#97;&#x6c;&#x61;&#x6e;&#100;&#x6f;&#x2e;&#x64;&#101;">&#x65;&#x6d;&#x61;&#110;&#117;&#101;&#108;&#46;&#x6c;&#97;&#117;&#x72;&#x69;&#x61;&#64;&#x7a;&#97;&#x6c;&#x61;&#x6e;&#100;&#x6f;&#x2e;&#x64;&#101;</a></p>
+<h1>#</h1>
+<p>Requirements</p>
 
-<p>@author: Emanuel Lauria <a href="&#109;&#97;&#105;&#108;t&#x6F;:&#x65;&#x6D;&#x61;&#x6E;&#x75;&#x65;&#x6C;&#46;&#108;&#x61;&#117;&#114;&#x69;&#x61;&#x40;&#x7A;&#x61;&#108;&#x61;&#110;&#100;&#x6F;&#46;&#100;&#x65;">&#x65;&#x6D;&#x61;&#x6E;&#x75;&#x65;&#x6C;&#46;&#108;&#x61;&#117;&#114;&#x69;&#x61;&#x40;&#x7A;&#x61;&#108;&#x61;&#110;&#100;&#x6F;&#46;&#100;&#x65;</a></p>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>fs    = require <span class="string">'fs'</span>
+_     = require <span class="string">'underscore'</span>
+async = require <span class="string">'async'</span>
+im    = require <span class="string">"imagemagick"</span>
+mime  = require <span class="string">"mime-magic"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Server settings</p>
 
-<h1 id="">#</h1>                      </td>                      <td class="code">                          <div class="highlight"><pre><span class="nv">fs    = </span><span class="nx">require</span> <span class="s">&#39;fs&#39;</span>
-<span class="nv">_     = </span><span class="nx">require</span> <span class="s">&#39;underscore&#39;</span>
-<span class="nv">async = </span><span class="nx">require</span> <span class="s">&#39;async&#39;</span>
-<span class="nv">im    = </span><span class="nx">require</span> <span class="s">&quot;imagemagick&quot;</span>
-<span class="nv">mime  = </span><span class="nx">require</span> <span class="s">&quot;mime-magic&quot;</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>settings = require <span class="string">"<span class="subst">#{__dirname}</span>/../server.settings.coffee"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Solr Manager to add/remove solr suffixes</p>
 
-<span class="nv">settings = </span><span class="nx">require</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../server.settings.coffee&quot;</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>SolrManager = require <span class="string">'./solrManager.coffee'</span>
 
-<span class="nv">SolrManager = </span><span class="nx">require</span> <span class="s">&#39;./solrManager.coffee&#39;</span>
+<span class="class"><span class="keyword">class</span> <span class="title">ItemController</span></span>
 
-<span class="k">class</span> <span class="nx">ItemController</span>
-    <span class="nv">module.exports = </span><span class="nx">ItemController</span>
+    module.exports = ItemController</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Routes</p>
 
-    <span class="nv">constructor: </span><span class="nf">(app) -&gt;</span>
-        <span class="nx">app</span><span class="p">.</span><span class="nx">get</span>     <span class="s">&quot;/:entity/collection/:id&quot;</span><span class="p">,</span>  <span class="p">(</span><span class="nx">a</span><span class="p">...)</span>  <span class="o">=&gt;</span> <span class="nx">@get</span>     <span class="nx">a</span><span class="p">...</span>
-        <span class="nx">app</span><span class="p">.</span><span class="nx">post</span>    <span class="s">&quot;/:entity/collection&quot;</span><span class="p">,</span>      <span class="p">(</span><span class="nx">a</span><span class="p">...)</span>  <span class="o">=&gt;</span> <span class="nx">@post</span>    <span class="nx">a</span><span class="p">...</span>
-        <span class="nx">app</span><span class="p">.</span><span class="nx">put</span>     <span class="s">&quot;/:entity/collection/:id&quot;</span><span class="p">,</span>  <span class="p">(</span><span class="nx">a</span><span class="p">...)</span>  <span class="o">=&gt;</span> <span class="nx">@put</span>     <span class="nx">a</span><span class="p">...</span>
-        <span class="nx">app</span><span class="p">.</span><span class="k">delete</span>  <span class="s">&quot;/:entity/collection/:id&quot;</span><span class="p">,</span>  <span class="p">(</span><span class="nx">a</span><span class="p">...)</span>  <span class="o">=&gt;</span> <span class="nx">@</span><span class="k">delete</span>  <span class="nx">a</span><span class="p">...</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    constructor: (app) -&gt;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Get a single item</p>
 
-    <span class="nv">get: </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nv">name = </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">entity</span>
-        <span class="nv">id = </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s">&#39;|&#39;</span><span class="p">)</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-2">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-2">&#182;</a>                          </div>                          <p>Return just 1 item</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="k">if</span> <span class="nx">id</span><span class="p">.</span><span class="nx">length</span> <span class="o">is</span> <span class="mi">1</span> <span class="k">then</span> <span class="k">return</span> <span class="nx">@getItemById</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">id</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nf">(docs) -&gt;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="nx">docs</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-3">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-3">&#182;</a>                          </div>                          <p>Return an array of items</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="nv">docs = </span><span class="p">[]</span>
-        <span class="nx">async</span><span class="p">.</span><span class="nx">forEach</span> <span class="nx">id</span><span class="p">,</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="nx">@getItemById</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="nf">(item) -&gt;</span>
-                <span class="nx">docs</span><span class="p">.</span><span class="nx">push</span> <span class="nx">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="nx">cb</span><span class="p">()</span>
-        <span class="p">,</span> <span class="nf">(err) -&gt;</span>
-            <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-            <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="nx">docs</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        app.get     <span class="string">"/:entity/collection/:id"</span>,  (a...)  =&gt; <span class="property">@get</span>     a...</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Create a new item</p>
 
-    <span class="nv">post: </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nv">name = </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">entity</span>
-        <span class="nv">solrManager = </span><span class="k">new</span> <span class="nx">SolrManager</span> <span class="nx">name</span>
-        <span class="nv">db = </span><span class="nx">solrManager</span><span class="p">.</span><span class="nx">createClient</span><span class="p">()</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-4">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-4">&#182;</a>                          </div>                          <p>Create and ID for the new item</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="nv">id = </span><span class="nx">@generateId</span><span class="p">()</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-5">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-5">&#182;</a>                          </div>                          <p>Get the id of the picture field</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="nv">picKey = </span><span class="nx">@getPictureFields</span><span class="p">(</span><span class="nx">name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">?</span><span class="p">.</span><span class="nx">id</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-6">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-6">&#182;</a>                          </div>                          <p>Create a new item with the id</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="nv">item = </span><span class="nx">_</span><span class="p">.</span><span class="nx">extend</span> <span class="p">{</span><span class="nv">id: </span><span class="nx">id</span><span class="p">},</span> <span class="nx">solrManager</span><span class="p">.</span><span class="nx">addObjSuffix</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-7">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-7">&#182;</a>                          </div>                          <p>Send the formed item with id unless there is a picture</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="k">if</span> <span class="o">!</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">[</span><span class="nx">picKey</span><span class="p">]</span>
-            <span class="k">return</span> <span class="nx">@addItem</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">solrManager</span><span class="p">,</span> <span class="nx">item</span><span class="p">,</span> <span class="p">(</span><span class="nx">_item</span><span class="p">)</span> <span class="o">=&gt;</span>
-                <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="nx">solrManager</span><span class="p">.</span><span class="nx">removeSuffix</span> <span class="nx">_item</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-8">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-8">&#182;</a>                          </div>                          <p>Get pic url</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="nv">tmp_pic = </span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../public/</span><span class="si">#{</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">[</span><span class="nx">picKey</span><span class="p">]</span><span class="si">}</span><span class="s">&quot;</span>
-        <span class="nv">target_file = </span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">id</span><span class="si">}</span><span class="s">.jpg&quot;</span>
-        <span class="nv">target_path = </span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../public/images/</span><span class="si">#{</span><span class="nx">name</span><span class="si">}</span><span class="s">/</span><span class="si">#{</span><span class="nx">target_file</span><span class="si">}</span><span class="s">&quot;</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-9">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-9">&#182;</a>                          </div>                          <p>Move the picture to its final place and send item object back</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>        <span class="nx">fs</span><span class="p">.</span><span class="nx">rename</span> <span class="nx">tmp_pic</span><span class="p">,</span> <span class="nx">target_path</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-            <span class="nv">key = </span><span class="nx">solrManager</span><span class="p">.</span><span class="nx">addSuffix</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">picKey</span><span class="p">)</span>
-            <span class="nx">item</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/images/</span><span class="si">#{</span><span class="nx">name</span><span class="si">}</span><span class="s">/</span><span class="si">#{</span><span class="nx">target_file</span><span class="si">}</span><span class="s">&quot;</span> <span class="nx">unless</span> <span class="nx">err</span>
-            <span class="nx">@addItem</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">solrManager</span><span class="p">,</span> <span class="nx">item</span><span class="p">,</span> <span class="p">(</span><span class="nx">_item</span><span class="p">)</span> <span class="o">=&gt;</span>
-                <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="nx">solrManager</span><span class="p">.</span><span class="nx">removeSuffix</span> <span class="nx">_item</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        app.post    <span class="string">"/:entity/collection"</span>,      (a...)  =&gt; <span class="property">@post</span>    a...</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Update an existing item</p>
 
-    <span class="nv">put: </span><span class="nf">(req, res) -&gt;</span>
-        <span class="nv">name = </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">entity</span>
-        <span class="nv">solrManager = </span><span class="k">new</span> <span class="nx">SolrManager</span> <span class="nx">name</span>
-        <span class="nv">db = </span><span class="nx">solrManager</span><span class="p">.</span><span class="nx">createClient</span><span class="p">()</span>
-        <span class="nv">picKey = </span><span class="nx">solrManager</span><span class="p">.</span><span class="nx">addSuffix</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">@getPictureFields</span><span class="p">(</span><span class="nx">name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">?</span><span class="p">.</span><span class="nx">id</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        app.put     <span class="string">"/:entity/collection/:id"</span>,  (a...)  =&gt; <span class="property">@put</span>     a...</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Remove an item</p>
 
-        <span class="nx">@getItemById</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="nv">item = </span><span class="nx">solrManager</span><span class="p">.</span><span class="nx">addObjSuffix</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-            <span class="nv">req.body = </span><span class="nx">solrManager</span><span class="p">.</span><span class="nx">addObjSuffix</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        app.<span class="keyword">delete</span>  <span class="string">"/:entity/collection/:id"</span>,  (a...)  =&gt; <span class="property">@delete</span>  a...</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Get an item or an array of items from IDs</p>
 
-            <span class="k">if</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">admin</span> <span class="o">isnt</span> <span class="s">&#39;yes&#39;</span>
-                <span class="nv">protectedFields = </span><span class="nx">@getFieldsWithProperty</span> <span class="nx">name</span><span class="p">,</span> <span class="s">&#39;admin&#39;</span>
-                <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">protectedFields</span><span class="p">,</span> <span class="p">(</span><span class="nx">f</span><span class="p">)</span> <span class="o">=&gt;</span>
-                    <span class="nv">f = </span><span class="nx">solrManager</span><span class="p">.</span><span class="nx">addSuffix</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">f</span><span class="p">)</span>
-                    <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">[</span><span class="nx">f</span><span class="p">.</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">item</span><span class="p">[</span><span class="nx">f</span><span class="p">.</span><span class="nx">key</span><span class="p">]</span>
-                    <span class="k">if</span> <span class="nx">f</span><span class="p">.</span><span class="nx">multivalue</span>
-                        <span class="nv">multivalueField = </span><span class="nx">item</span><span class="p">[</span><span class="nx">f</span><span class="p">.</span><span class="nx">key</span><span class="p">].</span><span class="nx">sort</span><span class="p">().</span><span class="nx">join</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)</span>
-                        <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">[</span><span class="s">&quot;sort_</span><span class="si">#{</span><span class="nx">f</span><span class="p">.</span><span class="nx">key</span><span class="si">}</span><span class="s">-s&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">multivalueField</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    get: (req, res) =&gt;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Name of entity</p>
 
-            <span class="k">if</span> <span class="o">!</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">[</span><span class="nx">picKey</span><span class="p">]</span> <span class="o">or</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">[</span><span class="nx">picKey</span><span class="p">]</span> <span class="o">is</span> <span class="nx">item</span><span class="p">[</span><span class="nx">picKey</span><span class="p">]</span>
-                <span class="k">return</span> <span class="nx">@addItem</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">solrManager</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="p">(</span><span class="nx">_item</span><span class="p">)</span> <span class="o">=&gt;</span>
-                    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="nx">solrManager</span><span class="p">.</span><span class="nx">removeSuffix</span> <span class="nx">_item</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        name = req.params.entity</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Item ID</p>
 
-            <span class="nx">@updatePic</span> <span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">[</span><span class="nx">picKey</span><span class="p">],</span> <span class="nx">item</span><span class="p">[</span><span class="nx">picKey</span><span class="p">],</span> <span class="p">(</span><span class="nx">path</span><span class="p">)</span> <span class="o">=&gt;</span>
-                <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">[</span><span class="nx">picKey</span><span class="p">]</span> <span class="o">=</span> <span class="nx">path</span>
-                <span class="nx">@addItem</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">solrManager</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="p">(</span><span class="nx">_item</span><span class="p">)</span> <span class="o">=&gt;</span>
-                    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="nx">solrManager</span><span class="p">.</span><span class="nx">removeSuffix</span> <span class="nx">_item</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        id = req.params.id.split(<span class="string">'|'</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Return just 1 item</p>
 
-    <span class="nv">updatePic: </span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">bodyPic</span><span class="p">,</span> <span class="nx">itemPic</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nv">tmp_pic = </span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../public/</span><span class="si">#{</span><span class="nx">bodyPic</span><span class="si">}</span><span class="s">&quot;</span>
-        <span class="nv">rnd = </span><span class="nx">bodyPic</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
-        <span class="nv">target_file = </span><span class="s">&quot;/images/</span><span class="si">#{</span><span class="nx">name</span><span class="si">}</span><span class="s">/</span><span class="si">#{</span><span class="nx">id</span><span class="si">}</span><span class="s">_</span><span class="si">#{</span><span class="nx">rnd</span><span class="si">}</span><span class="s">.jpg&quot;</span>
-        <span class="nv">target_path = </span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../public/</span><span class="si">#{</span><span class="nx">target_file</span><span class="si">}</span><span class="s">&quot;</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> id.length <span class="keyword">is</span> <span class="number">1</span> <span class="keyword">then</span> <span class="keyword">return</span> <span class="property">@getItemById</span> name, id[<span class="number">0</span>], (docs) -&gt;
+            res.send docs</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Return an array of items</p>
 
-        <span class="nx">fs</span><span class="p">.</span><span class="nx">stat</span> <span class="nx">tmp_pic</span><span class="p">,</span> <span class="nf">(err, stat) -&gt;</span>
-            <span class="k">if</span> <span class="nx">err</span> <span class="k">then</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">&quot;ERROR[uid=</span><span class="si">#{</span><span class="nx">id</span><span class="si">}</span><span class="s">]: No uploaded picture&quot;</span>
-            <span class="nx">fs</span><span class="p">.</span><span class="nx">unlink</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../public/</span><span class="si">#{</span><span class="nx">itemPic</span><span class="si">}</span><span class="s">&quot;</span><span class="p">,</span> <span class="nf">(err) -&gt;</span>
-                <span class="nx">fs</span><span class="p">.</span><span class="nx">rename</span> <span class="nx">tmp_pic</span><span class="p">,</span> <span class="nx">target_path</span><span class="p">,</span> <span class="nf">(err) -&gt;</span>
-                    <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-                    <span class="nx">cb</span> <span class="nx">target_file</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        docs = []
 
-    <span class="k">delete</span><span class="o">:</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nv">name = </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">entity</span>
-        <span class="nv">id = </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span>
-        <span class="nv">solrManager = </span><span class="k">new</span> <span class="nx">SolrManager</span> <span class="nx">name</span>
-        <span class="nv">db = </span><span class="nx">solrManager</span><span class="p">.</span><span class="nx">createClient</span><span class="p">()</span>
-        <span class="nv">picKey = </span><span class="nx">@getPictureFields</span><span class="p">(</span><span class="nx">name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">?</span><span class="p">.</span><span class="nx">id</span>
+        async.forEach id, (id, cb) =&gt;
+            <span class="property">@getItemById</span> name, id, (item) -&gt;
+                docs.push item[<span class="number">0</span>]
+                cb()
+        , (err) -&gt;
+            <span class="keyword">throw</span> err <span class="keyword">if</span> err
+            <span class="keyword">return</span> res.send docs</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Create a new item</p>
 
-        <span class="nx">@getItemById</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="p">(</span><span class="nx">docs</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">docs</span><span class="p">,</span> <span class="nf">(item) -&gt;</span>
-                <span class="nx">solrManager</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">deleteByID</span> <span class="nx">id</span><span class="p">,</span> <span class="nf">(err, result) -&gt;</span>
-                    <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-                    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="nx">result</span>
-                <span class="k">return</span> <span class="nx">unless</span> <span class="nx">picKey</span>
-                <span class="nv">imgPath = </span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../public/</span><span class="si">#{</span><span class="nx">item</span><span class="p">[</span><span class="nx">picKey</span><span class="p">]</span><span class="si">}</span><span class="s">&quot;</span>
-                <span class="nx">fs</span><span class="p">.</span><span class="nx">unlink</span> <span class="nx">imgPath</span><span class="p">,</span> <span class="nf">(err) -&gt;</span>
-                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">&quot;Failed to remove pic for user </span><span class="si">#{</span><span class="nx">id</span><span class="si">}</span><span class="s">&quot;</span> <span class="k">if</span> <span class="nx">err</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    post: (req, res) =&gt;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Entity  name</p>
 
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        name = req.params.entity</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Create solr manager for this entity</p>
 
-    <span class="nv">getItemById: </span><span class="nf">(name, id, cb) -&gt;</span>
-        <span class="nv">solrManager = </span><span class="k">new</span> <span class="nx">SolrManager</span> <span class="nx">name</span>
-        <span class="nv">db = </span><span class="nx">solrManager</span><span class="p">.</span><span class="nx">createClient</span><span class="p">()</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        solrManager = <span class="keyword">new</span> SolrManager name
 
-        <span class="nv">query = </span><span class="nx">db</span><span class="p">.</span><span class="nx">createQuery</span><span class="p">()</span>
-            <span class="p">.</span><span class="nx">q</span><span class="p">(</span><span class="s">&quot;id:</span><span class="si">#{</span><span class="nx">id</span><span class="si">}</span><span class="s">&quot;</span><span class="p">)</span>
-            <span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-            <span class="p">.</span><span class="nx">rows</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+        db = solrManager.createClient()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>Create and ID for the new item</p>
 
-        <span class="nx">db</span><span class="p">.</span><span class="nx">search</span> <span class="nx">query</span><span class="p">,</span> <span class="nf">(err, result) -&gt;</span>
-            <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-            <span class="nv">docs = </span><span class="p">[]</span>
-            <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">result</span><span class="p">.</span><span class="nx">response</span><span class="o">?</span><span class="p">.</span><span class="nx">docs</span><span class="p">,</span> <span class="nf">(doc) -&gt;</span>
-                <span class="nx">docs</span><span class="p">.</span><span class="nx">push</span> <span class="nx">solrManager</span><span class="p">.</span><span class="nx">removeSuffix</span> <span class="nx">doc</span>
-            <span class="nx">cb</span> <span class="nx">docs</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        id = <span class="property">@generateId</span>()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Get the id of the picture field</p>
 
-    <span class="nv">getPictureFields: </span><span class="nf">(name) -&gt;</span>
-        <span class="nv">schema = </span><span class="nx">require</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../extensions/</span><span class="si">#{</span><span class="nx">name</span><span class="si">}</span><span class="s">/schema.json&quot;</span>
-        <span class="nv">arr = </span><span class="p">[]</span>
-        <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">schema</span><span class="p">,</span> <span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="nx">arr</span><span class="p">.</span><span class="nx">push</span> <span class="nx">o</span> <span class="k">if</span> <span class="nx">o</span><span class="p">.</span><span class="nx">type</span> <span class="o">is</span> <span class="s">&quot;img&quot;</span>
-        <span class="nx">arr</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        picKey = <span class="property">@getPictureFields</span>(name)[<span class="number">0</span>]?.id</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>Create a new item with id</p>
 
-    <span class="nv">addItem: </span><span class="p">(</span><span class="nx">res</span><span class="p">,</span> <span class="nx">solrManager</span><span class="p">,</span> <span class="nx">item</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nv">_item = </span><span class="nx">_</span><span class="p">.</span><span class="nx">extend</span> <span class="p">{},</span> <span class="nx">item</span>
-        <span class="nx">solrManager</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">add</span> <span class="p">[</span><span class="nx">item</span><span class="p">],</span> <span class="nf">(err, result) -&gt;</span>
-            <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-            <span class="nx">cb</span> <span class="nx">_item</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-10">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-10">&#182;</a>                          </div>                          <p>Get all schema fields that cointain a property\
-TODO Get from schema class</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="nv">getFieldsWithProperty: </span><span class="nf">(name, p) -&gt;</span>
-        <span class="nv">schema = </span><span class="nx">require</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../extensions/</span><span class="si">#{</span><span class="nx">name</span><span class="si">}</span><span class="s">/schema.json&quot;</span>
-        <span class="nv">arr = </span><span class="p">[]</span>
-        <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">schema</span><span class="p">,</span> <span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="nx">arr</span><span class="p">.</span><span class="nx">push</span> <span class="nx">o</span> <span class="k">if</span> <span class="nx">o</span><span class="p">[</span><span class="nx">p</span><span class="p">]</span>
-        <span class="nx">arr</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        item = _.extend {id: id}, solrManager.addObjSuffix name, req.body</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>Send the formed item with id unless there is a picture</p>
 
-    <span class="nv">getFieldsByType: </span><span class="nf">(name, t) -&gt;</span>
-        <span class="nv">schema = </span><span class="nx">require</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../extensions/</span><span class="si">#{</span><span class="nx">name</span><span class="si">}</span><span class="s">/schema.json&quot;</span>
-        <span class="nv">arr = </span><span class="p">[]</span>
-        <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">schema</span><span class="p">,</span> <span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="nx">arr</span><span class="p">.</span><span class="nx">push</span> <span class="nx">o</span> <span class="k">if</span> <span class="nx">o</span><span class="p">.</span><span class="nx">type</span> <span class="o">is</span> <span class="nx">t</span>
-        <span class="nx">arr</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-11">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-11">&#182;</a>                          </div>                          <p>Generate an ID for the item on the db</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="nv">generateId: </span><span class="nf">() -&gt;</span>
-        <span class="nv">chars = </span><span class="s">&quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;</span>
-        <span class="nv">today = </span><span class="k">new</span> <span class="nb">Date</span><span class="p">()</span>
-        <span class="nv">result = </span><span class="nx">today</span><span class="p">.</span><span class="nx">valueOf</span><span class="p">().</span><span class="nx">toString</span> <span class="mi">16</span>
-        <span class="nx">result</span> <span class="o">+=</span> <span class="nx">chars</span><span class="p">.</span><span class="nx">substr</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">chars</span><span class="p">.</span><span class="nx">length</span><span class="p">),</span> <span class="mi">1</span>
-        <span class="nx">result</span> <span class="o">+=</span> <span class="nx">chars</span><span class="p">.</span><span class="nx">substr</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">chars</span><span class="p">.</span><span class="nx">length</span><span class="p">),</span> <span class="mi">1</span>
-        <span class="nx">result</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> !req.body[picKey]
+            <span class="keyword">return</span> <span class="property">@addItem</span> res, solrManager, item, (_item) =&gt;
+                res.send solrManager.removeSuffix _item</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Get pic url</p>
 
-</pre></div>                      </td>                  </tr>                                </tbody>          </table>      </div>  </body>  </html>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        tmp_pic = <span class="string">"<span class="subst">#{__dirname}</span>/../public/<span class="subst">#{req.body[picKey]}</span>"</span>
+        target_file = <span class="string">"<span class="subst">#{id}</span>.jpg"</span>
+        target_path = <span class="string">"<span class="subst">#{__dirname}</span>/../public/images/<span class="subst">#{name}</span>/<span class="subst">#{target_file}</span>"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>Move the picture to its final place and send item object back</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        fs.rename tmp_pic, target_path, (err) =&gt;
+            <span class="keyword">throw</span> err <span class="keyword">if</span> err
+            key = solrManager.addSuffix(name, picKey)
+            item[key] = <span class="string">"/images/<span class="subst">#{name}</span>/<span class="subst">#{target_file}</span>"</span> <span class="keyword">unless</span> err
+            <span class="property">@addItem</span> res, solrManager, item, (_item) =&gt;
+                res.send solrManager.removeSuffix _item</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>Update an item</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    put: (req, res) -&gt;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>Entity name</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        name = req.params.entity</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>Solr manager for this entity to handle suffixes</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        solrManager = <span class="keyword">new</span> SolrManager name
+
+        db = solrManager.createClient()</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>Picture id</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        picKey = solrManager.addSuffix name, <span class="property">@getPictureFields</span>(name)[<span class="number">0</span>]?.id</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>Get item from db with ID</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="property">@getItemById</span> name, req.params.id, (result) =&gt;
+
+            item = solrManager.addObjSuffix(name, result[<span class="number">0</span>])
+
+            req.body = solrManager.addObjSuffix(name, req.body)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>If client is admin, all fields are updated</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> req.query.admin <span class="keyword">isnt</span> <span class="string">'yes'</span>
+                protectedFields = <span class="property">@getFieldsWithProperty</span> name, <span class="string">'admin'</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>Update protected fields (additional: false)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                _.each protectedFields, (f) =&gt;
+                    f = solrManager.addSuffix(name, f)
+                    req.body[f.key] = item[f.key]</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>If its a multivalue field, add a copy field with its
+array stringified, so search and sort work on this field.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="keyword">if</span> f.multivalue
+                        multivalueField = item[f.key].sort().join(<span class="string">" "</span>)
+                        req.body[<span class="string">"sort_<span class="subst">#{f.key}</span>-s"</span>] = multivalueField</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>If there is no picture field, respond with updated item object.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> !req.body[picKey] <span class="keyword">or</span> req.body[picKey] <span class="keyword">is</span> item[picKey]
+                <span class="keyword">return</span> <span class="property">@addItem</span> res, solrManager, req.body, (_item) =&gt;
+                    res.send solrManager.removeSuffix _item</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>Update picture field and respond.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="property">@updatePic</span> item.id, name, req.body[picKey], item[picKey], (path) =&gt;
+                req.body[picKey] = path
+                <span class="property">@addItem</span> res, solrManager, req.body, (_item) =&gt;
+                    res.send solrManager.removeSuffix _item</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <p>Remove item and its picture (if it has).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">delete</span>: (req, res) =&gt;
+        name = req.params.entity
+        id = req.params.id
+        solrManager = <span class="keyword">new</span> SolrManager name
+        db = solrManager.createClient()
+        picKey = <span class="property">@getPictureFields</span>(name)[<span class="number">0</span>]?.id
+
+        <span class="property">@getItemById</span> name, id, (docs) =&gt;
+            _.each docs, (item) -&gt;
+                solrManager.client.deleteByID id, (err, result) -&gt;
+                    <span class="keyword">throw</span> err <span class="keyword">if</span> err
+                    res.send result
+                <span class="keyword">return</span> <span class="keyword">unless</span> picKey
+                imgPath = <span class="string">"<span class="subst">#{__dirname}</span>/../public/<span class="subst">#{item[picKey]}</span>"</span>
+                fs.unlink imgPath, (err) -&gt;
+                    console.log <span class="string">"Failed to remove pic for user <span class="subst">#{id}</span>"</span> <span class="keyword">if</span> err</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>Update picture removing old picture and renaming new one.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    updatePic: (id, name, bodyPic, itemPic, cb) =&gt;
+        tmp_pic = <span class="string">"<span class="subst">#{__dirname}</span>/../public/<span class="subst">#{bodyPic}</span>"</span>
+        rnd = bodyPic.slice(<span class="number">21</span>, <span class="number">24</span>)
+        target_file = <span class="string">"/images/<span class="subst">#{name}</span>/<span class="subst">#{id}</span>_<span class="subst">#{rnd}</span>.jpg"</span>
+        target_path = <span class="string">"<span class="subst">#{__dirname}</span>/../public/<span class="subst">#{target_file}</span>"</span>
+
+        fs.stat tmp_pic, (err, stat) -&gt;
+            <span class="keyword">if</span> err <span class="keyword">then</span> console.log <span class="string">"ERROR[uid=<span class="subst">#{id}</span>]: No uploaded picture"</span>
+            fs.unlink <span class="string">"<span class="subst">#{__dirname}</span>/../public/<span class="subst">#{itemPic}</span>"</span>, (err) -&gt;
+                fs.rename tmp_pic, target_path, (err) -&gt;
+                    <span class="keyword">throw</span> err <span class="keyword">if</span> err
+                    cb target_file</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p>Get an Item by its ID</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getItemById: (name, id, cb) -&gt;
+
+        solrManager = <span class="keyword">new</span> SolrManager name
+
+        db = solrManager.createClient()
+
+        query = db.createQuery()
+            .q(<span class="string">"id:<span class="subst">#{id}</span>"</span>)
+            .start(<span class="number">0</span>)
+            .rows(<span class="number">1000</span>)
+
+        db.search query, (err, result) -&gt;
+            <span class="keyword">throw</span> err <span class="keyword">if</span> err
+            docs = []
+            _.each result.response?.docs, (doc) -&gt;
+                docs.push solrManager.removeSuffix doc
+            cb docs</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
+              </div>
+              <p>Get Picture fields from schema (type: &quot;img&quot;).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getPictureFields: (name) -&gt;
+        schema = require <span class="string">"<span class="subst">#{__dirname}</span>/../entities/<span class="subst">#{name}</span>/schema.json"</span>
+        arr = []
+        _.each schema, (o) =&gt;
+            arr.push o <span class="keyword">if</span> o.type <span class="keyword">is</span> <span class="string">"img"</span>
+        arr</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-37">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-37">&#182;</a>
+              </div>
+              <p>Add an item to the solr db</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    addItem: (res, solrManager, item, cb) =&gt;
+        _item = _.extend {}, item
+        solrManager.client.add [item], (err, result) -&gt;
+            <span class="keyword">throw</span> err <span class="keyword">if</span> err
+            cb _item</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-38">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-38">&#182;</a>
+              </div>
+              <p>Get all schema fields that cointain a specific property
+TODO Get from schema class</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getFieldsWithProperty: (name, p) -&gt;
+        schema = require <span class="string">"<span class="subst">#{__dirname}</span>/../entities/<span class="subst">#{name}</span>/schema.json"</span>
+        arr = []
+        _.each schema, (o) =&gt;
+            arr.push o <span class="keyword">if</span> o[p]
+        arr</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-39">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-39">&#182;</a>
+              </div>
+              <p>Get all fields that have a specific type in an entity&#39;s schema</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getFieldsByType: (name, t) -&gt;
+        schema = require <span class="string">"<span class="subst">#{__dirname}</span>/../entities/<span class="subst">#{name}</span>/schema.json"</span>
+        arr = []
+        _.each schema, (o) =&gt;
+            arr.push o <span class="keyword">if</span> o.type <span class="keyword">is</span> t
+        arr</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-40">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-40">&#182;</a>
+              </div>
+              <p>Generate an ID for the item on the db</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    generateId: () -&gt;
+        chars = <span class="string">"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"</span>
+        today = <span class="keyword">new</span> Date()
+        result = today.valueOf().toString <span class="number">16</span>
+        result += chars.substr Math.floor(Math.random() * chars.length), <span class="number">1</span>
+        result += chars.substr Math.floor(Math.random() * chars.length), <span class="number">1</span>
+        result</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

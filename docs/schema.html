@@ -1,108 +1,251 @@
-<!DOCTYPE html>  <html>  <head>      <title>schema.coffee</title>      <meta http-equiv="content-type" content="text/html; charset=UTF-8">      <link rel="stylesheet" media="all" href="zocco.css" />  </head>  <body>      <div id="container">          <div id="background"></div>                    <table cellpadding="0" cellspacing="0">              <thead>                  <tr>                      <th class="docs">                          <h1>                              schema.coffee                          </h1>                      </th>                      <th class="code">                      </th>                  </tr>              </thead>              <tbody>                                                      <tr id="section-1">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-1">&#182;</a>                          </div>                          <p>Schema example</p>
+<!DOCTYPE html>
 
-<p>This schema is the one provided in the team example.</p>                      </td>                      <td class="code">                          <div class="highlight"><pre><span class="p">[</span>
-    <span class="p">{</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-2">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-2">&#182;</a>                          </div>                          <p>Field identifier.
-type: string.</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>      <span class="nv">id: </span><span class="s">&quot;pic&quot;</span><span class="p">,</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-3">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-3">&#182;</a>                          </div>                          <p>Label for picture. Appears on column header on list view.
-type: string.</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>      <span class="nv">label: </span><span class="s">&quot;Pic&quot;</span><span class="p">,</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-4">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-4">&#182;</a>                          </div>                          <p>True shows field as a column in list view by default.
-type: boolean.</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>      <span class="nv">index: </span><span class="kc">true</span><span class="p">,</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-5">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-5">&#182;</a>                          </div>                          <p>Defines the type of the field. Image in this case. Holds an image and
-its rendered with a fileupload handler to upload pictures.
-type: String( "integer", "float", "facet", etc..)</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>      <span class="nv">type: </span><span class="s">&quot;img&quot;</span>
-    <span class="p">},</span> <span class="p">{</span>
-      <span class="nv">id: </span><span class="s">&quot;name&quot;</span><span class="p">,</span>
-      <span class="nv">label: </span><span class="s">&quot;Firstname&quot;</span><span class="p">,</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-6">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-6">&#182;</a>                          </div>                          <p>This field must have a value for validation to be successful.
-type: boolean</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>      <span class="nv">mandatory: </span><span class="kc">true</span><span class="p">,</span>
-      <span class="nv">index: </span><span class="kc">true</span><span class="p">,</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-7">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-7">&#182;</a>                          </div>                          <p>This field's content will be used during search.
-type: boolean.</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>      <span class="nv">search: </span><span class="kc">true</span><span class="p">,</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-8">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-8">&#182;</a>                          </div>                          <p>This field will be rendered on the footer of images in thumbnail mode.
-type: boolean</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>      <span class="nv">thumbnail: </span><span class="kc">true</span>
-    <span class="p">},</span> <span class="p">{</span>
-      <span class="nv">id: </span><span class="s">&quot;lastname&quot;</span><span class="p">,</span>
-      <span class="nv">label: </span><span class="s">&quot;Lastname&quot;</span><span class="p">,</span>
-      <span class="nv">mandatory: </span><span class="kc">true</span><span class="p">,</span>
-      <span class="nv">index: </span><span class="kc">true</span><span class="p">,</span>
-      <span class="nv">search: </span><span class="kc">true</span><span class="p">,</span>
-      <span class="nv">thumbnail: </span><span class="kc">true</span>
-    <span class="p">},</span> <span class="p">{</span>
-      <span class="nv">id: </span><span class="s">&quot;email&quot;</span><span class="p">,</span>
-      <span class="nv">label: </span><span class="s">&quot;Email&quot;</span><span class="p">,</span>
-      <span class="nv">type: </span><span class="s">&quot;email&quot;</span><span class="p">,</span>
-      <span class="nv">mandatory: </span><span class="kc">true</span><span class="p">,</span>
-      <span class="nv">search: </span><span class="kc">true</span>
-    <span class="p">},</span> <span class="p">{</span>
-      <span class="nv">id: </span><span class="s">&quot;startDate&quot;</span><span class="p">,</span>
-      <span class="nv">label: </span><span class="s">&quot;Start date&quot;</span><span class="p">,</span>
-      <span class="nv">mandatory: </span><span class="kc">true</span><span class="p">,</span>
-      <span class="nv">type: </span><span class="s">&quot;date&quot;</span>
-    <span class="p">},</span> <span class="p">{</span>
-      <span class="nv">id: </span><span class="s">&quot;team&quot;</span><span class="p">,</span>
-      <span class="nv">label: </span><span class="s">&quot;Team&quot;</span><span class="p">,</span>
-      <span class="nv">index: </span><span class="kc">true</span><span class="p">,</span>
-      <span class="nv">type: </span><span class="s">&quot;facet&quot;</span><span class="p">,</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-9">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-9">&#182;</a>                          </div>                          <p>This field will be modifiable for many items at once.
-type: boolean</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>      <span class="nv">multiedit: </span><span class="kc">true</span><span class="p">,</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-10">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-10">&#182;</a>                          </div>                          <p>Special values for this facet will be rendered below a gray line on the
-facet pane.
-type: array</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>      <span class="nv">specials: </span><span class="p">[</span><span class="s">&quot;Management&quot;</span><span class="p">,</span> <span class="s">&quot;System&quot;</span><span class="p">,</span> <span class="s">&quot;Software Procurement&quot;</span><span class="p">,</span> <span class="s">&quot;Platform&quot;</span><span class="p">,</span> <span class="s">&quot;Database&quot;</span><span class="p">,</span> <span class="s">&quot;24x7&quot;</span><span class="p">,</span> <span class="s">&quot;BI&quot;</span><span class="p">,</span> <span class="s">&quot;MIS&quot;</span><span class="p">,</span> <span class="s">&quot;PMO&quot;</span><span class="p">,</span> <span class="s">&quot;RQM&quot;</span><span class="p">,</span> <span class="s">&quot;ZEOS Support&quot;</span><span class="p">]</span>
-    <span class="p">},</span> <span class="p">{</span>
-      <span class="nv">id: </span><span class="s">&quot;role&quot;</span><span class="p">,</span>
-      <span class="nv">label: </span><span class="s">&quot;Role&quot;</span><span class="p">,</span>
-      <span class="nv">index: </span><span class="kc">true</span><span class="p">,</span>
-      <span class="nv">type: </span><span class="s">&quot;facet&quot;</span><span class="p">,</span>
-      <span class="nv">multiedit: </span><span class="kc">true</span><span class="p">,</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-11">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-11">&#182;</a>                          </div>                          <p>Classifiers are used in thumbnail mode to create containers where to
-append items based on their field value.
-type: array</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>      <span class="nv">classifier: </span><span class="p">[</span><span class="s">&quot;dev&quot;</span><span class="p">,</span> <span class="s">&quot;pm&quot;</span><span class="p">,</span> <span class="s">&quot;qa&quot;</span><span class="p">,</span> <span class="s">&quot;sys&quot;</span><span class="p">,</span> <span class="s">&quot;dba&quot;</span><span class="p">,</span> <span class="s">&quot;pcm&quot;</span><span class="p">,</span> <span class="s">&quot;bi&quot;</span><span class="p">]</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-      <span class="nv">id: </span><span class="s">&quot;team:role&quot;</span><span class="p">,</span>
-      <span class="nv">label: </span><span class="s">&quot;Team:Role&quot;</span><span class="p">,</span>
-      <span class="nv">type: </span><span class="s">&quot;tuple&quot;</span><span class="p">,</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-12">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-12">&#182;</a>                          </div>                          <p>Field contains multiple values. Stored as an array of strings in DB and
-rendered as a comma separated list on the frontend.
-type: booloean.</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>      <span class="nv">multivalue: </span><span class="kc">true</span><span class="p">,</span>
-      <span class="nv">multiedit: </span><span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-      <span class="nv">id: </span><span class="s">&quot;position&quot;</span><span class="p">,</span>
-      <span class="nv">label: </span><span class="s">&quot;Position&quot;</span><span class="p">,</span>
-      <span class="nv">index: </span><span class="kc">true</span><span class="p">,</span>
-      <span class="nv">type: </span><span class="s">&quot;facet&quot;</span><span class="p">,</span>
-      <span class="nv">multiedit: </span><span class="kc">true</span>
-    <span class="p">},</span> <span class="p">{</span>
-      <span class="nv">id: </span><span class="s">&quot;expertise&quot;</span><span class="p">,</span>
-      <span class="nv">label: </span><span class="s">&quot;Expertise&quot;</span><span class="p">,</span>
-      <span class="nv">index: </span><span class="kc">true</span><span class="p">,</span>
-      <span class="nv">type: </span><span class="s">&quot;facet&quot;</span><span class="p">,</span>
-      <span class="nv">multiedit: </span><span class="kc">true</span><span class="p">,</span>
-      <span class="nv">search: </span><span class="kc">true</span>
-    <span class="p">},</span> <span class="p">{</span>
-      <span class="nv">id: </span><span class="s">&quot;location&quot;</span><span class="p">,</span>
-      <span class="nv">label: </span><span class="s">&quot;Location&quot;</span><span class="p">,</span>
-      <span class="nv">index: </span><span class="kc">true</span><span class="p">,</span>
-      <span class="nv">type: </span><span class="s">&quot;facet&quot;</span><span class="p">,</span>
-      <span class="nv">multiedit: </span><span class="kc">true</span>
-    <span class="p">},</span> <span class="p">{</span>
-      <span class="nv">id: </span><span class="s">&quot;gender&quot;</span><span class="p">,</span>
-      <span class="nv">label: </span><span class="s">&quot;Gender&quot;</span><span class="p">,</span>
-      <span class="nv">type: </span><span class="s">&quot;dropdown&quot;</span><span class="p">,</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-13">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-13">&#182;</a>                          </div>                          <p>Options in the dropdown menu
-type: array</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>      <span class="nv">options: </span><span class="p">[</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;Male&quot;</span><span class="p">,</span> <span class="s">&quot;Female&quot;</span><span class="p">],</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-14">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-14">&#182;</a>                          </div>                          <p>Renders field inside an "additional information" section in the profile
-type: boolean</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>      <span class="nv">additional: </span><span class="kc">true</span>
-    <span class="p">},</span> <span class="p">{</span>
-      <span class="nv">id: </span><span class="s">&quot;skype&quot;</span><span class="p">,</span>
-      <span class="nv">label: </span><span class="s">&quot;Skype&quot;</span><span class="p">,</span>
-      <span class="nv">additional: </span><span class="kc">true</span><span class="p">,</span>
-      <span class="nv">type: </span><span class="s">&quot;skype&quot;</span>
-    <span class="p">},</span> <span class="p">{</span>
-      <span class="nv">id: </span><span class="s">&quot;mobile&quot;</span><span class="p">,</span>
-      <span class="nv">label: </span><span class="s">&quot;Mobile&quot;</span><span class="p">,</span>
-      <span class="nv">additional: </span><span class="kc">true</span><span class="p">,</span>
-      <span class="nv">search: </span><span class="kc">true</span>
-    <span class="p">},</span> <span class="p">{</span>
-      <span class="nv">id: </span><span class="s">&quot;bday&quot;</span><span class="p">,</span>
-      <span class="nv">label: </span><span class="s">&quot;Birthday&quot;</span><span class="p">,</span>
-      <span class="nv">additional: </span><span class="kc">true</span><span class="p">,</span>
-      <span class="nv">type: </span><span class="s">&quot;date&quot;</span>
-    <span class="p">},</span> <span class="p">{</span>
-      <span class="nv">id: </span><span class="s">&quot;about&quot;</span><span class="p">,</span>
-      <span class="nv">label: </span><span class="s">&quot;About Me&quot;</span><span class="p">,</span>
-      <span class="nv">additional: </span><span class="kc">true</span><span class="p">,</span>
-      <span class="nv">type: </span><span class="s">&quot;multiline&quot;</span>
-    <span class="p">}</span>
-<span class="p">]</span>
+<html>
+<head>
+  <title>#</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="app.html">
+                app.coffee
+              </a>
+            
+              
+              <a class="source" href="collection.html">
+                collection.coffee
+              </a>
+            
+              
+              <a class="source" href="facets.html">
+                facets.coffee
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.coffee
+              </a>
+            
+              
+              <a class="source" href="facetArray.html">
+                facetArray.coffee
+              </a>
+            
+              
+              <a class="source" href="schema.html">
+                schema.coffee
+              </a>
+            
+              
+              <a class="source" href="facet.html">
+                facet.coffee
+              </a>
+            
+              
+              <a class="source" href="item.html">
+                item.coffee
+              </a>
+            
+              
+              <a class="source" href="print.html">
+                print.coffee
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.coffee
+              </a>
+            
+              
+              <a class="source" href="facet.html">
+                facet.coffee
+              </a>
+            
+              
+              <a class="source" href="item.html">
+                item.coffee
+              </a>
+            
+              
+              <a class="source" href="profile.html">
+                profile.coffee
+              </a>
+            
+              
+              <a class="source" href="cube.html">
+                cube.coffee
+              </a>
+            
+              
+              <a class="source" href="code.html">
+                code.coffee
+              </a>
+            
+              
+              <a class="source" href="server.config.html">
+                server.config.coffee
+              </a>
+            
+              
+              <a class="source" href="server.routes.html">
+                server.routes.coffee
+              </a>
+            
+              
+              <a class="source" href="server.settings.html">
+                server.settings.coffee
+              </a>
+            
+              
+              <a class="source" href="entityController.html">
+                entityController.coffee
+              </a>
+            
+              
+              <a class="source" href="extensionController.html">
+                extensionController.coffee
+              </a>
+            
+              
+              <a class="source" href="facetManager.html">
+                facetManager.coffee
+              </a>
+            
+              
+              <a class="source" href="itemController.html">
+                itemController.coffee
+              </a>
+            
+              
+              <a class="source" href="printController.html">
+                printController.coffee
+              </a>
+            
+              
+              <a class="source" href="schema.html">
+                schema.coffee
+              </a>
+            
+              
+              <a class="source" href="solrManager.html">
+                solrManager.coffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h1">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h1>#</h1>
+<p>Schema class</p>
+<p>Provides useful tools to handle schemas</p>
+<p>@author: Emanuel Lauria <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#x6f;&#x3a;&#x65;&#x6d;&#x61;&#110;&#117;&#101;&#108;&#46;&#108;&#97;&#117;&#114;&#105;&#x61;&#x40;&#x7a;&#x61;&#108;&#97;&#x6e;&#x64;&#x6f;&#x2e;&#100;&#x65;">&#x65;&#x6d;&#x61;&#110;&#117;&#101;&#108;&#46;&#108;&#97;&#117;&#114;&#105;&#x61;&#x40;&#x7a;&#x61;&#108;&#97;&#x6e;&#x64;&#x6f;&#x2e;&#100;&#x65;</a></p>
+<h1>#</h1>
+<p>Requirements</p>
 
-</pre></div>                      </td>                  </tr>                                </tbody>          </table>      </div>  </body>  </html>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>_ = require <span class="string">'underscore'</span>
+
+
+<span class="class"><span class="keyword">class</span> <span class="title">Schema</span></span>
+
+    module.exports = Schema</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Initialize with schema from entity</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    constructor: (<span class="property">@name</span>) -&gt;
+        <span class="property">@fields</span> = require <span class="string">"../entities/<span class="subst">#{@name}</span>/schema.json"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Get just one field from a field ID</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getFieldById: (id) =&gt;
+        field = {}
+        _.each <span class="property">@fields</span>, (f) =&gt;
+            field = f <span class="keyword">if</span> f.id <span class="keyword">is</span> id
+        field</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Get all fields that have a specific property</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getFieldsWithProperty: (property) =&gt;
+        fields = []
+        _.each <span class="property">@fields</span>, (f) =&gt;
+            fields.push f <span class="keyword">if</span> f[property]
+        fields</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Get all fields that are searchable (search: true)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getSearchables: () =&gt;
+        <span class="property">@getFieldsWithProperty</span> <span class="string">'search'</span></pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,48 +1,260 @@
-<!DOCTYPE html>  <html>  <head>      <title>facetManager.coffee</title>      <meta http-equiv="content-type" content="text/html; charset=UTF-8">      <link rel="stylesheet" media="all" href="zocco.css" />  </head>  <body>      <div id="container">          <div id="background"></div>                        <div id="jumpWrapper">                  <div id="jumpPage">                      <label>Files...</label>                                                                  <a class="source" href="app.html">                          app.coffee                      </a>                                                                  <a class="source" href="collection.html">                          collection.coffee                      </a>                                                                  <a class="source" href="facets.html">                          facets.coffee                      </a>                                                                  <a class="source" href="index.html">                          index.coffee                      </a>                                                                  <a class="source" href="facetArray.html">                          facetArray.coffee                      </a>                                                                  <a class="source" href="schema.html">                          schema.coffee                      </a>                                                                  <a class="source" href="facet.html">                          facet.coffee                      </a>                                                                  <a class="source" href="item.html">                          item.coffee                      </a>                                                                  <a class="source" href="print.html">                          print.coffee                      </a>                                                                  <a class="source" href="routes.html">                          routes.coffee                      </a>                                                                  <a class="source" href="facet.html">                          facet.coffee                      </a>                                                                  <a class="source" href="item.html">                          item.coffee                      </a>                                                                  <a class="source" href="profile.html">                          profile.coffee                      </a>                                                                  <a class="source" href="cube.html">                          cube.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="server.config.html">                          server.config.coffee                      </a>                                                                  <a class="source" href="server.routes.html">                          server.routes.coffee                      </a>                                                                  <a class="source" href="server.settings.html">                          server.settings.coffee                      </a>                                                                  <a class="source" href="entityController.html">                          entityController.coffee                      </a>                                                                  <a class="source" href="extensionController.html">                          extensionController.coffee                      </a>                                                                  <a class="source" href="facetManager.html">                          facetManager.coffee                      </a>                                                                  <a class="source" href="itemController.html">                          itemController.coffee                      </a>                                                                  <a class="source" href="printController.html">                          printController.coffee                      </a>                                                                  <a class="source" href="schema.html">                          schema.coffee                      </a>                                                                  <a class="source" href="solrManager.html">                          solrManager.coffee                      </a>                                                                  <a class="source" href="genSchema.html">                          genSchema.coffee                      </a>                                                                  <a class="source" href="importer-fortunes.html">                          importer-fortunes.coffee                      </a>                                                                  <a class="source" href="importer-hosts.html">                          importer-hosts.coffee                      </a>                                                                  <a class="source" href="importer-projects.html">                          importer-projects.coffee                      </a>                                        </div>              </div>                    <table cellpadding="0" cellspacing="0">              <thead>                  <tr>                      <th class="docs">                          <h1>                              facetManager.coffee                          </h1>                      </th>                      <th class="code">                      </th>                  </tr>              </thead>              <tbody>                                                      <tr id="section-1">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-1">&#182;</a>                          </div>                          <h1 id="">#</h1>
+<!DOCTYPE html>
 
-<p>EntityManager.coffee</p>
+<html>
+<head>
+  <title>#</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="app.html">
+                app.coffee
+              </a>
+            
+              
+              <a class="source" href="collection.html">
+                collection.coffee
+              </a>
+            
+              
+              <a class="source" href="facets.html">
+                facets.coffee
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.coffee
+              </a>
+            
+              
+              <a class="source" href="facetArray.html">
+                facetArray.coffee
+              </a>
+            
+              
+              <a class="source" href="schema.html">
+                schema.coffee
+              </a>
+            
+              
+              <a class="source" href="facet.html">
+                facet.coffee
+              </a>
+            
+              
+              <a class="source" href="item.html">
+                item.coffee
+              </a>
+            
+              
+              <a class="source" href="print.html">
+                print.coffee
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.coffee
+              </a>
+            
+              
+              <a class="source" href="facet.html">
+                facet.coffee
+              </a>
+            
+              
+              <a class="source" href="item.html">
+                item.coffee
+              </a>
+            
+              
+              <a class="source" href="profile.html">
+                profile.coffee
+              </a>
+            
+              
+              <a class="source" href="cube.html">
+                cube.coffee
+              </a>
+            
+              
+              <a class="source" href="code.html">
+                code.coffee
+              </a>
+            
+              
+              <a class="source" href="server.config.html">
+                server.config.coffee
+              </a>
+            
+              
+              <a class="source" href="server.routes.html">
+                server.routes.coffee
+              </a>
+            
+              
+              <a class="source" href="server.settings.html">
+                server.settings.coffee
+              </a>
+            
+              
+              <a class="source" href="entityController.html">
+                entityController.coffee
+              </a>
+            
+              
+              <a class="source" href="extensionController.html">
+                extensionController.coffee
+              </a>
+            
+              
+              <a class="source" href="facetManager.html">
+                facetManager.coffee
+              </a>
+            
+              
+              <a class="source" href="itemController.html">
+                itemController.coffee
+              </a>
+            
+              
+              <a class="source" href="printController.html">
+                printController.coffee
+              </a>
+            
+              
+              <a class="source" href="schema.html">
+                schema.coffee
+              </a>
+            
+              
+              <a class="source" href="solrManager.html">
+                solrManager.coffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h1">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h1>#</h1>
+<p>FacetManager.coffee</p>
+<p>Provides extra methods to get useful facet information like distinct, all
+fields or listed fields in schema.</p>
+<p>@author: Emanuel Lauria <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x65;&#109;&#97;&#x6e;&#117;&#101;&#x6c;&#x2e;&#x6c;&#97;&#117;&#114;&#x69;&#x61;&#x40;&#122;&#97;&#x6c;&#x61;&#110;&#x64;&#x6f;&#x2e;&#x64;&#x65;">&#x65;&#109;&#97;&#x6e;&#117;&#101;&#x6c;&#x2e;&#x6c;&#97;&#117;&#114;&#x69;&#x61;&#x40;&#122;&#97;&#x6c;&#x61;&#110;&#x64;&#x6f;&#x2e;&#x64;&#x65;</a></p>
+<h1>#</h1>
+<p>Requirements</p>
 
-<p>@author: Emanuel Lauria <a href="&#x6D;&#x61;&#105;&#x6C;&#116;&#111;:&#x65;&#109;a&#110;&#117;&#x65;&#x6C;&#x2E;&#x6C;&#x61;&#x75;&#114;&#x69;&#x61;&#64;&#122;&#97;&#108;&#x61;&#110;&#x64;&#111;&#46;&#100;&#x65;">&#x65;&#109;a&#110;&#117;&#x65;&#x6C;&#x2E;&#x6C;&#x61;&#x75;&#114;&#x69;&#x61;&#64;&#122;&#97;&#108;&#x61;&#110;&#x64;&#111;&#46;&#100;&#x65;</a></p>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>async = require <span class="string">'async'</span>
+_     = require <span class="string">'underscore'</span>
 
-<h1 id="">#</h1>                      </td>                      <td class="code">                          <div class="highlight"><pre><span class="nv">async = </span><span class="nx">require</span> <span class="s">&#39;async&#39;</span>
-<span class="nv">_     = </span><span class="nx">require</span> <span class="s">&#39;underscore&#39;</span>
+SolrManager = require <span class="string">'./solrManager.coffee'</span>
 
-<span class="nv">SolrManager = </span><span class="nx">require</span> <span class="s">&#39;./solrManager.coffee&#39;</span>
+<span class="class"><span class="keyword">class</span> <span class="title">FacetManager</span></span>
+    module.exports = FacetManager
 
-<span class="k">class</span> <span class="nx">FacetManager</span>
-    <span class="nv">module.exports = </span><span class="nx">FacetManager</span>
+    constructor: () -&gt;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Returns an array of unique facet values for each facet type field in
+your schema.</p>
 
-    <span class="nv">constructor: </span><span class="nf">() -&gt;</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    distincts: (name, cb) =&gt;
+        d = {}
+        async.forEach <span class="property">@getFacetsFromSchema</span>(name), (f, cb) =&gt;
+            <span class="property">@fields</span> name, f.id, (data) -&gt;
+                d[f.id] = data
+                cb()
+        , (err) =&gt;
+            <span class="keyword">throw</span> err <span class="keyword">if</span> err
+            cb d</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Return all values for each facet</p>
 
-    <span class="nv">distincts: </span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nv">d = </span><span class="p">{}</span>
-        <span class="nx">async</span><span class="p">.</span><span class="nx">forEach</span> <span class="nx">@getFacetsFromSchema</span><span class="p">(</span><span class="nx">name</span><span class="p">),</span> <span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="nx">@fields</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">f</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nf">(data) -&gt;</span>
-                <span class="nx">d</span><span class="p">[</span><span class="nx">f</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="nx">data</span>
-                <span class="nx">cb</span><span class="p">()</span>
-        <span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-            <span class="nx">cb</span> <span class="nx">d</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-2">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-2">&#182;</a>                          </div>                          <p>Return all fields for each facet (i.e. teams: interactive, catalog..)</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="nv">fields: </span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">field</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nv">solrManager = </span><span class="k">new</span> <span class="nx">SolrManager</span> <span class="nx">name</span>
-        <span class="nv">client = </span><span class="nx">solrManager</span><span class="p">.</span><span class="nx">createClient</span><span class="p">()</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    fields: (name, field, cb) =&gt;
+        solrManager = <span class="keyword">new</span> SolrManager name
+        client = solrManager.createClient()
 
-        <span class="nv">query = </span><span class="nx">client</span><span class="p">.</span><span class="nx">createQuery</span><span class="p">()</span>
-            <span class="p">.</span><span class="nx">q</span><span class="p">(</span><span class="s">&#39;*:*&#39;</span><span class="p">)</span>
-            <span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-            <span class="p">.</span><span class="nx">rows</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-            <span class="p">.</span><span class="nx">facet</span> <span class="kc">on</span><span class="o">:</span> <span class="kc">yes</span><span class="p">,</span> <span class="nv">field: </span><span class="nx">solrManager</span><span class="p">.</span><span class="nx">addSuffix</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">field</span><span class="p">)</span>
+        query = client.createQuery()
+            .q(<span class="string">'*:*'</span>)
+            .start(<span class="number">0</span>)
+            .rows(<span class="number">0</span>)
+            .facet <span class="literal">on</span>: <span class="literal">yes</span>, field: solrManager.addSuffix(name, field)
 
-        <span class="nv">fields = </span><span class="p">[]</span>
-        <span class="nx">client</span><span class="p">.</span><span class="nx">search</span> <span class="nx">query</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-            <span class="nv">ff = </span><span class="nx">result</span><span class="o">?</span><span class="p">.</span><span class="nx">facet_counts</span><span class="o">?</span><span class="p">.</span><span class="nx">facet_fields</span>
-            <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">ff</span><span class="p">[</span><span class="nx">solrManager</span><span class="p">.</span><span class="nx">addSuffix</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">field</span><span class="p">)],</span> <span class="nf">(f) -&gt;</span>
-                <span class="nx">fields</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span> <span class="k">if</span> <span class="k">typeof</span> <span class="nx">f</span> <span class="o">is</span> <span class="s">&quot;string&quot;</span>
-            <span class="nx">cb</span> <span class="nx">fields</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-3">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-3">&#182;</a>                          </div>                          <p>Parse schema and return all facet fields</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="nv">getFacetsFromSchema: </span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nv">schema = </span><span class="nx">require</span> <span class="s">&quot;../extensions/</span><span class="si">#{</span><span class="nx">name</span><span class="si">}</span><span class="s">/schema.json&quot;</span>
-        <span class="nv">a = </span><span class="p">[]</span>
-        <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">schema</span><span class="p">,</span> <span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="nx">a</span><span class="p">.</span><span class="nx">push</span> <span class="nx">o</span> <span class="k">if</span> <span class="nx">o</span><span class="p">.</span><span class="nx">type</span> <span class="o">is</span> <span class="s">&#39;facet&#39;</span>
-        <span class="nx">a</span>
+        fields = []
+        client.search query, (err, result) =&gt;
+            <span class="keyword">throw</span> err <span class="keyword">if</span> err
+            ff = result?.facet_counts?.facet_fields
+            _.each ff[solrManager.addSuffix(name, field)], (f) -&gt;
+                fields.push(f) <span class="keyword">if</span> <span class="keyword">typeof</span> f <span class="keyword">is</span> <span class="string">"string"</span>
+            cb fields</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Returns all facet type fields on your schema</p>
 
-</pre></div>                      </td>                  </tr>                                </tbody>          </table>      </div>  </body>  </html>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getFacetsFromSchema: (name) =&gt;
+        schema = require <span class="string">"../entities/<span class="subst">#{name}</span>/schema.json"</span>
+        a = []
+        _.each schema, (o) =&gt;
+            a.push o <span class="keyword">if</span> o.type <span class="keyword">is</span> <span class="string">'facet'</span>
+        a</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

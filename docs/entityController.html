@@ -1,227 +1,810 @@
-<!DOCTYPE html>  <html>  <head>      <title>entityController.coffee</title>      <meta http-equiv="content-type" content="text/html; charset=UTF-8">      <link rel="stylesheet" media="all" href="zocco.css" />  </head>  <body>      <div id="container">          <div id="background"></div>                        <div id="jumpWrapper">                  <div id="jumpPage">                      <label>Files...</label>                                                                  <a class="source" href="app.html">                          app.coffee                      </a>                                                                  <a class="source" href="collection.html">                          collection.coffee                      </a>                                                                  <a class="source" href="facets.html">                          facets.coffee                      </a>                                                                  <a class="source" href="index.html">                          index.coffee                      </a>                                                                  <a class="source" href="facetArray.html">                          facetArray.coffee                      </a>                                                                  <a class="source" href="schema.html">                          schema.coffee                      </a>                                                                  <a class="source" href="facet.html">                          facet.coffee                      </a>                                                                  <a class="source" href="item.html">                          item.coffee                      </a>                                                                  <a class="source" href="print.html">                          print.coffee                      </a>                                                                  <a class="source" href="routes.html">                          routes.coffee                      </a>                                                                  <a class="source" href="facet.html">                          facet.coffee                      </a>                                                                  <a class="source" href="item.html">                          item.coffee                      </a>                                                                  <a class="source" href="profile.html">                          profile.coffee                      </a>                                                                  <a class="source" href="cube.html">                          cube.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="code.html">                          code.coffee                      </a>                                                                  <a class="source" href="server.config.html">                          server.config.coffee                      </a>                                                                  <a class="source" href="server.routes.html">                          server.routes.coffee                      </a>                                                                  <a class="source" href="server.settings.html">                          server.settings.coffee                      </a>                                                                  <a class="source" href="entityController.html">                          entityController.coffee                      </a>                                                                  <a class="source" href="extensionController.html">                          extensionController.coffee                      </a>                                                                  <a class="source" href="facetManager.html">                          facetManager.coffee                      </a>                                                                  <a class="source" href="itemController.html">                          itemController.coffee                      </a>                                                                  <a class="source" href="printController.html">                          printController.coffee                      </a>                                                                  <a class="source" href="schema.html">                          schema.coffee                      </a>                                                                  <a class="source" href="solrManager.html">                          solrManager.coffee                      </a>                                                                  <a class="source" href="genSchema.html">                          genSchema.coffee                      </a>                                                                  <a class="source" href="importer-fortunes.html">                          importer-fortunes.coffee                      </a>                                                                  <a class="source" href="importer-hosts.html">                          importer-hosts.coffee                      </a>                                                                  <a class="source" href="importer-projects.html">                          importer-projects.coffee                      </a>                                        </div>              </div>                    <table cellpadding="0" cellspacing="0">              <thead>                  <tr>                      <th class="docs">                          <h1>                              entityController.coffee                          </h1>                      </th>                      <th class="code">                      </th>                  </tr>              </thead>              <tbody>                                                      <tr id="section-1">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-1">&#182;</a>                          </div>                          <h1 id="">#</h1>
+<!DOCTYPE html>
 
+<html>
+<head>
+  <title>#</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="app.html">
+                app.coffee
+              </a>
+            
+              
+              <a class="source" href="collection.html">
+                collection.coffee
+              </a>
+            
+              
+              <a class="source" href="facets.html">
+                facets.coffee
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.coffee
+              </a>
+            
+              
+              <a class="source" href="facetArray.html">
+                facetArray.coffee
+              </a>
+            
+              
+              <a class="source" href="schema.html">
+                schema.coffee
+              </a>
+            
+              
+              <a class="source" href="facet.html">
+                facet.coffee
+              </a>
+            
+              
+              <a class="source" href="item.html">
+                item.coffee
+              </a>
+            
+              
+              <a class="source" href="print.html">
+                print.coffee
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.coffee
+              </a>
+            
+              
+              <a class="source" href="facet.html">
+                facet.coffee
+              </a>
+            
+              
+              <a class="source" href="item.html">
+                item.coffee
+              </a>
+            
+              
+              <a class="source" href="profile.html">
+                profile.coffee
+              </a>
+            
+              
+              <a class="source" href="cube.html">
+                cube.coffee
+              </a>
+            
+              
+              <a class="source" href="code.html">
+                code.coffee
+              </a>
+            
+              
+              <a class="source" href="server.config.html">
+                server.config.coffee
+              </a>
+            
+              
+              <a class="source" href="server.routes.html">
+                server.routes.coffee
+              </a>
+            
+              
+              <a class="source" href="server.settings.html">
+                server.settings.coffee
+              </a>
+            
+              
+              <a class="source" href="entityController.html">
+                entityController.coffee
+              </a>
+            
+              
+              <a class="source" href="extensionController.html">
+                extensionController.coffee
+              </a>
+            
+              
+              <a class="source" href="facetManager.html">
+                facetManager.coffee
+              </a>
+            
+              
+              <a class="source" href="itemController.html">
+                itemController.coffee
+              </a>
+            
+              
+              <a class="source" href="printController.html">
+                printController.coffee
+              </a>
+            
+              
+              <a class="source" href="schema.html">
+                schema.coffee
+              </a>
+            
+              
+              <a class="source" href="solrManager.html">
+                solrManager.coffee
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h1">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h1>#</h1>
 <p>EntityController.coffee</p>
+<p>@author: Emanuel Lauria <a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#101;&#109;&#x61;&#110;&#x75;&#101;&#x6c;&#46;&#108;&#97;&#x75;&#114;&#x69;&#97;&#64;&#x7a;&#97;&#108;&#x61;&#x6e;&#100;&#x6f;&#x2e;&#100;&#x65;">&#101;&#109;&#x61;&#110;&#x75;&#101;&#x6c;&#46;&#108;&#97;&#x75;&#114;&#x69;&#97;&#64;&#x7a;&#97;&#108;&#x61;&#x6e;&#100;&#x6f;&#x2e;&#100;&#x65;</a></p>
+<h1>#</h1>
+<p>Requirements</p>
 
-<p>@author: Emanuel Lauria <a href="m&#x61;&#x69;l&#x74;&#x6F;:&#101;&#x6D;&#x61;&#x6E;&#117;&#101;&#108;&#x2E;&#108;&#97;&#x75;&#114;&#105;&#x61;&#64;&#x7A;&#97;&#108;&#97;&#110;&#100;&#x6F;&#x2E;&#100;&#x65;">&#101;&#x6D;&#x61;&#x6E;&#117;&#101;&#108;&#x2E;&#108;&#97;&#x75;&#114;&#105;&#x61;&#64;&#x7A;&#97;&#108;&#97;&#110;&#100;&#x6F;&#x2E;&#100;&#x65;</a></p>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>fs      = require <span class="string">'fs'</span>
+async   = require <span class="string">'async'</span>
+js2xml  = require <span class="string">"data2xml"</span>
+_       = require <span class="string">'underscore'</span>
+im      = require <span class="string">"imagemagick"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Facet Manager. distincts() gets a list of unique facet values.</p>
 
-<h1 id="">#</h1>                      </td>                      <td class="code">                          <div class="highlight"><pre><span class="nv">fs      = </span><span class="nx">require</span> <span class="s">&#39;fs&#39;</span>
-<span class="nv">async   = </span><span class="nx">require</span> <span class="s">&#39;async&#39;</span>
-<span class="nv">js2xml  = </span><span class="nx">require</span> <span class="s">&quot;data2xml&quot;</span>
-<span class="nv">_       = </span><span class="nx">require</span> <span class="s">&#39;underscore&#39;</span>
-<span class="nv">mime    = </span><span class="nx">require</span> <span class="s">&quot;mime-magic&quot;</span>
-<span class="nv">im      = </span><span class="nx">require</span> <span class="s">&quot;imagemagick&quot;</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>FacetManager = require <span class="string">'./facetManager.coffee'</span>
+facetManager = <span class="keyword">new</span> FacetManager</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Solr Manager handles property suffixes (i.e. adding -s for string fields).</p>
 
-<span class="nv">FacetManager = </span><span class="nx">require</span> <span class="s">&#39;./facetManager.coffee&#39;</span>
-<span class="nv">facetManager = </span><span class="k">new</span> <span class="nx">FacetManager</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>SolrManager = require <span class="string">'./solrManager.coffee'</span>
+solrManager = <span class="keyword">new</span> SolrManager</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Schema class provides methos to handle schemas easily.</p>
 
-<span class="nv">SolrManager = </span><span class="nx">require</span> <span class="s">&#39;./solrManager.coffee&#39;</span>
-<span class="nv">solrManager = </span><span class="k">new</span> <span class="nx">SolrManager</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>Schema = require <span class="string">'./schema'</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Server and default entity settings</p>
 
-<span class="nv">Schema = </span><span class="nx">require</span> <span class="s">&#39;./schema&#39;</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-2">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-2">&#182;</a>                          </div>                          <p>Server and default extension settings</p>                      </td>                      <td class="code">                          <div class="highlight"><pre><span class="nv">settings = </span><span class="nx">require</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../server.settings.coffee&quot;</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-3">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-3">&#182;</a>                          </div>                          <p>List of entities</p>                      </td>                      <td class="code">                          <div class="highlight"><pre><span class="nv">entities = </span><span class="nx">require</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../entities.json&quot;</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>settings = require <span class="string">"<span class="subst">#{__dirname}</span>/../server.settings.coffee"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>List of available entities</p>
 
-<span class="k">class</span> <span class="nx">EntityController</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>entities = require <span class="string">"<span class="subst">#{__dirname}</span>/../entities.json"</span>
 
-    <span class="nv">module.exports = </span><span class="nx">EntityController</span>
 
-    <span class="nv">constructor: </span><span class="nf">(app) -&gt;</span>
-        <span class="nx">app</span><span class="p">.</span><span class="nx">get</span>   <span class="s">&#39;/:entity/schema&#39;</span><span class="p">,</span>          <span class="p">(</span><span class="nx">a</span><span class="p">...)</span> <span class="o">=&gt;</span> <span class="nx">@schema</span>     <span class="nx">a</span><span class="p">...</span>
-        <span class="nx">app</span><span class="p">.</span><span class="nx">get</span>   <span class="s">&#39;/:entity/settings&#39;</span><span class="p">,</span>        <span class="p">(</span><span class="nx">a</span><span class="p">...)</span> <span class="o">=&gt;</span> <span class="nx">@settings</span>   <span class="nx">a</span><span class="p">...</span>
-        <span class="nx">app</span><span class="p">.</span><span class="nx">get</span>   <span class="s">&#39;/:entity/collection&#39;</span><span class="p">,</span>      <span class="p">(</span><span class="nx">a</span><span class="p">...)</span> <span class="o">=&gt;</span> <span class="nx">@collection</span> <span class="nx">a</span><span class="p">...</span>
-        <span class="nx">app</span><span class="p">.</span><span class="nx">get</span>   <span class="s">&#39;/:entity/pane.json&#39;</span><span class="p">,</span>       <span class="p">(</span><span class="nx">a</span><span class="p">...)</span> <span class="o">=&gt;</span> <span class="nx">@pane</span>       <span class="nx">a</span><span class="p">...</span>
-        <span class="nx">app</span><span class="p">.</span><span class="nx">get</span>   <span class="s">&#39;/:entity/etiquettes.json&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">a</span><span class="p">...)</span> <span class="o">=&gt;</span> <span class="nx">@etiquettes</span> <span class="nx">a</span><span class="p">...</span>
-        <span class="nx">app</span><span class="p">.</span><span class="nx">get</span>   <span class="s">&#39;/:entity/ufacets&#39;</span><span class="p">,</span>         <span class="p">(</span><span class="nx">a</span><span class="p">...)</span> <span class="o">=&gt;</span> <span class="nx">@ufacets</span>    <span class="nx">a</span><span class="p">...</span>
-        <span class="nx">app</span><span class="p">.</span><span class="nx">post</span>  <span class="s">&#39;/:entity/picture&#39;</span><span class="p">,</span>         <span class="p">(</span><span class="nx">a</span><span class="p">...)</span> <span class="o">=&gt;</span> <span class="nx">@picture</span>    <span class="nx">a</span><span class="p">...</span>
-        <span class="nx">app</span><span class="p">.</span><span class="nx">get</span>   <span class="s">&#39;/:entity/extensions&#39;</span><span class="p">,</span>      <span class="p">(</span><span class="nx">a</span><span class="p">...)</span> <span class="o">=&gt;</span> <span class="nx">@extension</span>  <span class="nx">a</span><span class="p">...</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-4">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-4">&#182;</a>                          </div>                          <p>Return appropriate schema for each entity</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="nv">schema: </span><span class="nf">(req, res) -&gt;</span>
-        <span class="nv">name = </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">entity</span>
-        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="mi">404</span> <span class="k">if</span> <span class="nx">entities</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">is</span> <span class="o">-</span><span class="mi">1</span>
-        <span class="nv">schema = </span><span class="nx">require</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../extensions/</span><span class="si">#{</span><span class="nx">name</span><span class="si">}</span><span class="s">/schema.json&quot;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="nx">schema</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-5">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-5">&#182;</a>                          </div>                          <p>Return appropriate settings for each entity</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="nv">settings: </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nv">name = </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">entity</span>
-        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="mi">404</span> <span class="k">if</span> <span class="nx">entities</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">is</span> <span class="o">-</span><span class="mi">1</span>
-        <span class="nx">@getSettings</span> <span class="nx">name</span><span class="p">,</span> <span class="p">(</span><span class="nx">settings</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="nx">@getEntities</span> <span class="nf">() -&gt;</span>
-                <span class="nv">settings.entities = </span><span class="nx">entities</span>
-                <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="nx">settings</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-6">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-6">&#182;</a>                          </div>                          <p>Return a collection based on the filter parameters.</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="nv">collection: </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nv">name = </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">entity</span>
-        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="mi">404</span> <span class="nx">unless</span> <span class="nx">@isEntity</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
-        <span class="nx">@createQuery</span> <span class="nx">req</span><span class="p">,</span> <span class="p">(</span><span class="nx">query</span><span class="p">,</span> <span class="nx">db</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="nv">query = </span><span class="nx">@setFilters</span> <span class="nx">req</span><span class="p">,</span> <span class="nx">query</span>
-            <span class="nx">@getCollection</span> <span class="nx">db</span><span class="p">,</span> <span class="nx">query</span><span class="p">,</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span>
-                <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="nx">@setCollectionResponse</span> <span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">result</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-7">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-7">&#182;</a>                          </div>                          <p>Returns extension code. i.e. newbies feature on team app.
-WARN This route is being used by third party apps!</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="nv">pane: </span><span class="nf">(req, res) -&gt;</span>
-        <span class="nv">file = </span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../extensions/</span><span class="si">#{</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">entity</span><span class="si">}</span><span class="s">/pane.json&quot;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span> <span class="s">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s">&#39;application/json&#39;</span>
-        <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span> <span class="nx">file</span><span class="p">,</span> <span class="s">&quot;utf8&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="p">{}</span> <span class="k">if</span> <span class="nx">err</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="nx">data</span>
+<span class="class"><span class="keyword">class</span> <span class="title">EntityController</span></span>
 
-    <span class="nv">etiquettes: </span><span class="nf">(req, res) -&gt;</span>
-        <span class="nv">file = </span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../extensions/</span><span class="si">#{</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">entity</span><span class="si">}</span><span class="s">/etiquettes.json&quot;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span> <span class="s">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s">&#39;application/json&#39;</span>
-        <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span> <span class="nx">file</span><span class="p">,</span> <span class="s">&quot;utf8&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="p">{}</span> <span class="k">if</span> <span class="nx">err</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="nx">data</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-8">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-8">&#182;</a>                          </div>                          <p>Get unique values from all the facet fields. Useful for autocomplete.</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="nv">ufacets: </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nx">facetManager</span><span class="p">.</span><span class="nx">distincts</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">entity</span><span class="p">,</span> <span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="nx">d</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-9">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-9">&#182;</a>                          </div>                          <p>Picture uploader. Save picture on tmp location, convert, manipulate and
+    module.exports = EntityController</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Entity routes</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    constructor: (app) -&gt;
+        app.get   <span class="string">'/:entity/schema'</span>,          (a...) =&gt; <span class="property">@schema</span>     a...
+        app.get   <span class="string">'/:entity/settings'</span>,        (a...) =&gt; <span class="property">@settings</span>   a...
+        app.get   <span class="string">'/:entity/collection'</span>,      (a...) =&gt; <span class="property">@collection</span> a...
+        app.get   <span class="string">'/:entity/pane.json'</span>,       (a...) =&gt; <span class="property">@pane</span>       a...
+        app.get   <span class="string">'/:entity/etiquettes.json'</span>, (a...) =&gt; <span class="property">@etiquettes</span> a...
+        app.get   <span class="string">'/:entity/ufacets'</span>,         (a...) =&gt; <span class="property">@ufacets</span>    a...
+        app.post  <span class="string">'/:entity/picture'</span>,         (a...) =&gt; <span class="property">@picture</span>    a...
+        app.get   <span class="string">'/:entity/template'</span>,        (a...) =&gt; <span class="property">@template</span>   a...</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Return appropriate schema for each entity</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    schema: (req, res) -&gt;
+        name = req.params.entity
+        <span class="keyword">return</span> res.send <span class="number">404</span> <span class="keyword">if</span> entities.indexOf(name) <span class="keyword">is</span> -<span class="number">1</span>
+        schema = require <span class="string">"<span class="subst">#{__dirname}</span>/../entities/<span class="subst">#{name}</span>/schema.json"</span>
+        res.send schema</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Return appropriate settings for each entity</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    settings: (req, res) =&gt;
+        name = req.params.entity
+        <span class="keyword">return</span> res.send <span class="number">404</span> <span class="keyword">if</span> entities.indexOf(name) <span class="keyword">is</span> -<span class="number">1</span>
+        <span class="property">@getSettings</span> name, (settings) =&gt;
+            <span class="property">@getEntities</span> () -&gt;
+                settings.entities = entities
+                res.send settings</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Return a collection based on the filter parameters.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    collection: (req, res) =&gt;
+        name = req.params.entity
+        <span class="keyword">return</span> res.send <span class="number">404</span> <span class="keyword">unless</span> <span class="property">@isEntity</span>(name)
+        <span class="property">@createQuery</span> req, (query, db) =&gt;
+            query = <span class="property">@setFilters</span> req, query
+            <span class="property">@getCollection</span> db, query, (result) =&gt;
+                res.send <span class="property">@setCollectionResponse</span> req, res, result</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Returns pane.json, containing extra data for custom panes.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    pane: (req, res) -&gt;
+        file = <span class="string">"<span class="subst">#{__dirname}</span>/../entities/<span class="subst">#{req.params.entity}</span>/pane.json"</span>
+        res.setHeader <span class="string">'Content-Type'</span>, <span class="string">'application/json'</span>
+        fs.readFile file, <span class="string">"utf8"</span>, (err, data) =&gt;
+            <span class="keyword">return</span> res.send {} <span class="keyword">if</span> err
+            res.send data</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Returns an array of etiquettes available. Each etiquette defines an ID,
+a Label, Bacgrkound color, Text color and a background image.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    etiquettes: (req, res) -&gt;
+        file = <span class="string">"<span class="subst">#{__dirname}</span>/../entities/<span class="subst">#{req.params.entity}</span>/etiquettes.json"</span>
+        res.setHeader <span class="string">'Content-Type'</span>, <span class="string">'application/json'</span>
+        fs.readFile file, <span class="string">"utf8"</span>, (err, data) =&gt;
+            <span class="keyword">return</span> res.send {} <span class="keyword">if</span> err
+            res.send data</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Get unique values from all the facet fields. Useful for autocomplete.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    ufacets: (req, res) =&gt;
+        facetManager.distincts req.params.entity, (d) =&gt;
+            res.send d</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Picture uploader. Save picture on tmp location, convert, manipulate and
 move to storage location. Respond with an array of properties from the
-uploaded image. Useful for backbone.</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="nv">picture: </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nv">name = </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">entity</span>
-        <span class="nv">upload_id = </span><span class="nx">req</span><span class="p">.</span><span class="nx">files</span><span class="p">.</span><span class="nx">picture</span><span class="p">.</span><span class="nx">path</span>
-        <span class="nv">target_filename = </span><span class="nx">upload_id</span> <span class="o">+</span> <span class="s">&#39;.jpg&#39;</span>
-        <span class="nv">target_path= </span><span class="s">&quot;public/images/</span><span class="si">#{</span><span class="nx">name</span><span class="si">}</span><span class="s">/archive/&quot;</span>
-        <span class="nv">target_file = </span><span class="nx">target_path</span> <span class="o">+</span> <span class="nx">target_filename</span>
-        <span class="nv">tmp_file = </span><span class="s">&#39;public/images/tmp/&#39;</span> <span class="o">+</span> <span class="nx">target_filename</span>
-        <span class="nv">url_file = </span><span class="s">&quot;/images/tmp/&quot;</span> <span class="o">+</span> <span class="nx">target_filename</span>
-        <span class="nv">response = </span><span class="p">[</span> <span class="nv">name: </span><span class="nx">target_filename</span><span class="p">,</span> <span class="nv">url: </span><span class="nx">url_file</span> <span class="p">]</span>
-        <span class="nv">im_params = </span> <span class="p">[</span>
-            <span class="s">&quot;</span><span class="si">#{</span><span class="nx">target_file</span><span class="si">}</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&#39;-thumbnail&#39;</span><span class="p">,</span> <span class="s">&#39;300x300^&#39;</span><span class="p">,</span> <span class="s">&#39;-gravity&#39;</span><span class="p">,</span> <span class="s">&#39;center&#39;</span><span class="p">,</span>
-            <span class="s">&#39;-extent&#39;</span><span class="p">,</span> <span class="s">&#39;300x300&#39;</span><span class="p">,</span> <span class="s">&#39;public/images/tmp/&#39;</span> <span class="o">+</span> <span class="nx">target_filename</span>
-        <span class="p">]</span>
+uploaded image. Useful for backbone.</p>
 
-        <span class="nx">mime</span> <span class="nx">upload_id</span><span class="p">,</span> <span class="nf">(err, type) -&gt;</span>
-            <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">push</span> <span class="nv">type: </span><span class="nx">type</span>
-            <span class="nx">fs</span><span class="p">.</span><span class="nx">rename</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../</span><span class="si">#{</span><span class="nx">upload_id</span><span class="si">}</span><span class="s">&quot;</span><span class="p">,</span> <span class="nx">target_file</span><span class="p">,</span> <span class="nf">(err) -&gt;</span>
-                <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-                <span class="nx">im</span><span class="p">.</span><span class="nx">convert</span> <span class="nx">im_params</span><span class="p">,</span> <span class="nf">(err, stdout, stderr) -&gt;</span>
-                    <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-                    <span class="nx">fs</span><span class="p">.</span><span class="nx">stat</span> <span class="nx">tmp_file</span><span class="p">,</span> <span class="nf">(err, stats) -&gt;</span>
-                        <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-                        <span class="nx">response</span><span class="p">.</span><span class="nx">push</span> <span class="nv">size: </span><span class="nx">stats</span><span class="p">.</span><span class="nx">size</span>
-                        <span class="nx">res</span><span class="p">.</span><span class="nx">send</span> <span class="nx">response</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-10">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-10">&#182;</a>                          </div>                          <p>Return templates from an extension</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="nv">extension: </span><span class="nf">(req, res) -&gt;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">render</span> <span class="s">&quot;extensions/</span><span class="si">#{</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">entity</span><span class="si">}</span><span class="s">/templates&quot;</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-11">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-11">&#182;</a>                          </div>                          <p>Run query and return either CSV, JSON or XML</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="nv">getCollection: </span><span class="p">(</span><span class="nx">db</span><span class="p">,</span> <span class="nx">query</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nx">db</span><span class="p">.</span><span class="nx">search</span> <span class="nx">query</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="nv">docs = </span><span class="p">[]</span>
-            <span class="k">return</span> <span class="nx">cb</span><span class="p">(</span><span class="nx">docs</span><span class="p">)</span> <span class="nx">unless</span> <span class="nx">result</span> <span class="o">and</span> <span class="nx">result</span><span class="p">.</span><span class="nx">response</span>
-            <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">result</span><span class="p">.</span><span class="nx">response</span><span class="o">?</span><span class="p">.</span><span class="nx">docs</span><span class="p">,</span> <span class="nf">(doc) -&gt;</span>
-                <span class="nx">docs</span><span class="p">.</span><span class="nx">push</span> <span class="nx">solrManager</span><span class="p">.</span><span class="nx">removeSuffix</span> <span class="nx">doc</span>
-            <span class="nx">result</span><span class="p">.</span><span class="nx">response</span><span class="o">?</span><span class="p">.</span><span class="nv">docs = </span><span class="nx">docs</span>
-            <span class="nx">cb</span> <span class="nx">result</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-12">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-12">&#182;</a>                          </div>                          <p>Return all available entities with its settings</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="nv">getEntities: </span><span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nv">es = </span><span class="p">{}</span>
-        <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../entities.json&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-            <span class="nv">entities = </span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span> <span class="nx">e</span>
-            <span class="nx">async</span><span class="p">.</span><span class="nx">forEach</span> <span class="nx">entities</span><span class="p">,</span> <span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span>
-                <span class="nx">@getSettings</span> <span class="nx">name</span><span class="p">,</span> <span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="o">=&gt;</span>
-                    <span class="nx">es</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span> <span class="o">=</span> <span class="nx">s</span>
-                    <span class="nx">cb</span><span class="p">()</span>
-            <span class="p">,</span> <span class="nf">(err) -&gt;</span>
-                <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-                <span class="k">return</span> <span class="nx">cb</span> <span class="nx">es</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-13">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-13">&#182;</a>                          </div>                          <p>Read settings file from extension and return it as JSON object</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="nv">getSettings: </span><span class="p">(</span><span class="nx">entity</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nv">settingsFile = </span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">__dirname</span><span class="si">}</span><span class="s">/../extensions/</span><span class="si">#{</span><span class="nx">entity</span><span class="si">}</span><span class="s">/settings.json&quot;</span>
-        <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span> <span class="nx">settingsFile</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="k">throw</span> <span class="nx">err</span> <span class="k">if</span> <span class="nx">err</span>
-            <span class="nx">cb</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-14">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-14">&#182;</a>                          </div>                          <p>Get the sort parameter. If its not specified on QS, the default value
-is specified in the settings file.</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="nv">getSort: </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nv">name = </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">entity</span>
-        <span class="nx">@getSettings</span> <span class="nx">name</span><span class="p">,</span> <span class="p">(</span><span class="nx">settings</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="nv">sort = </span><span class="k">if</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">sort</span> <span class="k">then</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">sort</span> <span class="k">else</span> <span class="nx">settings</span><span class="p">.</span><span class="nx">sort</span>
-            <span class="p">[</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">order</span> <span class="p">]</span> <span class="o">=</span> <span class="nx">sort</span><span class="p">.</span><span class="nx">split</span> <span class="s">&#39;:&#39;</span>
-            <span class="k">if</span> <span class="nx">sort</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">).</span><span class="nx">length</span> <span class="o">is</span> <span class="mi">3</span>
-                <span class="p">[</span><span class="nx">id1</span><span class="p">,</span> <span class="nx">id2</span><span class="p">,</span> <span class="nx">order</span><span class="p">]</span> <span class="o">=</span> <span class="nx">sort</span><span class="p">.</span><span class="nx">split</span> <span class="s">&#39;:&#39;</span>
-                <span class="nv">id = </span><span class="s">&quot;</span><span class="si">#{</span><span class="nx">id1</span><span class="si">}</span><span class="s">:</span><span class="si">#{</span><span class="nx">id2</span><span class="si">}</span><span class="s">&quot;</span>
-            <span class="nv">field = </span><span class="nx">solrManager</span><span class="p">.</span><span class="nx">getFieldFromSchema</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">id</span>
-            <span class="k">if</span> <span class="nx">@isMultivalue</span> <span class="nx">field</span> <span class="k">then</span> <span class="nv">id = </span><span class="s">&quot;sort_</span><span class="si">#{</span><span class="nx">id</span><span class="si">}</span><span class="s">-s&quot;</span>
-            <span class="k">else</span> <span class="nv">id = </span><span class="nx">solrManager</span><span class="p">.</span><span class="nx">addSuffix</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">id</span>
-            <span class="nv">sort = </span><span class="p">{}</span>
-            <span class="nx">sort</span><span class="p">[</span><span class="nx">id</span><span class="p">]</span> <span class="o">=</span> <span class="nx">order</span>
-            <span class="nx">cb</span> <span class="nx">sort</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    picture: (req, res) =&gt;
+        name = req.params.entity
+        upload_id = req.files.picture.path
+        target_filename = upload_id + <span class="string">'.jpg'</span>
+        target_path= <span class="string">"public/images/<span class="subst">#{name}</span>/archive/"</span>
+        target_file = target_path + target_filename
+        tmp_file = <span class="string">'public/images/tmp/'</span> + target_filename
+        url_file = <span class="string">"/images/tmp/"</span> + target_filename
+        response = [ name: target_filename, url: url_file, type: <span class="string">"image/jpeg"</span> ]
+        im_params =  [
+            <span class="string">"<span class="subst">#{target_file}</span>"</span>, <span class="string">'-thumbnail'</span>, <span class="string">'300x300^'</span>, <span class="string">'-gravity'</span>, <span class="string">'center'</span>,
+            <span class="string">'-extent'</span>, <span class="string">'300x300'</span>, <span class="string">'public/images/tmp/'</span> + target_filename
+        ]
 
-    <span class="nv">createQuery: </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nv">name = </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">entity</span>
-        <span class="nx">@getSettings</span> <span class="nx">name</span><span class="p">,</span> <span class="p">(</span><span class="nx">settings</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="nv">q = </span><span class="k">if</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">q</span> <span class="k">then</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">q</span><span class="si">}</span><span class="s">*&quot;</span> <span class="k">else</span> <span class="s">&quot;*:*&quot;</span>
-            <span class="nv">rows = </span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">rows</span> <span class="o">or</span> <span class="nx">settings</span><span class="p">.</span><span class="nx">rows</span>
-            <span class="nv">start = </span><span class="nx">rows</span><span class="o">*</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">page</span> <span class="o">||</span> <span class="mi">0</span>
-            <span class="nx">@getSort</span> <span class="nx">req</span><span class="p">,</span> <span class="p">(</span><span class="nx">sort</span><span class="p">)</span> <span class="o">=&gt;</span>
-                <span class="nv">solrManager = </span><span class="k">new</span> <span class="nx">SolrManager</span> <span class="nx">name</span>
-                <span class="nv">db = </span><span class="nx">solrManager</span><span class="p">.</span><span class="nx">createClient</span><span class="p">()</span>
-                <span class="nv">query = </span><span class="nx">db</span><span class="p">.</span><span class="nx">createQuery</span><span class="p">()</span>
-                    <span class="p">.</span><span class="nx">q</span><span class="p">(</span><span class="nx">q</span><span class="p">)</span>
-                    <span class="p">.</span><span class="nx">sort</span><span class="p">(</span><span class="nx">sort</span><span class="p">)</span>
-                    <span class="p">.</span><span class="nx">defType</span><span class="p">(</span><span class="s">&quot;edismax&quot;</span><span class="p">)</span>
-                    <span class="p">.</span><span class="nx">pf</span><span class="p">(</span><span class="nx">@getSearchableFields</span><span class="p">(</span><span class="nx">name</span><span class="p">))</span>
-                    <span class="p">.</span><span class="nx">qf</span><span class="p">(</span><span class="nx">@getSearchableFields</span><span class="p">(</span><span class="nx">name</span><span class="p">))</span>
-                    <span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="nx">start</span><span class="p">)</span>
-                    <span class="p">.</span><span class="nx">rows</span><span class="p">(</span><span class="nx">rows</span><span class="p">)</span>
-                    <span class="p">.</span><span class="nx">facet</span> <span class="kc">on</span><span class="o">:</span> <span class="kc">yes</span><span class="p">,</span> <span class="nv">missing: </span><span class="kc">yes</span><span class="p">,</span> <span class="nv">mincount: </span><span class="mi">1</span>
-                <span class="nx">cb</span> <span class="nx">query</span><span class="p">,</span> <span class="nx">db</span>
+        fs.rename upload_id, target_file, (err) -&gt;
+            <span class="keyword">throw</span> err <span class="keyword">if</span> err
+            im.convert im_params, (err, stdout, stderr) -&gt;
+                <span class="keyword">throw</span> err <span class="keyword">if</span> err
+                fs.stat tmp_file, (err, stats) -&gt;
+                    <span class="keyword">throw</span> err <span class="keyword">if</span> err
+                    response.push size: stats.size
+                    res.send response</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Return templates from an entity</p>
 
-    <span class="nv">setCollectionResponse: </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">result</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="k">if</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">csv</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span> <span class="s">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s">&#39;text/plain; charset=utf8&#39;</span>
-            <span class="nv">result = </span><span class="nx">@toCSV</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">entity</span><span class="p">,</span> <span class="nx">result</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    template: (req, res) -&gt;
 
-        <span class="k">if</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">xml</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span> <span class="s">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s">&#39;text/xml&#39;</span>
-            <span class="nv">result = </span><span class="nx">js2xml</span> <span class="s">&#39;root&#39;</span><span class="p">,</span> <span class="nx">result</span>
+        res.render <span class="string">"../entities/<span class="subst">#{req.params.entity}</span>/templates"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Run query and return either CSV, JSON or XML</p>
 
-        <span class="k">if</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">json</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span> <span class="s">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s">&#39;application/json&#39;</span>
-            <span class="nv">result = </span><span class="nx">result</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">docs</span>
-        <span class="nx">result</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getCollection: (db, query, cb) =&gt;
+        db.search query, (err, result) =&gt;
+            docs = []
+            <span class="keyword">return</span> cb(docs) <span class="keyword">unless</span> result <span class="keyword">and</span> result.response
+            _.each result.response?.docs, (doc) -&gt;
+                docs.push solrManager.removeSuffix doc
+            result.response?.docs = docs
+            cb result</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>Return all available entities with its settings</p>
 
-    <span class="nv">setFilters: </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">query</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nv">name = </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">entity</span>
-        <span class="k">if</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">[</span><span class="s">&quot;facet.field&quot;</span><span class="p">]</span>
-            <span class="nv">ff = </span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">[</span><span class="s">&quot;facet.field&quot;</span><span class="p">]</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-15">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-15">&#182;</a>                          </div>                          <p>FIXME Incapable of handling only 1 facet.</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>            <span class="k">if</span> <span class="k">typeof</span> <span class="nx">ff</span> <span class="o">isnt</span> <span class="k">typeof</span> <span class="p">[]</span>
-                <span class="nv">ff = </span><span class="p">[</span> <span class="nx">ff</span> <span class="p">]</span>
-            <span class="nv">fields = </span><span class="p">[]</span>
-            <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">ff</span><span class="p">,</span> <span class="nf">(f) -&gt;</span>
-                <span class="nx">fields</span><span class="p">.</span><span class="nx">push</span> <span class="nx">solrManager</span><span class="p">.</span><span class="nx">addSuffix</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">f</span>
-            <span class="nx">query</span><span class="p">.</span><span class="nx">facet</span> <span class="nv">field: </span><span class="nx">fields</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getEntities: (cb) =&gt;
+        es = {}
+        fs.readFile <span class="string">"<span class="subst">#{__dirname}</span>/../entities.json"</span>, (err, e) =&gt;
+            <span class="keyword">throw</span> err <span class="keyword">if</span> err
+            entities = JSON.parse e
+            async.forEach entities, (name, cb) =&gt;
+                <span class="property">@getSettings</span> name, (s) =&gt;
+                    es[name] = s
+                    cb()
+            , (err) -&gt;
+                <span class="keyword">throw</span> err <span class="keyword">if</span> err
+                <span class="keyword">return</span> cb es</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Read settings file from extension and return it as JSON object</p>
 
-        <span class="k">if</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">fs</span>
-            <span class="nv">fqFields = </span><span class="p">{}</span>
-            <span class="nv">fq = </span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">fs</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-16">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-16">&#182;</a>                          </div>                          <p>Handle an array of facet filters</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>            <span class="k">if</span> <span class="k">typeof</span> <span class="nx">fq</span> <span class="o">is</span> <span class="k">typeof</span> <span class="p">[]</span>
-                <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">fq</span><span class="p">,</span> <span class="nf">(fq) -&gt;</span>
-                    <span class="nv">f = </span><span class="nx">fq</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)</span>
-                    <span class="nx">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">solrManager</span><span class="p">.</span><span class="nx">addSuffix</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">f</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-17">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-17">&#182;</a>                          </div>                          <p>If no value, use it to exclude field</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>                    <span class="nv">f = </span><span class="p">[</span> <span class="s">&quot;-</span><span class="si">#{</span><span class="nx">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&#39;[&quot;&quot; TO *]&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="nx">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">is</span> <span class="s">&#39;&#39;</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getSettings: (entity, cb) =&gt;
+        settingsFile = <span class="string">"<span class="subst">#{__dirname}</span>/../entities/<span class="subst">#{entity}</span>/settings.json"</span>
+        fs.readFile settingsFile, (err, s) =&gt;
+            <span class="keyword">throw</span> err <span class="keyword">if</span> err
+            cb(JSON.parse(s))</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>Get the sort parameter. If its not specified on QS, the default value
+is specified in the settings file.</p>
 
-                    <span class="nx">fqFields</span><span class="p">[</span><span class="nx">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span> <span class="nx">unless</span> <span class="nx">fqFields</span><span class="p">[</span><span class="nx">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-                    <span class="nx">fqFields</span><span class="p">[</span><span class="nx">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]].</span><span class="nx">push</span> <span class="nx">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-                <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">fqFields</span><span class="p">,</span> <span class="nf">(fields, f) -&gt;</span>
-                    <span class="nx">query</span><span class="p">.</span><span class="nx">matchFilter</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">f</span><span class="p">,</span> <span class="nx">fields</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-18">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-18">&#182;</a>                          </div>                          <p>Handle just one facet filter</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>            <span class="k">if</span> <span class="k">typeof</span> <span class="nx">fq</span> <span class="o">is</span> <span class="s">&#39;string&#39;</span>
-                <span class="nv">f = </span><span class="nx">fq</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)</span>
-                <span class="nx">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">solrManager</span><span class="p">.</span><span class="nx">addSuffix</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="nv">f = </span><span class="p">[</span> <span class="s">&quot;-</span><span class="si">#{</span><span class="nx">f</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&#39;[&quot;&quot; TO *]&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="nx">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">is</span> <span class="s">&#39;&#39;</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getSort: (req, cb) =&gt;
 
-                <span class="nx">query</span><span class="p">.</span><span class="nx">matchFilter</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">f</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="nx">f</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
-        <span class="nx">query</span>
+        name = req.params.entity
 
-    <span class="nv">getSearchableFields: </span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="nv">schema = </span><span class="k">new</span> <span class="nx">Schema</span> <span class="nx">name</span>
-        <span class="nv">searchables = </span><span class="nx">schema</span><span class="p">.</span><span class="nx">getSearchables</span><span class="p">()</span>
-        <span class="nv">fields = </span><span class="p">[]</span>
-        <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">searchables</span><span class="p">,</span> <span class="p">(</span><span class="nx">f</span><span class="p">)</span> <span class="o">=&gt;</span>
-            <span class="k">return</span> <span class="nx">fields</span><span class="p">.</span><span class="nx">push</span> <span class="s">&quot;sort_</span><span class="si">#{</span><span class="nx">f</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="s">-s&quot;</span> <span class="k">if</span> <span class="nx">f</span><span class="p">.</span><span class="nx">multivalue</span>
-            <span class="nx">fields</span><span class="p">.</span><span class="nx">push</span> <span class="nx">solrManager</span><span class="p">.</span><span class="nx">addSuffix</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">f</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="k">if</span> <span class="nx">f</span><span class="p">.</span><span class="nx">search</span>
-        <span class="k">return</span> <span class="nx">fields</span>
+        schema = <span class="keyword">new</span> Schema name
 
-    <span class="nv">isEntity: </span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="k">return</span> <span class="kc">yes</span> <span class="nx">unless</span> <span class="nx">entities</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">is</span> <span class="o">-</span><span class="mi">1</span>
-        <span class="k">return</span> <span class="kc">no</span>
+        <span class="property">@getSettings</span> name, (settings) =&gt;
+            sort = <span class="keyword">if</span> req.query.sort <span class="keyword">then</span> req.query.sort <span class="keyword">else</span> settings.sort
+            [ id, order ] = sort.split <span class="string">':'</span>
+            <span class="keyword">if</span> sort.split(<span class="string">':'</span>).length <span class="keyword">is</span> <span class="number">3</span>
+                [id1, id2, order] = sort.split <span class="string">':'</span>
+                id = <span class="string">"<span class="subst">#{id1}</span>:<span class="subst">#{id2}</span>"</span>
+            field = schema.getFieldById id
+            <span class="keyword">if</span> <span class="property">@isMultivalue</span> field <span class="keyword">then</span> id = <span class="string">"sort_<span class="subst">#{id}</span>-s"</span>
+            <span class="keyword">else</span> id = solrManager.addSuffix name, id
+            sort = {}
+            sort[id] = order
+            cb sort</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>Returns a new a solr query object ready to perfom searches on the
+requested entity&#39;s collection.</p>
 
-    <span class="nv">isMultivalue: </span><span class="p">(</span><span class="nx">field</span><span class="p">)</span> <span class="o">=&gt;</span>
-        <span class="k">return</span> <span class="kc">yes</span> <span class="k">if</span> <span class="nx">field</span><span class="p">.</span><span class="nx">multivalue</span>
-        <span class="k">return</span> <span class="kc">yes</span> <span class="k">if</span> <span class="nx">field</span><span class="p">.</span><span class="nx">type</span> <span class="o">is</span> <span class="s">&#39;facet&#39;</span> <span class="o">or</span> <span class="nx">field</span><span class="p">.</span><span class="nx">type</span> <span class="o">is</span> <span class="s">&#39;tuple&#39;</span>
-        <span class="k">return</span> <span class="kc">no</span></pre></div>                      </td>                  </tr>                                                      <tr id="section-19">                      <td class="docs">                          <div class="pilwrap">                              <a class="pilcrow" href="#section-19">&#182;</a>                          </div>                          <p>Parse an item and form a ';' separated string with its values</p>                      </td>                      <td class="code">                          <div class="highlight"><pre>    <span class="nv">toCSV: </span><span class="nf">(name, res) -&gt;</span>
-        <span class="nv">schema = </span><span class="nx">require</span> <span class="s">&quot;../extensions/</span><span class="si">#{</span><span class="nx">name</span><span class="si">}</span><span class="s">/schema.json&quot;</span>
-        <span class="nv">output = </span><span class="p">[]</span>
-        <span class="nv">fields = </span><span class="p">[]</span>
-        <span class="nv">headers = </span><span class="p">[]</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    createQuery: (req, cb) =&gt;
+        name = req.params.entity
+        <span class="property">@getSettings</span> name, (settings) =&gt;
+            q = <span class="keyword">if</span> req.query.q <span class="keyword">then</span> <span class="string">"<span class="subst">#{req.query.q}</span>*"</span> <span class="keyword">else</span> <span class="string">"*:*"</span>
+            rows =  req.query.rows <span class="keyword">or</span> settings.rows
+            start = rows*req.query.page || <span class="number">0</span>
+            <span class="property">@getSort</span> req, (sort) =&gt;
+                solrManager = <span class="keyword">new</span> SolrManager name
+                db = solrManager.createClient()
+                query = db.createQuery()
+                    .q(q)
+                    .sort(sort)
+                    .defType(<span class="string">"edismax"</span>)
+                    .pf(<span class="property">@getSearchableFields</span>(name))
+                    .qf(<span class="property">@getSearchableFields</span>(name))
+                    .start(start)
+                    .rows(rows)
+                    .facet <span class="literal">on</span>: <span class="literal">yes</span>, missing: <span class="literal">yes</span>, mincount: <span class="number">1</span>
+                cb query, db</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Set response of a collection request, depending on the format asked.</p>
 
-        <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">schema</span><span class="p">,</span> <span class="nf">(f) -&gt;</span>
-            <span class="nx">headers</span><span class="p">.</span><span class="nx">push</span> <span class="nx">f</span><span class="p">.</span><span class="nx">id</span>
-            <span class="nx">fields</span><span class="p">.</span><span class="nx">push</span> <span class="nx">f</span><span class="p">.</span><span class="nx">id</span>
-        <span class="nx">output</span><span class="p">.</span><span class="nx">push</span> <span class="nx">headers</span><span class="p">.</span><span class="nx">join</span> <span class="s">&#39;;&#39;</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setCollectionResponse: (req, res, result, cb) =&gt;
+        <span class="keyword">if</span> req.query.csv
+            res.setHeader <span class="string">'Content-Type'</span>, <span class="string">'text/plain; charset=utf8'</span>
+            result = <span class="property">@toCSV</span> req.params.entity, result
 
-        <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">res</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">docs</span><span class="p">,</span> <span class="nf">(doc) -&gt;</span>
-            <span class="nv">line = </span><span class="p">[]</span>
-            <span class="nx">_</span><span class="p">.</span><span class="nx">each</span> <span class="nx">fields</span><span class="p">,</span> <span class="nf">(f) -&gt;</span>
-                <span class="nx">line</span><span class="p">.</span><span class="nx">push</span> <span class="nx">doc</span><span class="p">[</span><span class="nx">f</span><span class="p">]</span>
-            <span class="nx">output</span><span class="p">.</span><span class="nx">push</span> <span class="nx">line</span><span class="p">.</span><span class="nx">join</span> <span class="s">&#39;;&#39;</span>
+        <span class="keyword">if</span> req.query.xml
+            res.setHeader <span class="string">'Content-Type'</span>, <span class="string">'text/xml'</span>
+            result = js2xml <span class="string">'root'</span>, result
 
-        <span class="k">return</span> <span class="nx">output</span><span class="p">.</span><span class="nx">join</span> <span class="s">&#39;\n&#39;</span>
+        <span class="keyword">if</span> req.query.json
+            res.setHeader <span class="string">'Content-Type'</span>, <span class="string">'application/json'</span>
+            result = result.response.docs
+        result</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>Adds filter parameters to query object, like facet filters, strings, etc.</p>
 
-</pre></div>                      </td>                  </tr>                                </tbody>          </table>      </div>  </body>  </html>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    setFilters: (req, query) =&gt;
+        name = req.params.entity
+        <span class="keyword">if</span> req.query[<span class="string">"facet.field"</span>]
+            ff = req.query[<span class="string">"facet.field"</span>]</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>FIXME Incapable of handling only 1 facet.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> <span class="keyword">typeof</span> ff <span class="keyword">isnt</span> <span class="keyword">typeof</span> []
+                ff = [ ff ]
+            fields = []
+            _.each ff, (f) -&gt;
+                fields.push solrManager.addSuffix name, f
+            query.facet field: fields
+
+        <span class="keyword">if</span> req.query.fs
+            fqFields = {}
+            fq = req.query.fs</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>Handle an array of facet filters</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> <span class="keyword">typeof</span> fq <span class="keyword">is</span> <span class="keyword">typeof</span> []
+                _.each fq, (fq) -&gt;
+                    f = fq.split(<span class="string">':'</span>)
+                    f[<span class="number">0</span>] = solrManager.addSuffix(name, f[<span class="number">0</span>])</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>If no value, use it to exclude field</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    f = [ <span class="string">"-<span class="subst">#{f[<span class="number">0</span>]}</span>"</span>, <span class="string">'["" TO *]'</span>] <span class="keyword">if</span> f[<span class="number">1</span>] <span class="keyword">is</span> <span class="string">''</span>
+
+                    fqFields[f[<span class="number">0</span>]] = [] <span class="keyword">unless</span> fqFields[f[<span class="number">0</span>]]
+                    fqFields[f[<span class="number">0</span>]].push f[<span class="number">1</span>]
+                _.each fqFields, (fields, f) -&gt;
+                    query.matchFilter <span class="literal">true</span>, f, fields</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>Handle just one facet filter</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> <span class="keyword">typeof</span> fq <span class="keyword">is</span> <span class="string">'string'</span>
+                f = fq.split(<span class="string">':'</span>)
+                f[<span class="number">0</span>] = solrManager.addSuffix name, f[<span class="number">0</span>]
+                f = [ <span class="string">"-<span class="subst">#{f[<span class="number">0</span>]}</span>"</span>, <span class="string">'["" TO *]'</span>] <span class="keyword">if</span> f[<span class="number">1</span>] <span class="keyword">is</span> <span class="string">''</span>
+
+                query.matchFilter <span class="literal">true</span>, f[<span class="number">0</span>], [f[<span class="number">1</span>]]
+        query</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>Return all fields specified as &quot;searchable&quot; (search: true) on the schema.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getSearchableFields: (name) =&gt;
+        schema = <span class="keyword">new</span> Schema name
+        searchables = schema.getSearchables()
+        fields = []
+        _.each searchables, (f) =&gt;
+            <span class="keyword">return</span> fields.push <span class="string">"sort_<span class="subst">#{f.id}</span>-s"</span> <span class="keyword">if</span> f.multivalue
+            fields.push solrManager.addSuffix(name, f.id) <span class="keyword">if</span> f.search
+        <span class="keyword">return</span> fields</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>Checks if the requested resource is one of the available entities</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    isEntity: (name) =&gt;
+        <span class="keyword">return</span> <span class="literal">yes</span> <span class="keyword">unless</span> entities.indexOf(name) <span class="keyword">is</span> -<span class="number">1</span>
+        <span class="keyword">return</span> <span class="literal">no</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>Checks if the requested field is multivalue. Facet and tuple fields are
+multivalue by definition.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    isMultivalue: (field) =&gt;
+        <span class="keyword">return</span> <span class="literal">yes</span> <span class="keyword">if</span> field.multivalue
+        <span class="keyword">return</span> <span class="literal">yes</span> <span class="keyword">if</span> field.type <span class="keyword">is</span> <span class="string">'facet'</span> <span class="keyword">or</span> field.type <span class="keyword">is</span> <span class="string">'tuple'</span>
+        <span class="keyword">return</span> <span class="literal">no</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>Parse an item and form a &#39;;&#39; separated string with its values</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    toCSV: (name, res) -&gt;
+        schema = require <span class="string">"../entities/<span class="subst">#{name}</span>/schema.json"</span>
+        output = []
+        fields = []
+        headers = []
+
+        _.each schema, (f) -&gt;
+            headers.push f.id
+            fields.push f.id
+        output.push headers.join <span class="string">';'</span>
+
+        _.each res.response.docs, (doc) -&gt;
+            line = []
+            _.each fields, (f) -&gt;
+                line.push doc[f]
+            output.push line.join <span class="string">';'</span>
+
+        <span class="keyword">return</span> output.join <span class="string">'\n'</span></pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
