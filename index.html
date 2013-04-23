@@ -61,9 +61,24 @@
       <section id="installation" class="inner">
         <a name="installation"></a>
         <h3>Quick Start</h3>
-        <p>Follow the next steps and you'll get the Cube up and running<p>
-        <p>Requirements: JDK &gt;= 1.6, Maven &gt;= 2.2 and Imagemagick.</p>
+        <p>There are two main ways to install it. You can try your luck with our install script or follow the steps. But before anything, you need to meet the requirements.<p>
+        <p>Requirements: JDK &gt;= 1.6</p>
+        <h6>Install script</h6>
+        <p>This script will try to resolve all dependencies (except JDK) and get your cube up and running.</p>
+        <pre>$ curl -s http://zalando.github.com/cube/install.sh | /bin/bash -s --</pre>
+        <h6>Manual install</h6>
+        <p>You can also try to do it manually by following these steps:</p>
         <ol>
+            <li>
+                <p>Solve dependencies</p>
+                <ul>
+                    <li>Maven 2.2</li>
+                    <li>ImageMagick</li>
+                    <li>Git</li>
+                    <li>Nodejs &gt;= 0.8</li>
+                    <li>npm</li>
+                </ul>
+            </li>
             <li>
             <p>Get it from our <a href="http://github.com/zalando/cube">GitHub repo</a></P>
                 <pre>$ git clone git@github.com:zalando/cube.git</pre>
