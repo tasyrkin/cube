@@ -509,7 +509,7 @@ checkEnvironment
 checkGit
 checkNode
 checkNpm
-#checkMaven
+checkMaven
 #checkMongo
 checkForever
 checkDocco
