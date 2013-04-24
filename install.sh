@@ -443,11 +443,11 @@ downloadFromGit(){
         
         if [ "$CONFIRMED" = 1 ]; then
             echo "Clone the Cube App repository..."
-            git clone https://github.com/zalando/system.git ./system_latest
-            rm -f system_latest/install.sh
-            mv -f system_latest/* ./
-            mv -f system_latest/.git ./
-            rm -fr system_latest
+            git clone https://github.com/zalando/cube.git ./cube_latest
+            rm -f cube_latest/install.sh
+            mv -f cube_latest/* ./
+            mv -f cube_latest/.git ./
+            rm -fr cube_latest
             echo "Installing Node.js modules..."
             sudo npm install
         fi
