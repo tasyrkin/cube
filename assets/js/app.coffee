@@ -533,29 +533,29 @@ $ =>
         updateFacets: (m) =>
 
             # Re-fetch facets from DB
-            @fetchFacet () =>
+            window.App.fetchFacet () =>
 
                 # Re-fetch items based on the new filter selection
-                @fetchItems
+                window.App.fetchItems
 
-                    data: @getFilterQS()
+                    data: window.App.getFilterQS()
 
                     success: (col) =>
 
-                        @genPageIndex()
-                        @hideError()
-                        @showPaneView()
+                        window.App.genPageIndex()
+                        window.App.hideError()
+                        window.App.showPaneView()
 
                         # If the colection isn't empty, we are done
                         return if col.length
 
                         # Otherwise reset the app by clearing all filters
                         $('#inputSearch').val ''
-                        @resetAllFilters()
+                        window.App.resetAllFilters()
 
                     error: () =>
 
-                        @showError()
+                        window.App.showError()
 
         # Reset all filters.
         resetAllFilters: () =>
