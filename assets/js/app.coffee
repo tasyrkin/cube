@@ -6,7 +6,7 @@
 #
 # You can also visit our github page and repository
 #
-# http://zalando.github.io/cube/
+# http://cubeapp.io
 #
 # @autor: Emanuel Lauria <emanuel.lauria@zalando.de>
 # @date:  Apr/2013
