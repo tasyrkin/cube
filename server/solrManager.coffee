@@ -42,7 +42,7 @@ class SolrManager
             ks = @addSuffix name, k
             f = schema.getFieldById k
             newObj[ks] = v
-            return unless f.type is 'facet' or f.type is 'tuple' or f.multivalue
+            return unless @isMultivalue()
             if typeof v isnt typeof [] then v = v.toString().split(',')
             newObj[ks] = []
             _.each v, (value) ->
