@@ -134,9 +134,9 @@ class ItemController
 
                     # If its a multivalue field, add a copy field with its
                     # array stringified, so search and sort work on this field.
-                    if f.multivalue
+                    if solrManager.isMultivalue f
                         multivalueField = item[f.key].sort().join(" ")
-                        req.body["sort_#{f.key}-s"] = multivalueField
+                        req.body["#{f.key}-sort"] = multivalueField
 
             # If there is no picture field, respond with updated item object.
             if !req.body[picKey] or req.body[picKey] is item[picKey]

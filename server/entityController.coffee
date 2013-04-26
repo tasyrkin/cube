@@ -171,10 +171,15 @@ class EntityController
                 [id1, id2, order] = sort.split ':'
                 id = "#{id1}:#{id2}"
             field = schema.getFieldById id
-            if @isMultivalue field then id = "sort_#{id}-s"
+
+            # Solr can't sort multivalue fields. There is a stringified copy
+            # of each mv field with the suffix -sort appended to its id.
+            if @isMultivalue field then id = "#{id}-sort"
             else id = solrManager.addSuffix name, id
+
             sort = {}
             sort[id] = order
+
             cb sort
 
     # Returns a new a solr query object ready to perfom searches on the
@@ -259,7 +264,7 @@ class EntityController
         searchables = schema.getSearchables()
         fields = []
         _.each searchables, (f) =>
-            return fields.push "sort_#{f.id}-s" if f.multivalue
+            return fields.push "#{f.id}-sort" if @isMultivalue f
             fields.push solrManager.addSuffix(name, f.id) if f.search
         return fields
 
