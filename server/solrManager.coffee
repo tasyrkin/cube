@@ -31,7 +31,7 @@ class SolrManager
         sf = "-s"
         sf = "-i" if f.type is 'integer'
         sf = "-f" if f.type is 'float'
-        sf += "m" if f.multivalue or f.type is 'facet' or f.type is 'tuple'
+        sf += "m" if @isMultivalue f
         sf += "r" if f.mandatory
         p + sf
 
@@ -50,13 +50,20 @@ class SolrManager
                 if value.indexOf('/') isnt -1
                     parent = value.split('/')[0]
                     newObj[ks].push parent if value.indexOf(parent) is -1
-            newObj["sort_#{k}-s"] = newObj[ks].sort().join(' ')
+            newObj["#{k}-sort"] = newObj[ks].sort().join(' ')
         newObj
 
     removeSuffix: (obj) ->
         newObj = {}
         _.each obj, (v, k) ->
-            return if k.indexOf('sort_') is 0
+            return if k.indexOf('-sort') isnt -1
             k = k.split('-')[0]
             newObj[k] = v
         newObj
+
+    # Checks if the requested field is multivalue. Facet and tuple fields are
+    # multivalue by definition.
+    isMultivalue: (field) =>
+        return yes if field.multivalue
+        return yes if field.type is 'facet' or field.type is 'tuple'
+        return no

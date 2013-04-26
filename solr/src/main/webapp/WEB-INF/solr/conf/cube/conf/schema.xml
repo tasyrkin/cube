@@ -25,6 +25,7 @@
   <dynamicField name="*-ir" type="integer" indexed="true" stored="true" multiValued="false" required="true" />
   <dynamicField name="*-f" type="float" indexed="true" stored="true" multiValued="false" required="true" />
   <dynamicField name="*-fr" type="float" indexed="true" stored="true" multiValued="false" required="true" />
+  <dynamicField name="*-sort" type="string" indexed="true" stored="true" multiValued="false" required="true" />
 </fields>
 <uniqueKey>id</uniqueKey>
 <defaultSearchField></defaultSearchField>
