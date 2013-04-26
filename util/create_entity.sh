@@ -2,7 +2,7 @@
 #
 # Script to create a new entity for the cube
 #
-# http://zalando.github.io/cube
+# http://cubeapp.io
 #
 # @author: Emanuel Lauria <emanuel.lauria@zalando.de>
 

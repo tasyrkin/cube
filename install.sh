@@ -2,8 +2,10 @@
 #
 # BUILDS THE CUBE APP AND UPDATE ITS DOCS
 #
+# http://cubeapp.io
+
 # Based on Igor Ramadas <igor.ramadas@zalando.de> System App install script.
-# http://zalando.github.io/system
+# http://systemapp.io
 #
 # Author: Emanuel Lauria <emanuel.lauria@zalando.de>
 
@@ -62,7 +64,7 @@ checkEnvironment(){
         echo "Supported systems: Linux Ubuntu, Debian, Fedora, CentOS, Red Hat, and Mac OS X."
         echo "Supported package managers: APT, YUM and Homebrew."
         echo ""
-        echo "Please go to http://zalando.github.io/cube/ to see how to install the Cube App manually."
+        echo "Please go to http://cubeapp.io to see how to install the Cube App manually."
         exit 1
     fi
 
@@ -443,11 +445,11 @@ downloadFromGit(){
         
         if [ "$CONFIRMED" = 1 ]; then
             echo "Clone the Cube App repository..."
-            git clone https://github.com/zalando/system.git ./system_latest
-            rm -f system_latest/install.sh
-            mv -f system_latest/* ./
-            mv -f system_latest/.git ./
-            rm -fr system_latest
+            git clone https://github.com/zalando/cube.git ./cube_latest
+            rm -f cube_latest/install.sh
+            mv -f cube_latest/* ./
+            mv -f cube_latest/.git ./
+            rm -fr cube_latest
             echo "Installing Node.js modules..."
             sudo npm install
         fi
@@ -490,7 +492,7 @@ echo ""
 echo "This script will help you installing and configuring the Zalando Cube App."
 echo "If you have problems please get help on our project page:"
 echo ""
-echo "http://zalando.github.io/cube/"
+echo "http://cubeapp.io"
 echo ""
 
 if [ "$1" = "-y" ]; then
