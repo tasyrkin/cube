@@ -68,6 +68,7 @@ class EntityController
         @createQuery req, (query, db) =>
             query = @setFilters req, query
             @getCollection db, query, (result) =>
+                res.header 'Cache-Control', 'private'
                 res.send @setCollectionResponse req, res, result
 
     # Returns pane.json, containing extra data for custom panes.
