@@ -2,6 +2,7 @@
 
 Management and searching tool at Zalando. Mainly used as the infamous "TeamApp".
 
+<<<<<<< HEAD
 
 ## Quick Installation
 
@@ -54,3 +55,6 @@ To start the Team app please use:
 ### Need help?
 
 Check the readme again! And then if you REALLY still need help please contact Emanuel: emanuel.lauria@zalando.de.
+=======
+Please visit its website for more information! http://cubeapp.io
+>>>>>>> master

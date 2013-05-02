@@ -6,7 +6,7 @@
 #
 # You can also visit our github page and repository
 #
-# http://zalando.github.io/cube/
+# http://cubeapp.io
 #
 # @autor: Emanuel Lauria <emanuel.lauria@zalando.de>
 # @date:  Apr/2013
@@ -239,7 +239,7 @@ $ =>
         # Get extesion HTML/JS code and append it to current dom.
         getExtensions: (cb) =>
 
-            $.get 'extensions', (exthtml) ->
+            $.get 'template', (exthtml) ->
 
                 # Append HTML on extension container
                 $('#app > #extensions').html exthtml
@@ -548,29 +548,29 @@ $ =>
         updateFacets: (m) =>
 
             # Re-fetch facets from DB
-            @fetchFacet () =>
+            window.App.fetchFacet () =>
 
                 # Re-fetch items based on the new filter selection
-                @fetchItems
+                window.App.fetchItems
 
-                    data: @getFilterQS()
+                    data: window.App.getFilterQS()
 
                     success: (col) =>
 
-                        @genPageIndex()
-                        @hideError()
-                        @showPaneView()
+                        window.App.genPageIndex()
+                        window.App.hideError()
+                        window.App.showPaneView()
 
                         # If the colection isn't empty, we are done
                         return if col.length
 
                         # Otherwise reset the app by clearing all filters
                         $('#inputSearch').val ''
-                        @resetAllFilters()
+                        window.App.resetAllFilters()
 
                     error: () =>
 
-                        @showError()
+                        window.App.showError()
 
         # Reset all filters.
         resetAllFilters: () =>
