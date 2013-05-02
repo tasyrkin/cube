@@ -6,8 +6,8 @@ class @Facets extends Backbone.Collection
     model: window.Facet,
 
     # URL from QS
-    # As for the items collection, the facet collection needs to get the
-    # querystring parameters that will be used by solr.
+    # This collection needs to get the querystring parameters that will be 
+    # passed to solr.
     url: () =>
         window.App.commonURL()
 
@@ -33,6 +33,9 @@ class @Facets extends Backbone.Collection
                 facetFields.push @createFacet(name, f, fields)
         facetFields
 
+    # Create a facet category like 'team', 'group', 'role', etc. Composed of a
+    # label and normal and special fields. Normal fields go above a gray line,
+    # special fields below.
     createFacet: (facetName, field, fields) =>
 
         facetName = field.id.split('-')[0]
@@ -52,6 +55,8 @@ class @Facets extends Backbone.Collection
         normal.sort()
         special.sort()
 
+        # null values are not-set values, it has to show not-set values too
+        # and the amount of items who don't have this facet set.
         normal.push "null"
 
         root =
@@ -71,6 +76,8 @@ class @Facets extends Backbone.Collection
 
         root
 
+    # Create a facet field object with name, amount of items in it and
+    # all sub-facet fields. (deeper level nodes).
     createNode: (field, amounts, tree, sep) =>
         tokens = field.split sep
         name = tokens.pop()
@@ -82,6 +89,9 @@ class @Facets extends Backbone.Collection
             path: field
             subs: {}
 
+    # Determine if the facet field is listed in the special property array
+    # on the schema definition. If its special it will be rendered below a
+    # gray line on the facet pane.
     isSpecial: (name, field, sep) =>
         parent = field.split(sep)[0]
         specials = window.Settings.Schema.getSpecials()
