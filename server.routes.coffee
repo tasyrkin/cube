@@ -114,6 +114,7 @@ module.exports = (app, express) ->
 
         params =  entity: name, entities: entities
 
+        # Read all configuration files from filesystem
         async.parallel [
 
             (cb) =>
@@ -138,6 +139,7 @@ module.exports = (app, express) ->
 
         ], () =>
 
+            # Render backbonejs app
             res.render 'app', params
 
 
@@ -169,9 +171,11 @@ module.exports = (app, express) ->
 
         fs.readFile eFile, 'utf-8', (err, d) =>
             throw err if err
-            entities = JSON.parse d
-            es = []
 
+            es = []
+            entities = JSON.parse d
+
+            # Add each entitie's settings
             async.forEach entities,
 
                 (e, cb) ->
