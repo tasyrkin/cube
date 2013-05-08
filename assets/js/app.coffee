@@ -967,6 +967,7 @@ $ =>
         # Show a Group view when many items have been selected
         showGroupView: () =>
 
+            window.groupView?.destroy()
             window.profileView?.destroy()
 
             window.groupView = new GroupView unless window.groupView
