@@ -58,7 +58,7 @@ Theme Styles
 body {
   box-sizing: border-box;
   color:#373737;
-  background: #FFF;
+  background: #EEE;
   font-size: 16px;
   font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -66,7 +66,8 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 10px 0;
+  margin: 0;
+  margin-bottom: 10px;
   font-weight: 700;
   color:#222222;
   font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
@@ -288,12 +289,20 @@ Full-Width Styles
 *******************************************************************************/
 
 .outer {
-  width: 100%;
+  min-width: 320px;
+  max-width: 480px;
+  position: relative;
+  max-width: 1200px;
+  padding: 10px;
+  padding-top: 0;
+  margin: 0 auto;
+  clear: both;
 }
+
 
 .inner {
   position: relative;
-  max-width: 640px;
+  max-width: 810px;
   padding: 10px;
   padding-top: 0;
   margin: 0 auto;
@@ -346,9 +355,10 @@ span#logo {
 }
 
 #header_wrap {
-  background: url('cube_header.png') #d4d4d4 no-repeat center 0;
-  height: 285px;
+  background: url('cube_header.png') #d4d4d4 no-repeat 200px 0;
+  height: 275px;
   position: relative;
+  border-bottom: 1px solid dodgerblue;
 }
 
 #header_wrap .inner {
@@ -438,9 +448,12 @@ header #titleContainer {
 }
 
 #main_content_wrap {
-  background: url('cube_header.png') #FFF no-repeat center -286px;
-  border-top: 1px solid dodgerblue;
-  border-bottom: 1px solid dodgerblue;
+  background: url('cube_header.png') #FFF no-repeat 200px -286px;
+}
+
+#main_content_wrap section {
+  padding: 10px;
+  padding-bottom: 0;
 }
 
 #footer_wrap {
@@ -521,6 +534,93 @@ span.value {
     padding: 0;
     margin: 0;
 }
+
+section#slideshow {
+    position: relative;
+    padding-top: 50px;
+    white-space: nowrap;
+}
+
+section#slideshow ul li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+
+.slideshow_btn {
+    width: 56px;
+    height: 56px;
+    float: left;
+    margin-top: 202px;
+    cursor: pointer;
+}
+
+#slideshow_left {
+    background: url('slider_button_left.png') no-repeat center center;
+}
+
+#slideshow_right {
+    background: url('slider_button_right.png') no-repeat center center;
+}
+
+#slideshow_mask {
+    float: left;
+    overflow: hidden;
+    height: 446px;
+    width: 814px;
+    margin: 0 30px;
+}
+
+#slideshow_wrap {
+    width: 986px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+#slideshow_shadow {
+    float: left;
+    clear: both;
+    width: 800px;
+    height: 21px;
+    margin-left: 88px;
+    background: url('slider_shadow.png') no-repeat center center;
+}
+
+#slides {
+    margin-left: -816px;
+}
+
+#indicators {
+    width: 100%;
+    float: left;
+    clear: both;
+    text-align: center;
+    position: relative;
+    top: -10px;
+}
+
+#indicators li {
+    cursor: pointer;
+}
+
+.pic_ind {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: url('slider_radiobutton.png') no-repeat center center;
+}
+
+.active_ind {
+    background: url('slider_radiobutton_aktiv.png') no-repeat center center;
+}
+
+img {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
 /*******************************************************************************
 Small Device Styles
 *******************************************************************************/

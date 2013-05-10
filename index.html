@@ -41,25 +41,40 @@
       <iframe src="http://cube.eu01.aws.af.cm/team/?admin=yes#qs/?page=0&rows=50&sort=name:asc" width="100%" height="100%"></iframe>
   </div>
 
-    <div class="inner" id="banner_wrapper">
-      <a id="demo_banner">Live Demo<span id="arrow"></span></a>
-   </div>
+        <section id="slideshow" class="outer">
+            <div id="slideshow_wrap">
+                <span id="slideshow_left" class="slideshow_btn"></span>
+                <div id="slideshow_mask">
+                    <ul id="slides">
+                        <li><img src="slideshow/slideshow6.jpg"></li>
+                        <li><img src="slideshow/slideshow1.jpg"></li>
+                        <li><img src="slideshow/slideshow2.jpg"></li>
+                        <li><img src="slideshow/slideshow3.jpg"></li>
+                        <li><img src="slideshow/slideshow4.jpg"></li>
+                        <li><img src="slideshow/slideshow5.jpg"></li>
+                        <li><img src="slideshow/slideshow6.jpg"></li>
+                        <li><img src="slideshow/slideshow1.jpg"></li>
+                    </ul>
+                </div>
+                <span id="slideshow_right" class="slideshow_btn"></span>
+                <span id="slideshow_shadow"></span>
+                <div id="indicators">
+                    <ul id="slide_indicator">
+                        <li>
+                            <span id="1" class="pic_ind active_ind">
+                            </span>
+                        </li>
+                        <li><span id="2" class="pic_ind"></span></li>
+                        <li><span id="3" class="pic_ind"></span></li>
+                        <li><span id="4" class="pic_ind"></span></li>
+                        <li><span id="5" class="pic_ind"></span></li>
+                        <li><span id="6" class="pic_ind"></span></li>
+                    </ul>
+                </div>
+            </div>
+      </section>
 
-      <section id="columns" class="inner">
-        <div class="column">
-            <h5>Import</h5>
-            <p>Get your CSV, XML or XLS files and import them in one central place: Cube's Solr Database.</p>
-        </div>
-         <div class="column">
-             <h5>Manage</h5>
-             <p>View your data organized by their own properties. Filter, search, modify and get valuable information.</p>
-        </div>
-        <div class="column">
-            <h5>Export</h5>
-            <p>Select important data and save it in JSON, CSV, XML or just go oldschool and Print it to paper.</p>
-        </div>
-        </section>
-
+      <div class="inner">
       <section id="main_content" class="inner">
         <h3>Why?</h3>
         <p>In a fast growing company like Zalando, where the size of the technology team tripled in 2012, it is becoming increasingly difficult to remember people’s names, right? Weeks will pass before a newcomer knows who is doing what and where. Initially, we developed the Cube to solve this problem, but we  later realized that the actual problem was more abstract. Having a bunch of CSV, JSON, and XML files and searching important information in them motivated us to fill the Cube not only with our technology team but also with all of our projects, hosts, and many other things.</p>
@@ -306,7 +321,7 @@
         <p>Required property for any dropdown tipe field, defined as an array of strings for the availablo options in the dropdown menu.</p>
         <p>Value: <span class="value">Array [ "name1", "name2" ]<span></p>
      </section>
-
+    </div>
     </div>
 
     <!-- FOOTER  -->
