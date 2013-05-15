@@ -1,5 +1,5 @@
 {
-    "entity": "geo",
+    "entity": "world",
     "title": "The World",
     "description": "Another usecase for the cube.",
     "itemType": [ "city", "cities" ],

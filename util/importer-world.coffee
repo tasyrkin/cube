@@ -5,7 +5,7 @@ require "coffee-script"
 request = require "request"
 solr = require "solr-client"
 
-schema = require '../entities/geo/schema.json'
+schema = require '../entities/world/schema.json'
 
 SolrManager = require '../server/solrManager'
 solrManager = new SolrManager
@@ -73,7 +73,7 @@ addAllData = () ->
                     log 'Added ', i, ' entries.'
                     solrClient.commit () ->
                         date = new Date()
-                        console.log date.toString(), "- Geo Solr restored."
+                        console.log date.toString(), "- World Solr restored."
 
 newItem = (srcItem) ->
     item = {}
@@ -83,7 +83,7 @@ newItem = (srcItem) ->
             item[field.id] = []
             _.each srcItem[field.id].split(','), (l) ->
                 item[field.id].push l if l
-    item = solrManager.addObjSuffix 'geo', item
+    item = solrManager.addObjSuffix 'world', item
     item.id = srcItem['iso alpha2']
     item
 

@@ -52,6 +52,6 @@ restoreData = () ->
         return console.log 'error:', stderr if err
         console.log stdout
     require './util/importer-team.coffee'
-    require './util/importer-geo.coffee'
+    require './util/importer-world.coffee'
 
 restoreData()
