@@ -51,6 +51,7 @@ restoreData = () ->
     exec 'bash util/restore_images.sh', (err, stdout, stderr) =>
         return console.log 'error:', stderr if err
         console.log stdout
-    require './util/import-team.coffee'
+    require './util/importer-team.coffee'
+    require './util/importer-geo.coffee'
 
 restoreData()

@@ -1,0 +1,6 @@
+{
+    "host": "solr2-zalandoapp.rhcloud.com",
+    "port": "80",
+    "core": "",
+    "path": "/solr"
+}

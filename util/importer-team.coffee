@@ -20,7 +20,6 @@ log = (arg...) ->
     console.log(arg...) if verbose
 
 # Config. Please set the next variables to suit your needs.
-url = 'http://deployctl.zalando.net/fortunes/json'
 dbSettings =
     host: "solr-zalandoapp.rhcloud.com"
     port: "80"
@@ -62,7 +61,7 @@ addAllData = () ->
                 log 'Added ', i, ' entries.'
                 solrClient.commit () ->
                     date = new Date()
-                    console.log date.toString(), "- Solr restored."
+                    console.log date.toString(), "- Team Solr restored."
 
 newItem = (ids, srcItem) ->
     item = {}

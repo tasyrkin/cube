@@ -1,0 +1,10 @@
+{
+    "entity": "geo",
+    "title": "The World",
+    "description": "Another usecase for the cube.",
+    "itemType": [ "city", "cities" ],
+    "separator": "/",
+    "view": "list",
+    "rows": 50,
+    "sort": "name:asc"
+}

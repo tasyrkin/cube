@@ -1,0 +1,46 @@
+[
+    {
+      "id": "name",
+      "label": "Name",
+      "mandatory": true,
+      "index": true,
+      "search": true
+    },
+    {
+      "id": "capital",
+      "label": "Capital",
+      "index": true
+    },
+    {
+      "id": "areaInSqKm",
+      "label": "Area km2",
+      "index": true
+    },
+    {
+      "id": "population",
+      "label": "Population",
+      "index": true
+    },
+    {
+      "id": "continent",
+      "label": "Continent",
+      "type": "facet",
+      "index": true
+    },
+    {
+      "id": "languages",
+      "label": "Languages",
+      "type": "facet",
+      "index": true
+    },
+    {
+      "id": "currency",
+      "label": "Currency",
+      "type": "facet",
+      "index": true
+    },
+    {
+      "id": "geonameId",
+      "label": "GeoName ID"
+    }
+]
