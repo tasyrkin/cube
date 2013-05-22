@@ -278,7 +278,7 @@ script(type="text/template")#details-template
   |     </ul>
   |     <div id="extensions"></div>
   | </div><%
-  | if (window.App.isEditable() && schema.getAdditionals().length) { %>
+  | if (window.App.isProfEditable()) { %>
   |     <div id="buttons">
   |         <a id="edit" class="btn">Edit</a>
   |         <a id="save" class="btn">Save</a><%

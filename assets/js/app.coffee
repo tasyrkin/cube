@@ -1147,6 +1147,11 @@ $ =>
             return no if window.Settings.editable is false
             yes
 
+        isProfEditable: () =>
+            return no unless @isEditable()
+            return yes if @isAdmin() or window.Settings.Schema.getAdditionals().length
+            no
+
         # Set browsers URL to point to the current application state
         navigate: (attr) =>
             url =  'qs/?' + @navigateURL().join('&')
