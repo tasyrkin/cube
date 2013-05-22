@@ -75,6 +75,8 @@ $ ->
 
                 return m.unset(id, silent: yes) if !val and unset
 
+                return unless val
+
                 p = {}
                 p[id] = val
                 m.set p, silent: yes
@@ -99,6 +101,8 @@ $ ->
 
                 return m.unset(id, silent: yes) if !val and unset
 
+                return unless val
+
                 p = {}
                 p[id] = val
 
@@ -118,6 +122,8 @@ $ ->
                 val = $.trim $i.val()
 
                 return m.unset id, silent: yes if unset unless val
+
+                return unless val
 
                 if val and val[0] isnt ""
                     p = {}
@@ -182,6 +188,8 @@ $ ->
                     @setUniqueMultivalueField v, val
 
                 return m.unset(id, silent: yes) if !val.length and unset
+
+                return unless val
 
                 p = {}
                 p[id] = val
