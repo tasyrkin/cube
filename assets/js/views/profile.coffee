@@ -473,7 +473,7 @@ $ ->
 
             $('body').unbind 'keyup', @closeOnEsc
 
-
+        ###
         # Stop animation if mouse leaves arrows
         onMouseOut: () =>
 
@@ -550,7 +550,7 @@ $ ->
             if id is 'right'and x <= (w - 168) * -1
                 return clearTimeout @scrollTimer
             @animateText $p, id
-
+        ###
 
     #### Profile View
     # A detailed view of an item that shows up on the right pane.
@@ -569,10 +569,10 @@ $ ->
             "click a#delete"                : "clear"
             "click a.destroy"               : "close"
             "click label.additional"        : "showAdditionalFields"
-            "mouseover span.scroll"         : "onScroll"
-            "mouseout span.scroll"          : "onMouseOut"
-            "mouseover .text-container"     : "onTextContainer"
-            "mouseout .text-container"      : "onTextContainerOut"
+            #"mouseover span.scroll"         : "onScroll"
+            #"mouseout span.scroll"          : "onMouseOut"
+            #"mouseover .text-container"     : "onTextContainer"
+            #"mouseout .text-container"      : "onTextContainerOut"
             "click a.filter"                : "filterByDetail"
             "keyup .tupleField:last-child"  : "addTupleField"
             "focus .tupleField"             : "removeEmptyTupleFields"
