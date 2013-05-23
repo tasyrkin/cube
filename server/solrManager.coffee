@@ -117,6 +117,14 @@ class SolrManager
 
         newObj
 
+    # Form a hierarchy array from a string like main/node1/node2.
+    # result: [ "main", "main/node1", "main/node1/node2" ]
+    formHierarchyArray: (str, sep) ->
+        h = []
+        sep = '/' unless sep
+        _.each str.split(sep), (v, i) ->
+            h.push str.split(sep).slice(0, i+1).join(sep)
+        h
 
     # Solr is not able to sort multivalue fields or fields with analyzers.
     # To be able to do it, a stringified copy of the multivalue field has
