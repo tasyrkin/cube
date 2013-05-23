@@ -639,8 +639,6 @@ $ ->
         # Initialize form elements to create/update an item
         form: (element) =>
 
-            $('#pane').css 'display', 'block'
-
             # Enable editing for additional fields, picture or all fields if
             # admin key is present
             if @app.isAdmin()
@@ -675,6 +673,9 @@ $ ->
             # Show additional fields
             $('ul', '#pane li.additional').addClass('open')
             $('span#arrow', '#pane li').addClass('active')
+
+            # Make invisible picture input field clickable
+            $('#pane input#pic').show()
 
             # Highlight mandatory fields
             @setMandatoryLabels() if @app.isAdmin()
