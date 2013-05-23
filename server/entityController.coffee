@@ -164,22 +164,22 @@ class EntityController
         schema = new Schema name
 
         @getSettings name, (settings) =>
+            sorts = {}
             sort = if req.query.sort then req.query.sort else settings.sort
-            [ id, order ] = sort.split ':'
-            if sort.split(':').length is 3
-                [id1, id2, order] = sort.split ':'
-                id = "#{id1}:#{id2}"
-            field = schema.getFieldById id
+            _.each sort.split(','), (sort) =>
+                [ id, order ] = sort.split ':'
+                if sort.split(':').length is 3
+                    [id1, id2, order] = sort.split ':'
+                    id = "#{id1}:#{id2}"
+                field = schema.getFieldById id
 
-            # Solr can't sort multivalue fields. There is a stringified copy
-            # of each mv field with the suffix -sort appended to its id.
-            if @isMultivalue field then id = "#{id}-sort"
-            else id = solrManager.addSuffix name, id
+                # Solr can't sort multivalue fields. There is a stringified copy
+                # of each mv field with the suffix -sort appended to its id.
+                if @isMultivalue field then id = "#{id}-sort"
+                else id = solrManager.addSuffix name, id
 
-            sort = {}
-            sort[id] = order
-
-            cb sort
+                sorts[id] = order
+            cb sorts
 
     # Returns a new a solr query object ready to perfom searches on the
     # requested entity's collection.
