@@ -238,11 +238,12 @@ $ =>
                 # Append HTML on extension container
                 $('#app > #extensions').html exthtml
 
-                return cb() unless $("#app > #extensions #controls").length
-
                 # Get extension controls and append them
-                t = _.template $("#app > #extensions #controls").html()
-                $('#controls #extensions').append t({})
+                controls = $("#app > #extensions #controls")
+
+                if controls.length
+                    t = _.template controls.html() if controls.length
+                    $('#controls #extensions').append t({})
 
                 # Initialize extended javascript
                 window.extensions?.init?()
