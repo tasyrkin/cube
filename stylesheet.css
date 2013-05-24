@@ -201,6 +201,15 @@ p span {
   font-weight: bold;
 }
 
+p.reference {
+  margin: 0;
+  padding: 0;
+}
+
+p.value {
+  margin-bottom: 10px;
+}
+
 blockquote {
   color: #666;
   margin-bottom: 20px;

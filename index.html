@@ -81,13 +81,13 @@
       <div class="inner">
       <section id="main_content" class="inner">
       <h3>Description</h3>
-      <p>The Cube is a NodeJs + BackboneJs application that presents your data in an organized way and gives you a set of tools to manage it. From importing it into the Solr database, to updating it through its web interface (select, sort, search, filter, remove, edit and save...) and exporting it to a JSON, XML or CSV file or just printing it to paper. The cube has become one of our daily used apps for everyone here at the technology department and we want to share it with you; it is now Open Source!</p>
+      <p>The Cube is a NodeJs + BackboneJs application that presents your data in an organized way and gives you a set of tools to manage it. From importing it into the Solr database, to updating it through its web interface (select, sort, search, filter, add, edit or remove) and exporting it into a JSON, XML or CSV file or just printing it to paper. The cube has become one of our daily used apps for everyone here at Zalando's Technology department and we want to share it with you; it is now Open Source!</p>
       </section>
       <section id="installation" class="inner">
         <a name="installation"></a>
         <h3>Installation</h3>
-        <p>Requirements: <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a> (&gt;= 1.6)</p>
         <h6>Automated</h6>
+        <p>Requirements: <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a> (&gt;= 1.6)</p>
         <pre>$ wget http://zalando.github.io/cube/install.sh<br/>$ bash install.sh</pre>
         <h6>Manual</h6>
             <p>Requirements: <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a> (&gt;=1.6), <a href="http://maven.apache.org/">Maven</a> (2.2) and <a href="http://nodejs.org">NodeJs</a> (&gt;=0.8)</p>
@@ -103,7 +103,7 @@
      <section id="tutorial" class="inner">
         <a name="tutorial"></a>
         <h3>How To make your own Cube</h3>
-        <p>Once you got the included example up and running, it will be no hassle to set up the cube to handle your own data. In the following small tutorial, I'll guide you through the process of creating a Library inside the cube. Adding your own data would be a matter of writing a different schema and small configuration changes.</p>
+        <p>Once you got the included example up and running, it will be easy to set up the cube to handle your own data. In the following small tutorial, I'll show you how to store your books collection in the cube. As you will see, its  basically a matter of writing a schema and editing a couple of config files.</p>
         <ol class="tutorial">
             <li>
                 <h6>Add a new solr core</h6>
@@ -122,7 +122,7 @@
             <li>
                 <h6>Start Solr</h6>
                 <pre>$ cd cube/solr/<br>$ mvn clean install tomcat:run-war -Pdevelopment</pre>
-                <p>You should have a new core called "library" by now. This is were all your library collection will be stored. Check it out on <a href="http://localhost:38730/cube-solr">http://localhost:38730/cube-solr</a>.</p>
+                <p>You should have a new core called "library" by now. This is where all your library collection will be stored. Check it out on <a href="http://localhost:38730/cube-solr">http://localhost:38730/cube-solr</a>.</p>
             </li>
             <li>
                 <h6>Add it to the list</h6>
@@ -201,10 +201,12 @@
         <h3>Documentation</h3>
         <p>As mentioned before, the Cube is composed of a NodeJs backend, a Solr database and a BackboneJs frontend. If you're familiar with these technologies it shouldn't be much of a hassle to get around this app. Plus, annotated source code documentation generated with doccu can be found <a href="docs/app.html">here</a>.</p>
         <a name="schema"></a>
-        <p>One of the main tasks when creating your own entity is writing a Schema. A Cube Schema is a json array of objects which describe the data structure of an entity. You can take a look at an <a href="docs/schema.html">example schema</a> which makes uses of almost all possible properties. Setting up yours is a matter of listing the fields you want your items to have with their IDs, Labels (minimum required properties) and a custom set of properties. A list of all available properties follows next:</p>
-        <p><span>id</span> – Each field must have a unique ID composed of alphanumeric characters. This field is required. </a>Value type: <span class="value">String</span></p>
-        <p><span>label</span> – IDs are not necessarily pretty or even human readable. A label is a must. Alphanumeric characters and spaces. Value type: <span class="value">String</span></p>
-        <p><span>type</span> – The type field specifies which data type this field contains. It tells the cube how to store this value and also how to display it. Default (no type property specified) is String. Other data types are:</p>
+        <h6>Schema reference</h6>
+        <p>One of the main tasks when creating your own entity is writing a Schema. A Cube Schema is a json array of objects that describe the data structure of a collection of data. You can take a look at an <a href="docs/schema.html">example schema</a> which makes uses of almost all possible properties. Setting up yours is a matter of listing the fields you want your items to have with their IDs, Labels and a custom set of properties like field type (img, email, facet, etc).</p>
+        <p><span>Available Properties</span></p>
+        <p class="reference"><span>id</span> – Each field must have a unique ID composed of alphanumeric characters. This field is required. </a></p><p class="reference value"Value type: <span class="value">String</span></p>
+        <p class="reference"><span>label</span> – IDs are not necessarily pretty or even human readable. A label is a must. Alphanumeric characters and spaces. </p><p class="reference value">Value type: <span class="value">String</span></p>
+        <p class="reference"><span>type</span> – The type field specifies which data type this field contains. It tells the cube how to store this value and also how to display it. Default (no type property specified) is String. Other data types are:</p>
         <div class="deeper">
                 <p>integer – Stores (of course) integer numbers, not strings.</p>
                 <p>float – Store float numers. When displayed floats are rounded to 2 digits.</p>
@@ -218,27 +220,19 @@
                 <p>date – Shows a date and attaches a date picker for input.</p>
                 <p>Value type: <span class="value">String ( "facet" | "tuple" | "img" | "email" | "skype" | "multiline" | "dropdown" | "date" )<span></p>
             </div>
-        <p><span>mandatory</span> – Mark field as required for form validation when adding/editing items. Value type: <span class="value">Boolean (true | false)</span></p>
-        <p><span>search</span> –  Mark field as searchable. This means that any search performed on the input search will try to match the values on this field. Value type: <span class="value">Boolean (true | false)</span></p>
-        <p><span>index</span> – Field default visibility in the table view. Value type: <span class="value">Boolean (true | false)</span></p>
-        <p><span>thumbnail</span> – Show field value as footer for items in Thumbnail view mode. Value type: <span class="value">Boolean (true | false)</span></p>
-        <p><span>multiedit</span> – Editable on many items at once. Field will appear on the multiedit form</a>. Value type: <span class="value">Boolean (true | false)</span></p>
-        <p><span>hidden</span> – Hides field from profile view. Value type: <span class="value">Boolean (true | false)</span></p>
-        <h6>additional: <span></span></h6>
-        <p>This field will be part of the additional fields and will be showed at the bottom of the profile view, hidden inside the 'Additional info' section</p>
-        <p>Value type: <span class="value">Boolean (true | false)</span></p>
-        <h4>Type specific properties</h4>
-        <h5>Facet</h5>
-        <h6>specials: <span></span></h6>
-        <p>Each facet is splitted in two areas, separated by a gray line. Define this property with an array of strings and each facet field that matches will be displayed below the line.</p>
-        <p>Value type: <span class="value">Array [ "name1", "name2" ]<span></p>
-        <h6>classifier: <span></span></h6>
-        <p>Defines this field as the category to sort items on thumbnail view. The order of this array will determine the order of the sections on that view.</p>
-        <p>Value type: <span class="value">Array ( [ "name1", "name2", ... ] )<span></p>
-        <h5>Dropdown</h5>
-        <h6>options: <span></span></h6>
-        <p>Required property for any dropdown tipe field, defined as an array of strings for the availablo options in the dropdown menu.</p>
-        <p>Value type: <span class="value">Array ( [ "name1", "name2", ... ] )<span></p>
+        <p class="reference"><span>mandatory</span> – Mark field as required for form validation when adding/editing items. </p><p class="reference value">Value type: <span class="value">Boolean (true | false)</span></p>
+        <p class="reference"><span>search</span> –  Mark field as searchable. This means that any search performed on the input search will try to match the values on this field. </p><p class="reference value">Value type: <span class="value">Boolean (true | false)</span></p>
+        <p class="reference"><span>index</span> – Field default visibility in the table view. </p><p class="reference value">Value type: <span class="value">Boolean (true | false)</span></p>
+        <p class="reference"><span>thumbnail</span> – Show field value as footer for items in Thumbnail view mode. </p><p class="reference value">Value type: <span class="value">Boolean (true | false)</span></p>
+        <p class="reference"><span>multiedit</span> – Editable on many items at once. Field will appear on the multiedit form</a>. </p><p class="reference value">Value type: <span class="value">Boolean (true | false)</span></p>
+        <p class="reference"><span>hidden</span> – Hides field from profile view. </p><p class="reference value">Value type: <span class="value">Boolean (true | false)</span></p>
+        <p class="reference"><span>additional</span> – This field will be part of the additional fields and will be showed at the bottom of the profile view, hidden inside the 'Additional info' section. </p><p class="reference value">Value type: <span class="value">Boolean (true | false)</span></p>
+        <h6>Type specific properties</h6>
+        <h5>Type: Facet</h5>
+        <p class="reference"><span>specials</span> – Each facet is splitted in two areas, separated by a gray line. Define this property with an array of strings and each facet field that matches will be displayed below the line. </p><p class="reference value">Value type: <span class="value">Array [ "name1", "name2" ]</span></p>
+        <p class="reference"><span>classifier</span> – Defines this field as the category to sort items on thumbnail view. The order of this array will determine the order of the sections on that view. </p><p class="reference value">Value type: <span class="value">Array ( [ "name1", "name2", ... ] )</span></p>
+        <h5>Type: Dropdown</h5>
+        <p class="reference"><span>options</span> – Required property for any dropdown tipe field, defined as an array of strings for the availablo options in the dropdown menu. </p><p class="reference value">Value type: <span class="value">Array ( [ "name1", "name2", ... ] )</span></p>
     </section>
     <section id="more">
         <h3>Contribution</h3>
