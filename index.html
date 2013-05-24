@@ -8,7 +8,6 @@
 
     <title>Cube</title>
 
-    <!-- Google Analytics -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -23,8 +22,18 @@
 
   <body>
 
+    <div id="example">
+      <a name="example"></a>
+      <iframe src="http://cube.eu01.aws.af.cm/?admin=yes" width="100%" height="100%"></iframe>
+  </div>
+
+    <div class="inner" id="banner_wrapper">
+      <a id="demo_banner">Live Demo<span id="arrow"></span></a>
+   </div>
+
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
+
         <header>
             <div id="titleContainer">
                 <h6>Zalando's IT Management Tool</h6>
@@ -35,11 +44,6 @@
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
-
-    <div id="example">
-      <a name="example"></a>
-      <iframe src="http://cube.eu01.aws.af.cm/team/?admin=yes#qs/?page=0&rows=50&sort=name:asc" width="100%" height="100%"></iframe>
-  </div>
 
         <section id="slideshow" class="outer">
             <div id="slideshow_wrap">
@@ -76,63 +80,35 @@
 
       <div class="inner">
       <section id="main_content" class="inner">
-        <h3>Why?</h3>
-        <p>In a fast growing company like Zalando, where the size of the technology team tripled in 2012, it is becoming increasingly difficult to remember people’s names, right? Weeks will pass before a newcomer knows who is doing what and where. Initially, we developed the Cube to solve this problem, but we  later realized that the actual problem was more abstract. Having a bunch of CSV, JSON, and XML files and searching important information in them motivated us to fill the Cube not only with our technology team but also with all of our projects, hosts, and many other things.</p>
+      <h3>Description</h3>
+      <p>The Cube is a NodeJs + BackboneJs application that presents your data in an organized way and gives you a set of tools to manage it. From importing it into the Solr database, to updating it through its web interface (select, sort, search, filter, remove, edit and save...) and exporting it to a JSON, XML or CSV file or just printing it to paper. The cube has become one of our daily used apps for everyone here at the technology department and we want to share it with you; it is now Open Source!</p>
       </section>
       <section id="installation" class="inner">
         <a name="installation"></a>
-        <h3>Quick Start</h3>
-        <p>There are two main ways to install it. You can try your luck with our install script or follow the steps. But before anything, you need to meet the requirements.<p>
-        <p>Requirements: JDK &gt;= 1.6</p>
-        <h6>Install script</h6>
-        <p>This script will try to resolve all dependencies (except JDK) and get your cube up and running.</p>
-        <p>Download it from <a href="http://zalando.github.io/cube/install.sh">here</a> and run it:</p>
-        <pre>$ bash install.sh</pre>
-        <h6>Manual install</h6>
-        <p>You can also try to do it manually by following these steps:</p>
-        <ol>
-            <li>
-                <p>Solve dependencies</p>
-                <ul>
-                    <li>Maven 2.2</li>
-                    <li>ImageMagick</li>
-                    <li>Git</li>
-                    <li>Nodejs &gt;= 0.8</li>
-                    <li>npm</li>
-                </ul>
-            </li>
-            <li>
-            <p>Get the cube from our <a href="http://github.com/zalando/cube">GitHub repo</a></P>
-                <pre>$ git clone git@github.com:zalando/cube.git</pre>
-            </li>
-            <li>
-                <p>Install node dependencies</p>
-                <pre>$ cd cube<br>$ npm install .</pre>
-            </li>
-            <li>
-                <p>Build and Run Solr Database</p>
-                <pre>$ mvn clean install tomcat:run-war -Pdevelopment</pre></li>
-            <li>
-                <p>Start the Cube on a new terminal</p>
-                <pre>$ cd cube<br>$ coffee cube.coffee</pre>
-            </li>
-            <li>
-            <p>Visit <a href="http://localhost:3000">http://localhost:3000</a></p>
-            </li>
-
-        </ol>
+        <h3>Installation</h3>
+        <p>Requirements: <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a> (&gt;= 1.6)</p>
+        <h6>Automated</h6>
+        <pre>$ wget http://zalando.github.io/cube/install.sh<br/>$ bash install.sh</pre>
+        <h6>Manual</h6>
+            <p>Requirements: <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a> (&gt;=1.6), <a href="http://maven.apache.org/">Maven</a> (2.2) and <a href="http://nodejs.org">NodeJs</a> (&gt;=0.8)</p>
+            <pre>$ git clone git@github.com:zalando/cube.git<br/>$ cd cube<br/>$ npm install .</pre>
+            <p>Build and run the Solr Database</p>
+            <pre>$ mvn clean install tomcat:run-war -Pdevelopment</pre>
+            <p>Start the Cube on a new terminal</p>
+            <pre>$ cd cube<br>$ coffee cube.coffee</pre>
+            <p>Open it in your favorite browser<a class="biglink" href="http://localhost:3000">http://localhost:3000</a></p>
         <a name="documentation"></a>
         </section>
 
      <section id="tutorial" class="inner">
         <a name="tutorial"></a>
-        <h3>Create your own Cube: Library example.</h3>
-        <p>Once you got the included example up and running, it will be no hassle to set up the cube to handle your own data. In the following small tutorial, I'll guide you through the process of creating a Library inside the cube. Adding your own data would be a matter of writing a different schema and small configuration changes. Let's get started!</p>
+        <h3>How To make your own Cube</h3>
+        <p>Once you got the included example up and running, it will be no hassle to set up the cube to handle your own data. In the following small tutorial, I'll guide you through the process of creating a Library inside the cube. Adding your own data would be a matter of writing a different schema and small configuration changes.</p>
         <ol class="tutorial">
             <li>
-                <h6>Add a solr core</h6>
+                <h6>Add a new solr core</h6>
                 <div>
-                    <p>Edit your solr/solr/solr.xml file. At the end it should look something like this</p>
+                    <p>Add a core tag in solr/solr/solr.xml file. At the end it should look something like this</p>
                     <pre>
 &lt;?xml version="1.0" encoding="UTF-8" ?&gt;
 &lt;solr sharedLib="lib" persistent="true"&gt;
@@ -145,25 +121,22 @@
             </li>
             <li>
                 <h6>Start Solr</h6>
-                <p>* stop it with Ctrl+C if its running already</p>
-                <pre>$ cd solr/<br>$ mvn clean install tomcat:run-war -Pdevelopment</pre>
-                <p>You should have a new core called "library" by now. Check it on <a href="http://localhost:38730/cube-solr">http://localhost:38730/cube-solr</a>. This is were all our library collection will be stored.</p>
+                <pre>$ cd cube/solr/<br>$ mvn clean install tomcat:run-war -Pdevelopment</pre>
+                <p>You should have a new core called "library" by now. This is were all your library collection will be stored. Check it out on <a href="http://localhost:38730/cube-solr">http://localhost:38730/cube-solr</a>.</p>
             </li>
             <li>
-                <h6>Add it to entities.json</h6>
-                <div>
-                    <p>The library collection and the team collection are called 'entities' for the cube. An 'Entity' is a collection of items that share the same properties, or schema. By now we have 2 entities in the Cube: team and library, but we need to add it to the entities.json file so Cube knows about it. Please weatch out that it is a json file! be careful with the syntax. At the end it should look like this:</p>
-                    <pre>[ "team"<span>, "library"</span> ]</pre>
-                </div>
+                <h6>Add it to the list</h6>
+                <p>Open the file called entities.json and add it to the array</p>
+                <pre>[ "team"<span>, "library"</span> ]</pre>
             </li>
             <li>
-                <h6>Create entity default files</h6>
+                <h6>Create the entity's files</h6>
                 <div>
                     <pre>$ cd util/<br/>$ ./create_entity library</pre>
                 </div>
             </li>
             <li>
-                <h6>Edit to suit your needs</h6>
+                <h6>Configure</h6>
                 <div>
                     <ol>
                         <li>
@@ -171,7 +144,7 @@
                             <p>The Schema is one of the most important aspects of your entity. We recommend you to spend some time checking out the one provided in the example along with its documentation.<p>
                             <p>Please check the Schema reference <a href="#schema">here</a>.</p>
                             <p>For this example, I provide you with a schema. Get it from <a href="schema.json">here</a> and place it in entities/library/</p>
-                            <pre>$ cp schema.json cube/entities/library/</pre>
+                            <pre>$ cd cube/entities/library<br/>$ wget http://cubeapp.io/schema.json</pre>
                         </li>
                         <li>
                             <p>Database config</p>
@@ -189,8 +162,7 @@
                        <li>
                             <p>Entity Information</p>
                             <p>We need to provide some information about the entity along with some settings. Please take a look at entities/library/settings.json. It should look something like this:</p>
-                            <pre>
- {
+                            <pre>{
     "entity": "<span>library</span>",
     "title": "<span>Library</span>",
     "description": "<span>My huge book collection</span>",
@@ -199,8 +171,7 @@
     "view": "list",
     "rows": 50,
     "sort": "<span>title</span>:asc"
-}
-                            </pre>
+}</pre>
                         </li>
 
 
@@ -216,7 +187,7 @@
             </li>
             <li>
                 <h6>Visit your library</h6>
-                <div><a href="http://localhost:3000/library/?admin=yes">http://localhost:3000/library/?admin=yes</a></div>
+                <div><a class="biglink" href="http://localhost:3000/library/?admin=yes">http://localhost:3000/library/?admin=yes</a></div>
             </li>
             <li>
                 <h6>Add your books!</h6>
@@ -225,102 +196,53 @@
         </ol>
      </section>
 
-     <section id="annotatedSource" class="inner">
-        <a name="annotatedSource"></a>
+     <section id="documentation" class="inner">
+        <a name="documentation"></a>
         <h3>Documentation</h3>
-        <p>Annotated Source Code documentation is available <a href="docs/app.html">here</a>.</p>
-     </section>
-
-
-     <section id="schema" class="inner">
+        <p>As mentioned before, the Cube is composed of a NodeJs backend, a Solr database and a BackboneJs frontend. If you're familiar with these technologies it shouldn't be much of a hassle to get around this app. Plus, annotated source code documentation generated with doccu can be found <a href="docs/app.html">here</a>.</p>
         <a name="schema"></a>
-        <h3>Schema reference</h3>
-        <p>A Cube Schema is a json array of objects which describe the data structure of an entity. You can take a look at an <a href="docs/schema.html">example schema</a> which makes uses of almost all possible properties. Setting up yours is a matter of listing the fields with their IDs and Labels (minimum required properties) and adding/removing/negating some properties on each of them.</p>
-        <h6>id:</h6>
-        <p>Each field must have a unique ID composed of alphanumeric characters. This field is required.</a>
-        <p>Value: <span class="value">String</span></p>
-        <h6>label:</h6>
-        <p>IDs are not necessarily pretty or even human readable. A label is a must. Alphanumeric characters and spaces.</p>
-        <p>Value: <span class="value">String</span></p>
-        <h6>type:</h6>
-        <p>The type field specifies which data type this field contains. It tells the cube how to store this value and also how to display it. Default (no type property specified) is String. Other data types are facet, img, email, multiline, etc. Choose one from the list below, but don't forget to quote it.</p>
-        <ul>
-            <li>
-                <h6>integer</h6>
-                <p>This field will store integer numbers, not strings. Useful when you want to sort by number value instead of string value</p>
-            </li>
-            <li>
-                <h6>float</h6>
-                <p>This field will store float numers, not strings. Useful when you want to sort by number value with decimals instead of string value. By default is set to round to 2 decimal digits.</p>
-            </li>
-            <li>
-                <h6>facet</h6>
-                <p>This field will act as a facet field. It will appear on the facet index, listing all values that your items have in this field, along with a count of items with each value.</p>
-            </li>
-            <li>
-                <h6>tuple</h6>
-                <p>A tuple field allows you to relate 2 facet fields to each other. Lets say you have items that have a group property and a role property, and that one item can have a role related to one group, but another role in a different group. Then you would use a tuple field to keep this information.</p>
-            </li>
-            <li>
-                <h6>img</h6>
-                <p>Image field. Items can have only one image field. This will be displayed as the profile picture on the profile view, it will activate the thumbnail view and it will be displayed as a small 25x25 pic on the list view.</p>
-            </li>
-            <li>
-                <h6>email</h6>
-                <p>Stores emails and renders them as clickable emailto: links.</p>
-            </li>
-            <li>
-                <h6>skype</h6>
-                <p>Stores skype usernames and renders them as clickable skypeto: links to open a chat window.</p>
-            </li>
-            <li>
-                <h6>multiline</h6>
-                <p>Multiple line field, renders a textarea instead of an input field.</p>
-            </li>
-            <li>
-                <h6>dropdown</h6>
-                <p>Shows you a &lt;select&gt; element, showing you a list of selectable options. This field will require you to define the options in an array under the property "options".</p>
-            </li>
-            <li>
-                <h6>date</h6>
-                <p>Shows a date and attaches a date picker for input.</p>
-            </li>
-        </ul>
-        <p>Value: <span class="value">String (facet | tuple | img | email | skype | multiline | dropdown | date)<span></p>
-        <h6>mandatory:</h6>
-        <p>This field will be required for form validation when adding/editing new items</p>
-        <p>Value: <span class="value">Boolean (true | false)</span></p>
-        <h6>search: <span></span></h6>
-        <p>This field is a searchable field. This means that when you type something in the search input field, it will look in this and any other searchable field.</p>
-        <p>Value: <span class="value">Boolean (true | false)</span></p>
-        <h6>index: <span></span></h6>
-        <p>Show this field in the list view as a column.</p>
-        <p>Value: <span class="value">Boolean (true | false)</span></p>
-        <h6>thumbnail: <span></span></h6>
-        <p>Display this field as a footer for the item views in Thumbnail mode.</p>
-        <p>Value: <span class="value">Boolean (true | false)</span></p>
-        <h6>multiedit: <span></span></h6>
-        <p>This field is editable on many items at once. It will appear on the multiedit form</a>
-        <p>Value: <span class="value">Boolean (true | false)</span></p>
-        <h6>hidden: <span></span></h6>
-        <p>When defined true, hides this field from the profile view</p>
-        <p>Value: <span class="value">Boolean (true | false)</span></p>
+        <p>One of the main tasks when creating your own entity is writing a Schema. A Cube Schema is a json array of objects which describe the data structure of an entity. You can take a look at an <a href="docs/schema.html">example schema</a> which makes uses of almost all possible properties. Setting up yours is a matter of listing the fields you want your items to have with their IDs, Labels (minimum required properties) and a custom set of properties. A list of all available properties follows next:</p>
+        <p><span>id</span> – Each field must have a unique ID composed of alphanumeric characters. This field is required. </a>Value type: <span class="value">String</span></p>
+        <p><span>label</span> – IDs are not necessarily pretty or even human readable. A label is a must. Alphanumeric characters and spaces. Value type: <span class="value">String</span></p>
+        <p><span>type</span> – The type field specifies which data type this field contains. It tells the cube how to store this value and also how to display it. Default (no type property specified) is String. Other data types are:</p>
+        <div class="deeper">
+                <p>integer – Stores (of course) integer numbers, not strings.</p>
+                <p>float – Store float numers. When displayed floats are rounded to 2 digits.</p>
+                <p>facet – This field will act as a facet field. It will appear on the facet index, listing all values that your items have in this field, along with a count of items with each value.</p>
+                <p>tuple – A tuple of facet fields, related to each other. i.e. in the team example, roles are related to teams in the tuple team:role field.</p>
+                <p>img – Image field. Items can have only one image field. This will be displayed as the profile picture on the profile view, it will activate the thumbnail view and it will be displayed as a small 25x25 pic on the list view.</p>
+                <p>email – Stores emails and renders them as clickable emailto: links.</p>
+                <p>skype – Stores skype usernames and renders them as clickable skypeto: links to open a chat window.</p>
+                <p>multiline – Multiple line field, renders a textarea instead of an input field.</p>
+                <p>dropdown – Shows you a &lt;select&gt; element, showing you a list of selectable options. This field will require you to define the options in an array under the property "options".</p>
+                <p>date – Shows a date and attaches a date picker for input.</p>
+                <p>Value type: <span class="value">String ( "facet" | "tuple" | "img" | "email" | "skype" | "multiline" | "dropdown" | "date" )<span></p>
+            </div>
+        <p><span>mandatory</span> – Mark field as required for form validation when adding/editing items. Value type: <span class="value">Boolean (true | false)</span></p>
+        <p><span>search</span> –  Mark field as searchable. This means that any search performed on the input search will try to match the values on this field. Value type: <span class="value">Boolean (true | false)</span></p>
+        <p><span>index</span> – Field default visibility in the table view. Value type: <span class="value">Boolean (true | false)</span></p>
+        <p><span>thumbnail</span> – Show field value as footer for items in Thumbnail view mode. Value type: <span class="value">Boolean (true | false)</span></p>
+        <p><span>multiedit</span> – Editable on many items at once. Field will appear on the multiedit form</a>. Value type: <span class="value">Boolean (true | false)</span></p>
+        <p><span>hidden</span> – Hides field from profile view. Value type: <span class="value">Boolean (true | false)</span></p>
         <h6>additional: <span></span></h6>
         <p>This field will be part of the additional fields and will be showed at the bottom of the profile view, hidden inside the 'Additional info' section</p>
-        <p>Value: <span class="value">Boolean (true | false)</span></p>
+        <p>Value type: <span class="value">Boolean (true | false)</span></p>
         <h4>Type specific properties</h4>
         <h5>Facet</h5>
         <h6>specials: <span></span></h6>
         <p>Each facet is splitted in two areas, separated by a gray line. Define this property with an array of strings and each facet field that matches will be displayed below the line.</p>
-        <p>Value: <span class="value">Array [ "name1", "name2" ]<span></p>
+        <p>Value type: <span class="value">Array [ "name1", "name2" ]<span></p>
         <h6>classifier: <span></span></h6>
         <p>Defines this field as the category to sort items on thumbnail view. The order of this array will determine the order of the sections on that view.</p>
-        <p>Value: <span class="value">Array [ "name1", "name2" ]<span></p>
+        <p>Value type: <span class="value">Array ( [ "name1", "name2", ... ] )<span></p>
         <h5>Dropdown</h5>
         <h6>options: <span></span></h6>
         <p>Required property for any dropdown tipe field, defined as an array of strings for the availablo options in the dropdown menu.</p>
-        <p>Value: <span class="value">Array [ "name1", "name2" ]<span></p>
-     </section>
+        <p>Value type: <span class="value">Array ( [ "name1", "name2", ... ] )<span></p>
+    </section>
+    <section id="more">
+        <h3>Contribution</h3>
+        <p>Please visit our GitHub repository to get the code, report issues or request features. Feel free to send some pull requests ;)</p><a href="http://github.com/zalando/cube/" class="biglink">http://github.com/zalando/cube</a>
     </div>
     </div>
 

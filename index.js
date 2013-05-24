@@ -1,6 +1,6 @@
 $(function() {
 
-    $('#example').css('height', $('#main_content_wrap').width() * 0.435 + 'px');
+    $('#example').css('height', $(window).height() - 100 + 'px');
 
     $('a#demo_banner').click(function() {
         if ($('#example').hasClass('visible')) {
@@ -40,7 +40,7 @@ $(function() {
 });
 
 var slider  = {
-    "pic_size": 816,
+    "pic_size": 817,
     "speed": 700,
     "interval": 10000,
     "pid": null,
@@ -100,6 +100,7 @@ function showExample() {
     $('html, body').animate({
             scrollTop: $('#example').offset().top
     }, 1000);
+    $('#demo_banner').animate({ top: -110 }, 1000);
 }
 
 function hideExample() {
@@ -107,6 +108,8 @@ function hideExample() {
     $('#demo_banner').removeClass('open');
     $('#example').slideUp(1000);
     $('html, body').animate({ scrollTop: 0 }, 1000);
+    $('#demo_banner').animate({ top: -50 }, 1000);
+
 }
 
 function startSlider() {

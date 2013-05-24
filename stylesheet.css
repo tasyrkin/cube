@@ -3,8 +3,6 @@ Slate Theme for GitHub Pages
 by Jason Costello, @jsncostello
 *******************************************************************************/
 
-@import url(pygment_trac.css);
-
 /*******************************************************************************
 MeyerWeb Reset
 *******************************************************************************/
@@ -59,7 +57,7 @@ body {
   box-sizing: border-box;
   color:#373737;
   background: #EEE;
-  font-size: 16px;
+  font-size: 20px;
   font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -68,7 +66,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   margin-bottom: 10px;
-  font-weight: 700;
   color:#222222;
   font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
   letter-spacing: -1px;
@@ -86,7 +83,8 @@ h2 {
 }
 
 h3 {
-  font-size: 24px;
+  font-size: 30px;
+  border-bottom: 1px solid dodgerblue;
 }
 
 h4 {
@@ -98,7 +96,7 @@ h5 {
 }
 
 h6 {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 
@@ -171,14 +169,14 @@ pre, code {
   background-color: #EEE;
 
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
-  font-size: 14px;
+  font-size: 18px;
 
   border-radius: 2px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
 
-
-
+  margin-bottom: 20px;
+  line-height: 32px;
 }
 
 pre {
@@ -197,6 +195,10 @@ code {
 pre code {
   display: block;
   box-shadow: none;
+}
+
+p span {
+  font-weight: bold;
 }
 
 blockquote {
@@ -218,10 +220,6 @@ ul li {
 ol li {
   list-style: decimal inside;
   padding-left: 20px;
-}
-
-ol.tutorial>li {
-  font-weight: 700;
 }
 
 ol.tutorial li p,
@@ -284,6 +282,15 @@ em {
   font-weight: bold;
 }
 
+a.biglink {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.deeper {
+  margin-left: 35px;
+}
+
 /*******************************************************************************
 Full-Width Styles
 *******************************************************************************/
@@ -323,18 +330,18 @@ span#logo {
 }
 
 #demo_banner {
-  padding: 10px;
-  padding-right: 35px;
+  padding: 60px 35px 10px 10px;
   color: #fff;
-  background: #0090ff;
+  background: red;
   font-weight: 700;
   box-shadow: 0 3px 10px rgba(0,0,0,.8);
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   position: absolute;
-  top: 0;
+  top: -50px;
   right: 0;
   cursor: pointer;
+  z-index: 2;
 }
 
 #demo_banner a {
@@ -395,6 +402,11 @@ header #titleContainer {
     right: 0;
     margin: 0 20px 15px 0;
     padding: 0;
+    font-weight: bold;
+}
+
+header #titleContainer h6 {
+    font-size: 18px;
 }
 
 #project_title {
@@ -463,15 +475,17 @@ header #titleContainer {
 
 #example {
   display: none;
-  height: 800px;
-  padding: 40px 10%;
-  padding-bottom: 0;
+  padding: 30px;
+  padding-bottom: 70px;
+  background: rgba(0,0,0,0.7);
+  height: 100%;
 }
 
 #example iframe {
-    border: 2px solid #999;
+    border: 5px solid dodgerblue;
     background: white;
-    margin-top: -2px;
+    position: relative;
+    z-index: 3;
 }
 
 .info {
@@ -487,7 +501,7 @@ span.value {
     color: #666;
     font-weight: bold;
     font-family: monospace;
-    font-size: 14px;
+    font-size: 20px;
 }
 
 .menu {
@@ -548,6 +562,10 @@ section#slideshow ul li {
     display: inline-block;
 }
 
+section#documentation h6 {
+    font-weight: bold;
+}
+
 .slideshow_btn {
     width: 56px;
     height: 56px;
@@ -557,23 +575,28 @@ section#slideshow ul li {
 }
 
 #slideshow_left {
-    background: url('slider_button_left.png') no-repeat center center;
+    background: url('slideshow_arrow_left.png') no-repeat 0 0;
+}
+
+#slideshow_right:hover,
+#slideshow_left:hover {
+    background-position: -56px 0;
 }
 
 #slideshow_right {
-    background: url('slider_button_right.png') no-repeat center center;
+    background: url('slideshow_arrow_right.png') no-repeat 0 0;
 }
 
 #slideshow_mask {
     float: left;
     overflow: hidden;
     height: 446px;
-    width: 814px;
+    width: 816px;
     margin: 0 30px;
 }
 
 #slideshow_wrap {
-    width: 986px;
+    width: 988px;
     overflow: hidden;
     margin: 0 auto;
 }
@@ -591,6 +614,12 @@ section#slideshow ul li {
     margin-left: -816px;
 }
 
+#slides img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
 #indicators {
     width: 100%;
     float: left;
@@ -606,13 +635,13 @@ section#slideshow ul li {
 
 .pic_ind {
     display: inline-block;
-    width: 15px;
-    height: 15px;
-    background: url('slider_radiobutton.png') no-repeat center center;
+    width: 20px;
+    height: 16px;
+    background: url('slideshow_radiobuttons.png') no-repeat 0 0;
 }
 
 .active_ind {
-    background: url('slider_radiobutton_aktiv.png') no-repeat center center;
+    background-position: -30px 0;
 }
 
 img {
@@ -670,7 +699,7 @@ Small Device Styles
   code, pre {
     min-width: 320px;
     max-width: 480px;
-    font-size: 11px;
+    font-size: 18px;
   }
 
 }
