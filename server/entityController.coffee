@@ -215,7 +215,7 @@ class EntityController
 
         if req.query.json
             res.setHeader 'Content-Type', 'application/json'
-            result = result.response.docs
+            result = result.response?.docs
         result
 
     # Adds filter parameters to query object, like facet filters, strings, etc.
@@ -291,7 +291,7 @@ class EntityController
             fields.push f.id
         output.push headers.join ';'
 
-        _.each res.response.docs, (doc) ->
+        _.each res.response?.docs, (doc) ->
             line = []
             _.each fields, (f) ->
                 line.push doc[f]
