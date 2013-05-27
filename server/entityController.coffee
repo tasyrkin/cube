@@ -66,7 +66,8 @@ class EntityController
         name = req.params.entity
         return res.send 404 unless @isEntity(name)
         @createQuery req, (query, db) =>
-            query = @setFilters req, query
+            @setFacets req, query if req.query["facet.field"]
+            @setFilters req, query if req.query?.fs
             @getCollection db, query, (result) =>
                 res.send @setCollectionResponse req, res, result
 
@@ -201,6 +202,11 @@ class EntityController
                     .start(start)
                     .rows(rows)
                     .facet on: yes, missing: yes, mincount: 1
+
+                # Temporarily replacing solr-client's matchFilter method since
+                # its not meeting our requirements.
+                query.matchFilter = solrManager.customMatchFilter
+
                 cb query, db
 
     # Set response of a collection request, depending on the format asked.
@@ -218,54 +224,55 @@ class EntityController
             result = result.response?.docs
         result
 
-    # Adds filter parameters to query object, like facet filters, strings, etc.
+    # Adds fields that are of facet type to the query so that the faceted
+    # response includes them.
+    setFacets: (req, query) =>
+        name = req.params.entity
+        facetFilter = req.query["facet.field"]
+        _.each facetFilter, (f) ->
+            fieldParam = solrManager.addSuffix name, f
+            query.facet field: "{!ex=_#{fieldParam}}#{fieldParam}"
+
+    # Adds filter parameters to a query. i.e. facet filters or search terms.
     setFilters: (req, query) =>
         name = req.params.entity
-        if req.query["facet.field"]
-            ff = req.query["facet.field"]
-            # FIXME Incapable of handling only 1 facet.
-            if typeof ff isnt typeof []
-                ff = [ ff ]
-            fields = []
-            _.each ff, (f) ->
-                fields.push solrManager.addSuffix name, f
-            query.facet field: fields
+        fqFields = {}
+        fq = req.query.fs
 
-        if req.query.fs
-            fqFields = {}
-            fq = req.query.fs
-
-            # Handle an array of facet filters
-            if typeof fq is typeof []
-                _.each fq, (fq) ->
-                    f = fq.split(':')
-                    f[0] = solrManager.addSuffix(name, f[0])
-                    # If no value, use it to exclude field
-                    f = [ "-#{f[0]}", '["" TO *]'] if f[1] is ''
-
-                    fqFields[f[0]] = [] unless fqFields[f[0]]
-                    fqFields[f[0]].push f[1]
-                _.each fqFields, (fields, f) ->
-                    query.matchFilter true, f, fields
-
-            # Handle just one facet filter
-            if typeof fq is 'string'
+        # Handle an array of facet filters
+        if typeof fq is typeof []
+            _.each fq, (fq) ->
                 f = fq.split(':')
-                f[0] = solrManager.addSuffix name, f[0]
-                f = [ "-#{f[0]}", '["" TO *]'] if f[1] is ''
+                [ filter, value ] = fq.split ':'
+                filter = solrManager.addSuffix(name, filter)
+                # If value is empty string, use it to exclude the field
+                f = [ "-#{filter}", '["" TO *]'] if value is ''
 
-                query.matchFilter true, f[0], [f[1]]
-        query
+                fqFields[filter] = [] unless fqFields[filter]
+                fqFields[filter].push value
+
+            _.each fqFields, (fields, f) ->
+                query.matchFilter f, fields
+
+            return
+
+        [ filter, value ] = fq.split(':')
+        filter = solrManager.addSuffix name, filter
+        f = [ "-#{filter}", '["" TO *]'] if value is ''
+
+        query.matchFilter filter, [ value ]
+
 
     # Return all fields specified as "searchable" (search: true) on the schema.
     getSearchableFields: (name) =>
         schema = new Schema name
         searchables = schema.getSearchables()
-        fields = []
+        fields = {}
         _.each searchables, (f) =>
-            return fields.push "#{f.id}-sort" if @isMultivalue f
-            fields.push solrManager.addSuffix(name, f.id) if f.search
+            return fields["#{f.id}-sort"] = 1 if @isMultivalue f
+            fields[solrManager.addSuffix(name, f.id)] = 1 if f.search
         return fields
+
 
     # Checks if the requested resource is one of the available entities
     isEntity: (name) =>

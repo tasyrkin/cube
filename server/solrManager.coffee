@@ -149,3 +149,29 @@ class SolrManager
         return yes if field.multivalue
         return yes if field.type is 'facet' or field.type is 'tuple'
         return no
+
+    # Replaces matchFilter method on solr-client until we find a better way
+    # to do this.
+    customMatchFilter: (field,values) ->
+        options = []
+        tag = "{!tag=_#{field}}"
+        fq = "fq=#{tag}("
+        value = encodeURIComponent values.pop()
+
+        op = "#{field}%3A\"#{value}\""
+
+        # A string null as a value is a not set value. In other words,
+        # filtering by 'null' returns all items without the property.
+        op = "(*:*%20-#{field}:[*%20TO%20*])" if value is 'null'
+
+        options.push(op)
+
+        _.each values, (v) ->
+            op = "#{field}:\"#{encodeURIComponent(v)}\""
+            op = "*:*%20-#{field}:[*%20TO%20*]" if v is 'null'
+            options.push(op)
+
+        fq += options.join '+OR+'
+        fq += ')'
+
+        @parameters.push(fq)
