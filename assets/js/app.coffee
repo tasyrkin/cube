@@ -1672,8 +1672,10 @@ $ =>
         initFacetOpenState: () =>
 
             window.facets.each (f) =>
-
-                @facetOpenState.push cat: f.get('name'), field: 'facet'
+                name = f.get 'name'
+                field = window.Settings.Schema.getFieldById name
+                return if field.collpase
+                @facetOpenState.push cat: name, field: 'facet'
 
 
         # Catch a click anywhere in the app
