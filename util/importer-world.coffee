@@ -87,11 +87,14 @@ newItem = (srcItem) ->
             item[field.id] = 'South America' if srcItem[field.id] is 'SA'
             item[field.id] = 'Oceania' if srcItem[field.id] is 'OC'
             item[field.id] = 'Antartica' if srcItem[field.id] is 'AN'
+        ###
         if field.id is 'languages'
             item[field.id] = []
             _.each srcItem[field.id].split(','), (l) ->
                 item[field.id].push l if l
+        ###
         if field.id is 'populationRange'
+            return unless srcItem['population']
             population = parseFloat srcItem['population']
             return item[field.id] = "< 10k" if population < 10000
             return item[field.id] = "10k - 100k" if population < 100000
@@ -104,14 +107,15 @@ newItem = (srcItem) ->
             return item[field.id] = "500m - 1b" if population < 1000000000
             item[field.id] = "> 1b"
         if field.id is 'areaRange'
+            return unless srcItem['areaInSqKm']
             area = parseFloat srcItem['areaInSqKm']
             return item[field.id] = "< 1k" if area < 1000
-            return item[field.id] = "< 10k" if area < 10000
-            return item[field.id] = "< 100k" if area < 100000
-            return item[field.id] = "< 1m" if area < 1000000
-            return item[field.id] = "< 5m" if area < 5000000
-            return item[field.id] = "< 10m" if area < 10000000
-            item[field.id] = "too big.."
+            return item[field.id] = "1k - 10k" if area < 10000
+            return item[field.id] = "10k - 100k" if area < 100000
+            return item[field.id] = "100k - 1m" if area < 1000000
+            return item[field.id] = "1m - 5m" if area < 5000000
+            return item[field.id] = "5m - 10m" if area < 10000000
+            item[field.id] = "> 10m"
     item = solrManager.addObjSuffix 'world', item
     item.id = srcItem['iso alpha2']
     item
