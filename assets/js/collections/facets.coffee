@@ -52,8 +52,8 @@ class @Facets extends Backbone.Collection
             return special.push(field) if @isSpecial facetName, field, sep
             normal.push(field)
 
-        normal = @sort facetName, normal
-        special = @sort facetName, special
+        normal = @sort field, normal
+        special = @sort field, special
 
         # null values are not-set values, it has to show not-set values too
         # and the amount of items who don't have this facet set.
@@ -91,8 +91,9 @@ class @Facets extends Backbone.Collection
 
     # Sort facet fields based on a specific order (specified in entity's
     # settings file) or alphabetically.
-    sort: (facetName, arr) =>
-        order = window.Settings.facetOrder?[facetName]
+    sort: (field, arr) =>
+        return arr.sort() unless field.order
+        order = field.order
         sorted = []
         _.each order, (field) ->
             sorted.push field if arr.indexOf(field) isnt -1
