@@ -79,10 +79,39 @@ newItem = (srcItem) ->
     item = {}
     _.each schema, (field) ->
         item[field.id] = srcItem[field.id] if srcItem[field.id]
+        if field.id is 'continent'
+            item[field.id] = 'Africa' if srcItem[field.id] is 'AF'
+            item[field.id] = 'Asia' if srcItem[field.id] is 'AS'
+            item[field.id] = 'Europe' if srcItem[field.id] is 'EU'
+            item[field.id] = 'North America' if srcItem[field.id] is 'NA'
+            item[field.id] = 'South America' if srcItem[field.id] is 'SA'
+            item[field.id] = 'Oceania' if srcItem[field.id] is 'OC'
+            item[field.id] = 'Antartica' if srcItem[field.id] is 'AN'
         if field.id is 'languages'
             item[field.id] = []
             _.each srcItem[field.id].split(','), (l) ->
                 item[field.id].push l if l
+        if field.id is 'populationRange'
+            population = parseFloat srcItem['population']
+            return item[field.id] = "< 10k" if population < 10000
+            return item[field.id] = "10k - 100k" if population < 100000
+            return item[field.id] = "100k - 500k" if population < 500000
+            return item[field.id] = "500k - 1m" if population < 1000000
+            return item[field.id] = "1m - 10m" if population < 10000000
+            return item[field.id] = "10m - 50m" if population < 50000000
+            return item[field.id] = "50m - 100m" if population < 100000000
+            return item[field.id] = "100m - 500m" if population < 400000000
+            return item[field.id] = "500m - 1b" if population < 1000000000
+            item[field.id] = "> 1b"
+        if field.id is 'areaRange'
+            area = parseFloat srcItem['areaInSqKm']
+            return item[field.id] = "< 1k" if area < 1000
+            return item[field.id] = "< 10k" if area < 10000
+            return item[field.id] = "< 100k" if area < 100000
+            return item[field.id] = "< 1m" if area < 1000000
+            return item[field.id] = "< 5m" if area < 5000000
+            return item[field.id] = "< 10m" if area < 10000000
+            item[field.id] = "too big.."
     item = solrManager.addObjSuffix 'world', item
     item.id = srcItem['iso alpha2']
     item

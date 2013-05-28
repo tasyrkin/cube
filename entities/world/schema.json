@@ -12,13 +12,19 @@
       "index": true
     },
     {
+      "id": "continent",
+      "label": "Continent",
+      "type": "facet",
+      "index": true
+    },
+    {
       "id": "areaInSqKm",
       "label": "Area km2",
       "index": true
     },
     {
       "id": "areaRange",
-      "label": "Area range",
+      "label": "Area",
       "index": false,
       "hidden": true,
       "type": "facet"
@@ -30,21 +36,16 @@
     },
     {
       "id": "populationRange",
-      "label": "population range",
+      "label": "Population",
       "index": false,
       "hidden": true,
       "type": "facet"
     },
     {
-      "id": "continent",
-      "label": "Continent",
-      "type": "facet",
-      "index": true
-    },
-    {
       "id": "languages",
       "label": "Languages",
-      "index": true
+      "index": true,
+      "multivalue": true
     },
     {
       "id": "geonameId",
