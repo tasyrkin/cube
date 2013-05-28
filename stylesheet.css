@@ -372,9 +372,8 @@ span#logo {
 
 #header_wrap {
   background: url('cube_header.png') #d4d4d4 no-repeat 200px 0;
-  height: 275px;
+  height: 195px;
   position: relative;
-  border-bottom: 1px solid dodgerblue;
 }
 
 #header_wrap .inner {
@@ -397,6 +396,7 @@ header h6, header h3 {
     color: white;
     margin: 0;
     padding: 0;
+    border: none;
 }
 
 header h3 {
@@ -469,7 +469,7 @@ header #titleContainer h6 {
 }
 
 #main_content_wrap {
-  background: url('cube_header.png') #FFF no-repeat 200px -286px;
+  background: url('cube_header.png') #FFF no-repeat 200px -206px;
 }
 
 #main_content_wrap section {
