@@ -1674,7 +1674,7 @@ $ =>
             window.facets.each (f) =>
                 name = f.get 'name'
                 field = window.Settings.Schema.getFieldById name
-                return if field.collpase
+                return if field.collapse
                 @facetOpenState.push cat: name, field: 'facet'
 
 
