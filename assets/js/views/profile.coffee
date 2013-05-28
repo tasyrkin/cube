@@ -647,7 +647,7 @@ $ ->
                 $('input.hidden', '#pane').removeClass 'hidden'
                 $('.multiline').addClass('edit').removeAttr 'style'
                 $('select').addClass('edit').removeAttr 'disabled'
-                $('.text-container.tuple').hide()
+                $('.text-container').hide()
                 $('.multilineWrapp p').hide()
                 $('textarea', '#pane')
                   .removeAttr('disabled')
