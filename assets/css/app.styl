@@ -778,6 +778,7 @@ span.miniEtq
       top             0
       left            0
       -moz-transform  translate(-300px, 0pt) scale(15)
+      display         none
     .inputPicContainer
       position        absolute
       width           300px
@@ -914,6 +915,8 @@ span.miniEtq
       margin          5px
       &.additional
         margin-top    10px
+        .dropdownMask
+            left      -10px
         ul
           display     none
           margin-left 5px
@@ -991,14 +994,14 @@ span.miniEtq
           overflow    hidden
           font-size   paneFontSize
           &.tuple
-            position    initial
+            position    static
             float       right
-            height      initial
+            height      auto
       .dropdownMask
           width       184px
-          left        -10px
           height      22px
       .scroll
+          display     none
           position    absolute
           width       13px
           height      16px

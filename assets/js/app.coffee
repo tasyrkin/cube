@@ -238,11 +238,12 @@ $ =>
                 # Append HTML on extension container
                 $('#app > #extensions').html exthtml
 
-                return cb() unless $("#app > #extensions #controls").length
-
                 # Get extension controls and append them
-                t = _.template $("#app > #extensions #controls").html()
-                $('#controls #extensions').append t({})
+                controls = $("#app > #extensions #controls")
+
+                if controls.length
+                    t = _.template controls.html() if controls.length
+                    $('#controls #extensions').append t({})
 
                 # Initialize extended javascript
                 window.extensions?.init?()
@@ -976,6 +977,7 @@ $ =>
         # Show a Group view when many items have been selected
         showGroupView: () =>
 
+            window.groupView?.destroy()
             window.profileView?.destroy()
 
             window.groupView = new GroupView unless window.groupView
@@ -1152,7 +1154,12 @@ $ =>
 
         # Check if the entity is editable
         isEditable: () =>
-            return yes if window.Settings.editable isnt false
+            return no if window.Settings.editable is false
+            yes
+
+        isProfEditable: () =>
+            return no unless @isEditable()
+            return yes if @isAdmin() or window.Settings.Schema.getAdditionals().length
             no
 
         # Set browsers URL to point to the current application state
@@ -1675,8 +1682,10 @@ $ =>
         initFacetOpenState: () =>
 
             window.facets.each (f) =>
-
-                @facetOpenState.push cat: f.get('name'), field: 'facet'
+                name = f.get 'name'
+                field = window.Settings.Schema.getFieldById name
+                return if field.collapse
+                @facetOpenState.push cat: name, field: 'facet'
 
 
         # Catch a click anywhere in the app

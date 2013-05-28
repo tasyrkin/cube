@@ -117,6 +117,14 @@ class SolrManager
 
         newObj
 
+    # Form a hierarchy array from a string like main/node1/node2.
+    # result: [ "main", "main/node1", "main/node1/node2" ]
+    formHierarchyArray: (str, sep) ->
+        h = []
+        sep = '/' unless sep
+        _.each str.split(sep), (v, i) ->
+            h.push str.split(sep).slice(0, i+1).join(sep)
+        h
 
     # Solr is not able to sort multivalue fields or fields with analyzers.
     # To be able to do it, a stringified copy of the multivalue field has
@@ -141,3 +149,29 @@ class SolrManager
         return yes if field.multivalue
         return yes if field.type is 'facet' or field.type is 'tuple'
         return no
+
+    # Replaces matchFilter method on solr-client until we find a better way
+    # to do this.
+    customMatchFilter: (field,values) ->
+        options = []
+        tag = "{!tag=_#{field}}"
+        fq = "fq=#{tag}("
+        value = encodeURIComponent values.pop()
+
+        op = "#{field}%3A\"#{value}\""
+
+        # A string null as a value is a not set value. In other words,
+        # filtering by 'null' returns all items without the property.
+        op = "(*:*%20-#{field}:[*%20TO%20*])" if value is 'null'
+
+        options.push(op)
+
+        _.each values, (v) ->
+            op = "#{field}:\"#{encodeURIComponent(v)}\""
+            op = "*:*%20-#{field}:[*%20TO%20*]" if v is 'null'
+            options.push(op)
+
+        fq += options.join '+OR+'
+        fq += ')'
+
+        @parameters.push(fq)

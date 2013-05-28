@@ -75,6 +75,8 @@ $ ->
 
                 return m.unset(id, silent: yes) if !val and unset
 
+                return unless val
+
                 p = {}
                 p[id] = val
                 m.set p, silent: yes
@@ -99,6 +101,8 @@ $ ->
 
                 return m.unset(id, silent: yes) if !val and unset
 
+                return unless val
+
                 p = {}
                 p[id] = val
 
@@ -118,6 +122,8 @@ $ ->
                 val = $.trim $i.val()
 
                 return m.unset id, silent: yes if unset unless val
+
+                return unless val
 
                 if val and val[0] isnt ""
                     p = {}
@@ -182,6 +188,8 @@ $ ->
                     @setUniqueMultivalueField v, val
 
                 return m.unset(id, silent: yes) if !val.length and unset
+
+                return unless val
 
                 p = {}
                 p[id] = val
@@ -465,7 +473,7 @@ $ ->
 
             $('body').unbind 'keyup', @closeOnEsc
 
-
+        ###
         # Stop animation if mouse leaves arrows
         onMouseOut: () =>
 
@@ -542,7 +550,7 @@ $ ->
             if id is 'right'and x <= (w - 168) * -1
                 return clearTimeout @scrollTimer
             @animateText $p, id
-
+        ###
 
     #### Profile View
     # A detailed view of an item that shows up on the right pane.
@@ -561,10 +569,10 @@ $ ->
             "click a#delete"                : "clear"
             "click a.destroy"               : "close"
             "click label.additional"        : "showAdditionalFields"
-            "mouseover span.scroll"         : "onScroll"
-            "mouseout span.scroll"          : "onMouseOut"
-            "mouseover .text-container"     : "onTextContainer"
-            "mouseout .text-container"      : "onTextContainerOut"
+            #"mouseover span.scroll"         : "onScroll"
+            #"mouseout span.scroll"          : "onMouseOut"
+            #"mouseover .text-container"     : "onTextContainer"
+            #"mouseout .text-container"      : "onTextContainerOut"
             "click a.filter"                : "filterByDetail"
             "keyup .tupleField:last-child"  : "addTupleField"
             "focus .tupleField"             : "removeEmptyTupleFields"
@@ -631,8 +639,6 @@ $ ->
         # Initialize form elements to create/update an item
         form: (element) =>
 
-            $('#pane').css 'display', 'block'
-
             # Enable editing for additional fields, picture or all fields if
             # admin key is present
             if @app.isAdmin()
@@ -667,6 +673,9 @@ $ ->
             # Show additional fields
             $('ul', '#pane li.additional').addClass('open')
             $('span#arrow', '#pane li').addClass('active')
+
+            # Make invisible picture input field clickable
+            $('#pane input#pic').show()
 
             # Highlight mandatory fields
             @setMandatoryLabels() if @app.isAdmin()

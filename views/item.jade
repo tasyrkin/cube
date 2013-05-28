@@ -114,7 +114,8 @@ script(type="text/html")#item-table-template
   |       </span><%
   |   };
   |   _.each(schema, function(f) { %>
-  |       <td class="<%= f.id %><% if (f.index) { %> visible<% }; %>"><%
+  |       <td class="<%= f.id %><% if (f.index) { %> visible<% }; %>"
+  |           title="<%= model[f.id] %>" data-type="<%= f.id %>"><%
   |           renderField(f, model); %>
   |       </td><%
   |   });
