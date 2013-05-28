@@ -402,7 +402,7 @@ checkDocco(){
     fi
 }
 
-# Check if node is installed (imagemagick: optional).
+# Check if ImageMagick is installed (imagemagick: optional).
 checkImageMagick(){
     if checkDependency "convert"; then
         echo "ImageMagick is installed!"
@@ -422,10 +422,10 @@ downloadFromGit(){
         echo "It seems you have not downloaded the Cube App source from its GIT repository."
 
         CONFIRMED=$SILENT
-        
+
         if [ "$CONFIRMED" = 0 ]; then
             echo "Do you want to download the latest source to the current folder now?"
-            
+
             select dyn in Yes No
             do
                 case "$dyn" in
@@ -440,7 +440,7 @@ downloadFromGit(){
                 esac
             done
         fi
-        
+
         if [ "$CONFIRMED" = 1 ]; then
             echo "Clone the Cube App repository..."
             git clone https://github.com/zalando/cube.git ./cube_latest

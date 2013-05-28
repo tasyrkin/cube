@@ -90,7 +90,7 @@
         <p>Requirements: <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a> (&gt;= 1.6)</p>
         <pre>$ wget http://zalando.github.io/cube/install.sh<br/>$ bash install.sh</pre>
         <h6>Manual</h6>
-            <p>Requirements: <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a> (&gt;=1.6), <a href="http://maven.apache.org/">Maven</a> (2.2) and <a href="http://nodejs.org">NodeJs</a> (&gt;=0.8)</p>
+            <p>Requirements: <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a> (&gt;=1.6), <a href="http://maven.apache.org/">Maven</a> (2.2), <a href="http://nodejs.org">NodeJs</a> (&gt;=0.8) and <a href="http://www.imagemagick.org/script/index.php">ImageMagick</a> (&gt;=6.8.0)</p>
             <pre>$ git clone git@github.com:zalando/cube.git<br/>$ cd cube<br/>$ npm install .</pre>
             <p>Build and run the Solr Database</p>
             <pre>$ mvn clean install tomcat:run-war -Pdevelopment</pre>
@@ -228,10 +228,10 @@
         <p class="reference"><span>hidden</span> – Hides field from profile view. </p><p class="reference value">Value type: <span class="value">Boolean (true | false)</span></p>
         <p class="reference"><span>additional</span> – This field will be part of the additional fields and will be showed at the bottom of the profile view, hidden inside the 'Additional info' section. </p><p class="reference value">Value type: <span class="value">Boolean (true | false)</span></p>
         <h6>Type specific properties</h6>
-        <h5>Type: Facet</h5>
+        <h5>Field Type: Facet</h5>
         <p class="reference"><span>specials</span> – Each facet is splitted in two areas, separated by a gray line. Define this property with an array of strings and each facet field that matches will be displayed below the line. </p><p class="reference value">Value type: <span class="value">Array [ "name1", "name2" ]</span></p>
         <p class="reference"><span>classifier</span> – Defines this field as the category to sort items on thumbnail view. The order of this array will determine the order of the sections on that view. </p><p class="reference value">Value type: <span class="value">Array ( [ "name1", "name2", ... ] )</span></p>
-        <h5>Type: Dropdown</h5>
+        <h5>Field Type: Dropdown</h5>
         <p class="reference"><span>options</span> – Required property for any dropdown tipe field, defined as an array of strings for the availablo options in the dropdown menu. </p><p class="reference value">Value type: <span class="value">Array ( [ "name1", "name2", ... ] )</span></p>
     </section>
     <section id="more">

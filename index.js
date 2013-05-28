@@ -108,7 +108,9 @@ function hideExample() {
     $('#demo_banner').removeClass('open');
     $('#example').slideUp(1000);
     $('html, body').animate({ scrollTop: 0 }, 1000);
-    $('#demo_banner').animate({ top: -50 }, 1000);
+    $('#demo_banner').animate({ top: -50 }, 1000, function() {
+        $('iframe').attr('src', 'http://cube.eu01.aws.af.cm/?admin=yes');
+    });
 
 }
 
