@@ -513,17 +513,9 @@ span.value {
     font-size: 20px;
 }
 
-.menu {
-    position: absolute;
-    top: 0;
-}
-
-.menu span, .menu a {
-    margin:  0   10px;
-}
-
-.menu span:first-child, .menu a:first-child {
-    margin-left:  0;
+#menu {
+    float: right;
+    color: #CCC;
 }
 
 .column {
