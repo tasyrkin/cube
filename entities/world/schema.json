@@ -17,9 +17,23 @@
       "index": true
     },
     {
+      "id": "areaRange",
+      "label": "Area range",
+      "index": false,
+      "hidden": true,
+      "type": "facet"
+    },
+    {
       "id": "population",
       "label": "Population",
       "index": true
+    },
+    {
+      "id": "populationRange",
+      "label": "population range",
+      "index": false,
+      "hidden": true,
+      "type": "facet"
     },
     {
       "id": "continent",
@@ -30,13 +44,6 @@
     {
       "id": "languages",
       "label": "Languages",
-      "type": "facet",
-      "index": true
-    },
-    {
-      "id": "currency",
-      "label": "Currency",
-      "type": "facet",
       "index": true
     },
     {
