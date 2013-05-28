@@ -37,7 +37,7 @@
     },
     {
       "id": "areaRange",
-      "label": "Area",
+      "label": "Area km2",
       "index": false,
       "hidden": true,
       "type": "facet",
@@ -46,7 +46,16 @@
     {
       "id": "languages",
       "label": "Languages",
-      "index": true
+      "index": true,
+      "type": "facet",
+      "collapse": true
+    },
+    {
+      "id": "currency",
+      "label": "Currency",
+      "type": "facet",
+      "index": true,
+      "collapse": true
     },
     {
       "id": "geonameId",
