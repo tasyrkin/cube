@@ -401,6 +401,8 @@ span#columnsMenu
           background    tableItemHoverBg
         &.active
           border        1px solid thumbnailActiveBd
+        .view
+            height      188px
         .view .label
           word-break    break-word
           display       block
@@ -408,9 +410,12 @@ span#columnsMenu
           white-space   nowrap
           margin        10px 0
           overflow      hidden
+          position      absolute
+          bottom        0
+          max-width     150px
         .thumbnail
-          width               150px
-          height              150px
+          max-width               150px
+          max-height              150px
         .etiquettes
           position      absolute
           height        100%
