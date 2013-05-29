@@ -87,12 +87,6 @@ newItem = (srcItem) ->
             item[field.id] = 'South America' if srcItem[field.id] is 'SA'
             item[field.id] = 'Oceania' if srcItem[field.id] is 'OC'
             item[field.id] = 'Antartica' if srcItem[field.id] is 'AN'
-        ###
-        if field.id is 'languages'
-            item[field.id] = []
-            _.each srcItem[field.id].split(','), (l) ->
-                item[field.id].push l if l
-        ###
         if field.id is 'populationRange'
             return unless srcItem['population']
             population = parseFloat srcItem['population']
@@ -116,6 +110,8 @@ newItem = (srcItem) ->
             return item[field.id] = "1m - 5m" if area < 5000000
             return item[field.id] = "5m - 10m" if area < 10000000
             item[field.id] = "> 10m"
+        if field.id is 'flag'
+            item[field.id] = "https://www.cia.gov/library/publications/the-world-factbook/graphics/flags/large/#{srcItem['fips code'].toLowerCase()}-lgflag.gif"
     item = solrManager.addObjSuffix 'world', item
     item.id = srcItem['iso alpha2']
     item

@@ -1,5 +1,11 @@
 [
     {
+      "id": "flag",
+      "label": "Flag",
+      "index": true,
+      "type": "img"
+    },
+    {
       "id": "name",
       "label": "Name",
       "mandatory": true,
