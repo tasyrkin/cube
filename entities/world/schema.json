@@ -22,7 +22,8 @@
       "id": "continent",
       "label": "Continent",
       "type": "facet",
-      "index": true
+      "index": true,
+      "classifier": ["North America"]
     },
     {
       "id": "population",
