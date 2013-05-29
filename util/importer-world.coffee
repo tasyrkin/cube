@@ -5,6 +5,9 @@ require "coffee-script"
 request = require "request"
 solr = require "solr-client"
 
+url = require 'url'
+exec = require('child_process').exec
+
 schema = require '../entities/world/schema.json'
 
 SolrManager = require '../server/solrManager'
@@ -19,7 +22,7 @@ log = (arg...) ->
     console.log(arg...) if verbose
 
 # Config. Please set the next variables to suit your needs.
-url = 'http://ws.geonames.org/countryInfoCSV'
+csvurl = 'http://ws.geonames.org/countryInfoCSV'
 dbSettings =
     host: "solr2-zalandoapp.rhcloud.com"
     port: "80"
@@ -50,7 +53,7 @@ deleteAllData () ->
 addAllData = () ->
         log 'Fetching countries info'
 
-        request url, (err, res, body) ->
+        request csvurl, (err, res, body) ->
             throw err if err
             data = csv2json body
             log 'Fetched ', data.length, 'countries'
@@ -111,10 +114,39 @@ newItem = (srcItem) ->
             return item[field.id] = "5m - 10m" if area < 10000000
             item[field.id] = "> 10m"
         if field.id is 'flag'
-            item[field.id] = "https://www.cia.gov/library/publications/the-world-factbook/graphics/flags/large/#{srcItem['fips code'].toLowerCase()}-lgflag.gif"
+            flagurl = "https://www.cia.gov/library/publications/the-world-factbook/graphics/flags/large/#{srcItem['fips code'].toLowerCase()}-lgflag.gif"
+
+            if srcItem['iso alpha2'] is 'AQ'
+                flagurl = 'http://www.crwflags.com/fotw/images/a/aq!bart.gif'
+            if srcItem['iso alpha2'] is 'BQ'
+                flagurl = 'http://www.rootsweb.ancestry.com/~antwgw/NEAN002.GIF'
+            if srcItem['iso alpha2'] is 'CW'
+                flagurl = 'http://www.newtonnewtonflags.com/shop/shopimages/sections/thumbnails/curacao_flag.gif'
+            if srcItem['iso alpha2'] is 'UM'
+                flagurl = 'http://www.crwflags.com/fotw/images/u/um-wake.gif'
+            if srcItem['iso alpha2'] is 'PS'
+                flagurl = 'http://www.crwflags.com/fotw/images/a/arabcols.gif'
+            if srcItem['iso alpha2'] is 'SX'
+                flagurl = 'http://www.crwflags.com/fotw/images/s/sx.gif'
+            if srcItem['iso alpha2'] is 'AX'
+                flagurl = 'http://0.tqn.com/d/goscandinavia/1/0/Z/4/-/-/flag-of-aland.jpg'
+
+            #download flagurl, srcItem['iso alpha2'].toLowerCase()
+            item[field.id] = "/images/world/#{srcItem['iso alpha2'].toLowerCase()}.gif"
+
     item = solrManager.addObjSuffix 'world', item
     item.id = srcItem['iso alpha2']
     item
+
+download = (fileurl, code) ->
+
+    filename = "#{code}.gif"
+
+    wget = "wget -O ./public/images/world/#{code}.gif #{fileurl}"
+
+    child = exec wget, (err, stdout, stderr) ->
+        return console.log 'no flag saved for', code, err if err
+        console.log "flag saved", code
 
 csv2json = (csvdata) ->
     lines = csvdata.split '\n'
