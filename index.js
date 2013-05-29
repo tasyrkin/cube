@@ -37,7 +37,11 @@ $(function() {
 
     startSlider();
 
-    stickyMenu( $('#menu').offset().top );
+    offset = $('#menu').offset().top;
+
+    stickyMenu(offset);
+
+    $(window).scroll(function() { stickyMenu(offset); });
 });
 
 var slider  = {
@@ -137,5 +141,4 @@ function stickyMenu(offset) {
 
     $('#menu').css({ 'position': 'relative' });
 
-    $(window).scroll(function() { stickyMenu(offset); });
 }
