@@ -10,7 +10,8 @@
       "label": "Name",
       "mandatory": true,
       "index": true,
-      "search": true
+      "search": true,
+      "thumbnail": true
     },
     {
       "id": "capital",
