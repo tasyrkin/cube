@@ -37,6 +37,7 @@ $(function() {
 
     startSlider();
 
+    stickyMenu( $('#menu').offset().top );
 });
 
 var slider  = {
@@ -124,4 +125,17 @@ function stopAnimation() {
     clearInterval(slider.pid);
     clearTimeout(slider.wait);
     slider.wait = setTimeout(startSlider, 5000);
+}
+
+function stickyMenu(offset) {
+
+    var scrollTop = $(window).scrollTop();
+
+    if (scrollTop > offset) {
+        return $('#menu').css({ 'position': 'fixed', 'top':0 });
+    }
+
+    $('#menu').css({ 'position': 'relative' });
+
+    $(window).scroll(function() { stickyMenu(offset); });
 }

@@ -47,9 +47,9 @@
     <div id="main_content_wrap" class="outer">
         <div id="menu">
             <a href="#installation">installation</a>|
-            <a href="#installation">tutorial</a>|
+            <a href="#tutorial">tutorial</a>|
             <a href="#documentation">documentation</a>|
-            <a href="#contribution">contribution</a>
+            <a href="#more">contribution</a>
         </div>
 
         <section id="slideshow" class="outer">
@@ -91,7 +91,6 @@
       <p>The Cube is a NodeJs + BackboneJs application that presents your data in an organized way and gives you a set of tools to manage it. From importing it into the Solr database, to updating it through its web interface (select, sort, search, filter, add, edit or remove) and exporting it into a JSON, XML or CSV file or just printing it to paper. The cube has become one of our daily used apps for everyone here at Zalando's Technology department and we want to share it with you; it is now Open Source!</p>
       </section>
       <section id="installation" class="inner">
-        <a name="installation"></a>
         <h3>Installation</h3>
         <h6>Automated</h6>
         <p>Requirements: <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a> (&gt;= 1.6)</p>
@@ -104,11 +103,9 @@
             <p>Start the Cube on a new terminal</p>
             <pre>$ cd cube<br>$ coffee cube.coffee</pre>
             <p>Open it in your favorite browser<a class="biglink" href="http://localhost:3000">http://localhost:3000</a></p>
-        <a name="documentation"></a>
-        </section>
+     </section>
 
      <section id="tutorial" class="inner">
-        <a name="tutorial"></a>
         <h3>How To make your own Cube</h3>
         <p>Once you got the included example up and running, it will be easy to set up the cube to handle your own data. In the following small tutorial, I'll show you how to store your books collection in the cube. As you will see, its  basically a matter of writing a schema and editing a couple of config files.</p>
         <ol class="tutorial">
@@ -201,7 +198,6 @@
      </section>
 
      <section id="documentation" class="inner">
-        <a name="documentation"></a>
         <h3>Documentation</h3>
         <p>As mentioned before, the Cube is composed of a NodeJs backend, a Solr database and a BackboneJs frontend. If you're familiar with these technologies it shouldn't be much of a hassle to get around this app. Plus, annotated source code documentation generated with doccu can be found <a href="docs/app.html">here</a>.</p>
         <a name="schema"></a>
@@ -240,7 +236,6 @@
         <h5>Field Type: Dropdown</h5>
         <p class="reference"><span>options</span> – Required property for any dropdown tipe field, defined as an array of strings for the availablo options in the dropdown menu. </p><p class="reference value">Value type: <span class="value">Array [ "name1", "name2", ... ]</span></p>
         </section>
-    <a name="contribution"></a>
     <section id="more">
         <h3>Contribution</h3>
         <p>Please visit our GitHub repository to get the code, report issues or request features. Feel free to send some pull requests ;)</p><a href="http://github.com/zalando/cube/" class="biglink">http://github.com/zalando/cube</a>
