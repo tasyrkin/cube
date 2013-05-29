@@ -469,7 +469,7 @@ header #titleContainer h6 {
 }
 
 #main_content_wrap {
-  background: url('cube_header.png') #FFF no-repeat 200px -206px;
+  background: #FFF;
 }
 
 #main_content_wrap section {
@@ -521,7 +521,7 @@ span.value {
     z-index: 2;
     height: 50px;
     width: 1000px;
-    margin-left: 200px;
+    margin-left: 192px;
 
 
 background: -moz-linear-gradient(top,  rgba(255,255,255,1) 45%, rgba(255,255,255,0.57) 68%, rgba(255,255,255,0) 99%, rgba(255,255,255,0) 100%); /* FF3.6+ */
