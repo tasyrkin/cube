@@ -580,10 +580,6 @@ section#slideshow ul li {
     display: inline-block;
 }
 
-section#documentation h6 {
-    font-weight: bold;
-}
-
 .slideshow_btn {
     width: 56px;
     height: 56px;
