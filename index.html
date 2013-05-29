@@ -99,7 +99,7 @@
             <p>Requirements: <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a> (&gt;=1.6), <a href="http://maven.apache.org/">Maven</a> (2.2), <a href="http://nodejs.org">NodeJs</a> (&gt;=0.8) and <a href="http://www.imagemagick.org/script/index.php">ImageMagick</a> (&gt;=6.8.0)</p>
             <pre>$ git clone git@github.com:zalando/cube.git<br/>$ cd cube<br/>$ npm install .</pre>
             <p>Build and run the Solr Database</p>
-            <pre>$ mvn clean install tomcat:run-war -Pdevelopment</pre>
+            <pre>$ cd solr<br/>$ mvn clean install tomcat:run-war -Pdevelopment</pre>
             <p>Start the Cube on a new terminal</p>
             <pre>$ cd cube<br>$ coffee cube.coffee</pre>
             <p>Open it in your favorite browser<a class="biglink" href="http://localhost:3000">http://localhost:3000</a></p>
